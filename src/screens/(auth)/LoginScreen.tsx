@@ -7,7 +7,6 @@ import { router } from "expo-router";
 
 import { LinearGradient } from "expo-linear-gradient";
 
-import CustomButton from "@/src/components/CustomButton";
 import Button from "@/src/components/Button";
 import Breaker from "@/src/components/Breaker";
 import ButtonOutline from "@/src/components/ButtonOutline";
@@ -57,16 +56,49 @@ const LoginScreen = () => {
                   fontFamily: "Poppins-Bold",
                 }}
               >
-                Welcome Back, User
-              </Text>
-              <Text className="text-neutral-500 text-sm font-medium">
-                Welcome back! Please enter your details.
+                Login
               </Text>
             </Animated.View>
-
+            <Animated.View
+              className="flex-row justify-center items-center"
+              entering={FadeInDown.duration(100).delay(200).springify()}
+            >
+              <Text
+                className="text-neutral-500 text-lg font-medium leading-[38px] text-center"
+                style={{
+                  fontFamily: "Poppins-Medium",
+                }}
+              >
+                Dont have an account yet?{" "}
+              </Text>
+              <Pressable onPress={() => navigateAuth("Register")}>
+                <Text
+                  className="text-[#6079FE] text-lg font-medium leading-[38px] text-center"
+                  style={{
+                    fontFamily: "Poppins-Bold",
+                  }}
+                >
+                  {" "}
+                  Sign up
+                </Text>
+              </Pressable>
+            </Animated.View>
+            <View className="w-full justify-normal">
+              <Animated.View
+                entering={FadeInDown.duration(100).delay(300).springify()}
+                className="border-white pb-4"
+              >
+                <ButtonOutline title="Login with Google">
+                  <AntDesign name="google" size={20} color="gray" />
+                </ButtonOutline>
+              </Animated.View>
+            </View>
+            <View>
+              <Breaker />
+            </View>
             <Animated.View
               className="py-8 space-y-8"
-              entering={FadeInDown.duration(100).delay(200).springify()}
+              entering={FadeInDown.duration(100).delay(400).springify()}
             >
               <View className="border-2 border-gray-400 rounded-lg">
                 <TextInput
@@ -91,54 +123,14 @@ const LoginScreen = () => {
             </Animated.View>
             <Animated.View
               className="w-full justify-start"
-              entering={FadeInDown.duration(100).delay(300).springify()}
+              entering={FadeInDown.duration(100).delay(500).springify()}
             >
               <View className="pb-6">
-                <Button title="Login" 
-                action={() => navigation.navigate("TabN")}
+                <Button
+                  title="Login"
+                  action={() => navigation.navigate("TabN")}
                 />
               </View>
-            </Animated.View>
-            <View>
-              <Breaker />
-            </View>
-            <View className="w-full justify-normal">
-              <Animated.View
-                entering={FadeInDown.duration(100).delay(600).springify()}
-                className="border-white pb-4"
-              >
-                <ButtonOutline title="Login with Google">
-                  <AntDesign name="google" size={20} color="gray" />
-                </ButtonOutline>
-              </Animated.View>
-              <Animated.View
-                entering={FadeInDown.duration(100).delay(700).springify()}
-                className="border-white pb-4"
-              ></Animated.View>
-            </View>
-            <Animated.View
-              className="flex-row justify-center items-center"
-              entering={FadeInDown.duration(100).delay(700).springify()}
-            >
-              <Text
-                className="text-neutral-500 text-lg font-medium leading-[38px] text-center"
-                style={{
-                  fontFamily: "Poppins-Medium",
-                }}
-              >
-                Dont have an account yet?{" "}
-              </Text>
-              <Pressable onPress={() => navigateAuth("Register")}>
-                <Text
-                  className="text-black text-lg font-medium leading-[38px] text-center"
-                  style={{
-                    fontFamily: "Poppins-Bold",
-                  }}
-                >
-                  {" "}
-                  Sign up
-                </Text>
-              </Pressable>
             </Animated.View>
           </View>
         </View>
