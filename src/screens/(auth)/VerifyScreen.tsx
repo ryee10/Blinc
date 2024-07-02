@@ -1,18 +1,12 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-} from "react-native";
+import { View, Text, TextInput, StyleSheet } from "react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
-import Animated, { FadeInDown, } from "react-native-reanimated";
-
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 import Button from "@/src/components/Button";
 const VerifyScreen = () => {
   const { navigate: navigateAuth }: NavigationProp<AuthNavigationType> =
-  useNavigation();
+    useNavigation();
   const navigation = useNavigation<NavigationProp<AuthNavigationType>>();
   return (
     <Animated.View
@@ -47,12 +41,6 @@ const VerifyScreen = () => {
           </View>
         </Animated.View>
       </View>
-      <Text style={styles.footerText}>
-        Copyright © 2024 BLINC PH. Designed with{" "}
-        <Text style={styles.heart}>❤️</Text> by{" "}
-        <Text style={styles.footerLink}>Bitshares Labs Inc</Text> All rights
-        reserved
-      </Text>
     </Animated.View>
   );
 };
@@ -101,28 +89,11 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     overflow: "hidden",
   },
-  gradientButton: {
-    padding: 15,
-    alignItems: "center",
-    borderRadius: 25,
-  },
+
   buttonText: {
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "bold",
-  },
-  footerText: {
-    position: "absolute",
-    bottom: 20,
-    textAlign: "center",
-    color: "#4A5568",
-    fontSize: 12,
-  },
-  heart: {
-    color: "red",
-  },
-  footerLink: {
-    color: "#7B61FF",
   },
 });
 

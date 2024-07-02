@@ -102,7 +102,7 @@ const LoginScreen = () => {
             >
               <View className="border-2 border-gray-400 rounded-lg">
                 <TextInput
-                  className="p-4 text-white"
+                  className="p-4 text-gray"
                   onChangeText={(text) => setEmail(text)}
                   value={email}
                   placeholder="Email or mobile number"
@@ -112,10 +112,11 @@ const LoginScreen = () => {
               </View>
               <View className="border-2 border-gray-400 rounded-lg">
                 <TextInput
-                  className="p-4 text-white"
+                  className="p-4 text-gray"
                   onChangeText={(text) => setPassword(text)}
                   value={password}
                   placeholder="Password"
+                  secureTextEntry
                   placeholderTextColor="#888888"
                   autoCapitalize="none"
                 />

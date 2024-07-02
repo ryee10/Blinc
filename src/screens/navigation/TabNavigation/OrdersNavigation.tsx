@@ -1,8 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { TransitionPresets, createStackNavigator } from '@react-navigation/stack'
-import  OrdersScreen from "../../tabs/orders/OrdersScreen"
-
+import OrdersScreen from "../../tabs/orders/OrdersScreen"
 
 const Stack = createStackNavigator( );
 
