@@ -1,111 +1,136 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 
 
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
-const OrdersScreen = () => {
-  const [selectedTab, setSelectedTab] = useState("Active");
+const Tab2 = () => {
+  const [activeTab, setActiveTab] = useState('Team');
 
   const renderContent = () => {
-    return (
-      <View style={styles.contentContainer}>
-        <Text style={styles.noTasksText}>You don't have any orders.</Text>
-      </View>
-    );
+    if (activeTab === 'Active') {
+      return (
+        <View style={styles.contentContainer}>
+          <Text style={styles.contentText}>No orders available</Text>
+        </View>
+      );
+    } else if (activeTab === 'For Approval') {
+      return (
+        <View style={styles.contentContainer}>
+          <Text style={styles.contentText}>No orders available</Text>
+        </View>
+      );
+    } else if (activeTab === 'Completed') {
+      return (
+        <View style={styles.contentContainer}>
+          <Text style={styles.contentText}>No orders available</Text>
+        </View>
+      );
+    } else if (activeTab === 'Cancelled') {
+      return (
+        <View style={styles.contentContainer}>
+          <Text style={styles.contentText}>No orders available</Text>
+        </View>
+      );
+    }
+    
   };
-
+  
   return (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>My orders</Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>My Orders</Text>
       </View>
-      <View style={styles.tabs}>
-        {["Active", "For Approval", "Complete", "Cancelled"].map(
-          (tab) => (
-            <TouchableOpacity
-              key={tab}
-              style={[styles.tab, selectedTab === tab && styles.selectedTab]}
-              onPress={() => setSelectedTab(tab)}
-            >
-              <Text
-                style={[
-                  styles.tabText,
-                  selectedTab === tab && styles.selectedTabText,
-                ]}
-              >
-                {tab}
-              </Text>
-            </TouchableOpacity>
-          )
-        )}
+      <View style={styles.buttonContainer}>
+        <ScrollView horizontal = {true}>
+        <TouchableOpacity 
+        style={[styles.button, activeTab === 'Active' && styles.activeButton]}
+        onPress={() => setActiveTab('Active')}>
+          <Text style={activeTab === 'Active' ? styles.activeButtonText : styles.buttonText}>Active</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style={[styles.button, activeTab === 'For Approval' && styles.activeButton]}
+        onPress={() => setActiveTab('For Approval')}>
+          <Text style={activeTab === 'For Approval' ? styles .activeButtonText : styles.buttonText}>For Approval</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style={[styles.button, activeTab === 'Completed' && styles.activeButton]}
+        onPress={() => setActiveTab('Completed')}>
+          <Text style={activeTab === 'Completed' ? styles.activeButtonText : styles.buttonText}>Completed</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style={[styles.button, activeTab === 'Cancelled' && styles.activeButton]}
+        onPress={() => setActiveTab('Cancelled')}>
+          <Text style={activeTab === 'Cancelled' ? styles .activeButtonText : styles.buttonText}>Cancelled</Text>
+        </TouchableOpacity>
+        </ScrollView>
       </View>
       {renderContent()}
     </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f8f8ff",
-    paddingTop: 50,
+    alignItems: 'center',
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 20,
-    marginBottom: 20,
+  titleContainer: {
+    width: screenWidth,
+    height: '13%',
+    backgroundColor: '#6079FE',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  headerText: {
-    fontSize: 20,
-    marginRight: 10,
-  },
-  dropdownButton: {
-    backgroundColor: "#fff",
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderRadius: 5,
-    borderColor: "#ccc",
-    borderWidth: 1,
-  },
-  dropdownText: {
-    fontSize: 16,
-  },
-  tabs: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginBottom: 15,
-  },
-  tab: {
-    paddingVertical: 10,
-    paddingHorizontal: 8,
-    borderRadius: 15,
-  },
-  selectedTab: {
-    backgroundColor: "#7B61FF",
-  },
-  tabText: {
-    fontSize: 16,
-    color: "gray",
-  },
-  selectedTabText: {
+  title: {
+    fontSize: 18,
+    marginTop: 30,
     color: "#fff",
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    width: screenWidth,
+    height: 50,
+    // backgroundColor: 'green',
+    margin: 10,
+    alignItems: 'flex-start',
+    flexDirection: 'row'
+
+  },
+  button: {
+    width: 100,
+    height: 40,
+    margin: 2,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#CBD3FF'
+  },
+  activeButton: {
+    backgroundColor: '#6079FE',
+  },
+  buttonText: {
+    color: '#000'
+  },
+  activeButtonText: {
+    color: '#fff'
   },
   contentContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  noTasksText: {
-    fontSize: 20,
-    color: "gray",
-  },
+    width: screenWidth,
+    height: '50%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: 'green'
+  }, 
+  contentText: {
+    fontSize: 18,
+    textAlign:'center',
+    color: '#515151'
+  }
 });
 
-export default OrdersScreen;
+export default Tab2;

@@ -1,98 +1,149 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
 
-const TaskScreen = () => {
-    const [selectedTab, setSelectedTab] = useState('All Tasks');
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 
-    const renderContent = () => {
+
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
+
+const Tab4 = () => {
+  const [activeTab, setActiveTab] = useState('Team');
+
+  const renderContent = () => {
+    if (activeTab === 'All Tasks') {
       return (
         <View style={styles.contentContainer}>
-          <Text style={styles.noTasksText}>You don't have any tasks.</Text>
+          <Text style={styles.contentText}>You don't have any task.</Text>
         </View>
       );
-    };
-  
-    return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>From:</Text>
-          <TouchableOpacity style={styles.dropdownButton}>
-            <Text style={styles.dropdownText}>All</Text>
-          </TouchableOpacity>
+    } else if (activeTab === 'New Tasks') {
+      return (
+        <View style={styles.contentContainer}>
+          <Text style={styles.contentText}>You don't have any task.</Text>
         </View>
-        <View style={styles.tabs}>
-          {['All Tasks', 'New Task', 'In Progress', 'On Review', 'Approved'].map((tab) => (
-            <TouchableOpacity
-              key={tab}
-              style={[styles.tab, selectedTab === tab && styles.selectedTab]}
-              onPress={() => setSelectedTab(tab)}
-            >
-              <Text style={[styles.tabText, selectedTab === tab && styles.selectedTabText]}>{tab}</Text>
-            </TouchableOpacity>
-          ))}
+      );
+    } else if (activeTab === 'In Progress') {
+      return (
+        <View style={styles.contentContainer}>
+          <Text style={styles.contentText}>You don't have any task.</Text>
         </View>
-        {renderContent()}
-      </View>
-    );
+      );
+    } else if (activeTab === 'On Review') {
+      return (
+        <View style={styles.contentContainer}>
+          <Text style={styles.contentText}>You don't have any task.</Text>
+        </View>
+      );
+    } else if (activeTab === 'Approved') {
+      return (
+        <View style={styles.contentContainer}>
+          <Text style={styles.contentText}>You don't have any task.</Text>
+        </View>
+      );
+    }
+    
   };
   
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#f8f8ff',
-      paddingTop: 50,
-    },
-    header: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingHorizontal: 20,
-      marginBottom: 20,
-    },
-    headerText: {
-      fontSize: 18,
-      marginRight: 10,
-    },
-    dropdownButton: {
-      backgroundColor: '#fff',
-      paddingVertical: 5,
-      paddingHorizontal: 10,
-      borderRadius: 5,
-      borderColor: '#ccc',
-      borderWidth: 1,
-    },
-    dropdownText: {
-      fontSize: 16,
-    },
-    tabs: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      marginBottom: 15,
-    },
-    tab: {
-      paddingVertical: 10,
-      paddingHorizontal: 8,
-      borderRadius: 15,
-    },
-    selectedTab: {
-      backgroundColor: '#7B61FF',
-    },
-    tabText: {
-      fontSize: 16,
-      color: 'gray',
-    },
-    selectedTabText: {
-      color: '#fff',
-    },
-    contentContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    noTasksText: {
-      fontSize: 20,
-      color: 'gray',
-    },
-  });
-  
+  return (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+    <View style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Tasks</Text>
+      </View>
+      <View style={styles.buttonContainer}>
+        <ScrollView horizontal = {true}>
+        <TouchableOpacity 
+        style={[styles.button, activeTab === 'All Tasks' && styles.activeButton]}
+        onPress={() => setActiveTab('All Tasks')}>
+          <Text style={activeTab === 'All Tasks' ? styles.activeButtonText : styles.buttonText}>All Tasks</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style={[styles.button, activeTab === 'New Tasks' && styles.activeButton]}
+        onPress={() => setActiveTab('New Tasks')}>
+          <Text style={activeTab === 'New Tasks' ? styles .activeButtonText : styles.buttonText}>New Task</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style={[styles.button, activeTab === 'In Progress' && styles.activeButton]}
+        onPress={() => setActiveTab('In Progress')}>
+          <Text style={activeTab === 'In Progress' ? styles.activeButtonText : styles.buttonText}>In Progress</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style={[styles.button, activeTab === 'On Review' && styles.activeButton]}
+        onPress={() => setActiveTab('On Review')}>
+          <Text style={activeTab === 'On Review' ? styles .activeButtonText : styles.buttonText}>On Review</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style={[styles.button, activeTab === 'Approved' && styles.activeButton]}
+        onPress={() => setActiveTab('Approved')}>
+          <Text style={activeTab === 'Approved' ? styles .activeButtonText : styles.buttonText}>Approved</Text>
+        </TouchableOpacity>
+        </ScrollView>
+      </View>
+      {renderContent()}
+    </View>
+    </ScrollView>
+  );
+};
 
-export default TaskScreen
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  titleContainer: {
+    width: screenWidth,
+    height: '13%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#6079FE',
+  },
+  title: {
+    fontSize: 18,
+    marginTop: 30,
+    color: "#fff",
+    fontWeight: 'bold',
+    // backgroundColor: 'green'
+  },
+  buttonContainer: {
+    width: screenWidth,
+    height: 50,
+    // backgroundColor: 'green',
+    margin: 10,
+    alignItems: 'flex-start',
+    flexDirection: 'row'
+
+  },
+  button: {
+    width: 100,
+    height: 40,
+    margin: 2,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#CBD3FF'
+  },
+  activeButton: {
+    backgroundColor: '#6079FE',
+  },
+  buttonText: {
+    color: '#000'
+  },
+  activeButtonText: {
+    color: '#fff'
+  },
+  contentContainer: {
+    width: screenWidth,
+    height: '50%',
+    padding: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: 'green'
+  }, 
+  contentText: {
+    fontSize: 18,
+    textAlign:'center',
+    color: '#515151'
+  }
+});
+
+export default Tab4;

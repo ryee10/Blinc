@@ -40,10 +40,6 @@ const SplashScreen = () => {
           </View>
         </Animated.View>
       </View>
-      <Text style={styles.footerText}>
-        Copyright © 2024 BLINC PH. Designed with <Text style={styles.heart}>❤️</Text> by{' '}
-        <Text style={styles.footerLink}>Bitshares Labs Inc</Text> All rights reserved
-      </Text>
     </SafeAreaView>
   )
 }
@@ -55,13 +51,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#4A5568',
     fontSize: 12,
-  },
-  heart: {
-    color: 'red',
-  },
-  footerLink: {
-    color: '#7B61FF',
-  },
+  }
 });
 
 export default SplashScreen

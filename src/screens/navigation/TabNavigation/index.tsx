@@ -30,9 +30,7 @@ const TabNavigation = () => {
             iconName = "newspaper-outline";
           } else if (route.name === "Transaction") {
             iconName = "reader-outline";
-          } else if (route.name === "Profile") {
-            iconName = "person-outline";
-          }
+          } 
 
           const customizeSize = 25;
           return (
@@ -60,7 +58,7 @@ const TabNavigation = () => {
       <Tab.Screen name="Gigs" component={GigsNavigation} />
       <Tab.Screen name="Task" component={TaskNavigation} />
       <Tab.Screen name="Transaction" component={TransactionNavigation} />
-      <Tab.Screen name="Profile" component={ProfileNavigation} />
+      {/* <Tab.Screen name="Profile" component={ProfileNavigation} /> */}
     </Tab.Navigator>
   );
 };

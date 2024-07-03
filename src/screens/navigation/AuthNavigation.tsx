@@ -27,6 +27,7 @@ const AuthNavigation = () => {
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="Verify" component={VerifyScreen} />
       <Stack.Screen name="TabN" component={TabNavigation} />
+      
 
    </Stack.Navigator>
   )
