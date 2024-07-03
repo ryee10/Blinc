@@ -10,7 +10,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import Button from '@/src/components/Button';
 
 
-const blurhash = "LLGl=3+*8yvz=3w6ozOxxPX3bww3";
+const blurhash = "LQF6YZt7Kio#Xrsqs*WG$]j0Vsi~";
 
 const WelcomeScreen = () => {
   const navigation = useNavigation<NavigationProp<AuthNavigationType>>();
@@ -19,15 +19,15 @@ const WelcomeScreen = () => {
     <SafeAreaView className='flex-1 justify-between items-center bg-white'>
       <StatusBar style='auto' />
 
-      <View className="w-full px-4 items-center justify-center space-y-6 h-full">
-        <View className="w-full px-4 items-center">
+      <View className="w-full px-3 items-center justify-center space-y-5 h-full">
+        <View className="w-full px-7 items-center">
           <Animated.View
             entering={FadeInRight.duration(100).springify()}
             className="flex-row justify-center items-center"
           >
-            <View className='w-20 h-20 overflow-hidden'>
+            <View className='w-full h-20 overflow-hidden'>
               <Image
-                source={require("../../../assets/images/logo-icon-default.png")}
+                source={require("../../../assets/images/logo-default.png")}
                 placeholder={blurhash}
                 contentFit='cover'
                 transition={1000}
