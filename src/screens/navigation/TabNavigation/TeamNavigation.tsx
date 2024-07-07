@@ -1,11 +1,11 @@
+import { View, Text } from 'react-native'
 import React from 'react'
+import TaskScreen from '../../tabs/task/TaskScreen'
 import { TransitionPresets, createStackNavigator } from '@react-navigation/stack'
-import GigsScreen from '../../tabs/gigs/GigsScreen';
-import AddGigs from '../../tabs/gigs/AddGigs';
-
+import TeamScreen from '../../tabs/team/TeamScreen'
 const Stack = createStackNavigator( );
 
-const GigsNavigation = () => {
+const TeamNavigation = () => {
   return (
     <Stack.Navigator
     screenOptions={{
@@ -16,11 +16,9 @@ const GigsNavigation = () => {
       gestureDirection: "horizontal",
      }}
      >
-        <Stack.Screen name="GigsS" component={GigsScreen}/>
-        <Stack.Screen name="AddG" component={AddGigs}/>
-      
+    <Stack.Screen name="TeamS" component={TeamScreen}/>
     </Stack.Navigator>
   )
 }
 
-export default GigsNavigation
+export default TeamNavigation

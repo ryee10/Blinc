@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import Animated, { FadeInDown } from "react-native-reanimated";
+import { LinearGradient } from 'expo-linear-gradient';
 
 import Button from "@/src/components/Button";
 const VerifyScreen = () => {
@@ -9,9 +10,9 @@ const VerifyScreen = () => {
     useNavigation();
   const navigation = useNavigation<NavigationProp<AuthNavigationType>>();
   return (
-    <Animated.View
+    <LinearGradient
+      colors={['#DA84FE', '#6079FE']}
       style={styles.container}
-      entering={FadeInDown.duration(100).delay(100).springify()}
     >
       <View style={styles.card}>
         <Text style={styles.headerText}>Verify your email address.</Text>
@@ -41,7 +42,8 @@ const VerifyScreen = () => {
           </View>
         </Animated.View>
       </View>
-    </Animated.View>
+    
+    </LinearGradient>
   );
 };
 

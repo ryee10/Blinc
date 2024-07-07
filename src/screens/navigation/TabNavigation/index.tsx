@@ -7,6 +7,7 @@ import OrdersNavigation from "./OrdersNavigation";
 import TaskNavigation from "./TaskNavigation";
 import TransactionNavigation from "./TransactionNavigation";
 import GigsNavigation from "./GigsNavigation";
+import TeamNavigation from "./TeamNavigation";
 
 import { TransitionPresets } from "@react-navigation/stack"
 
@@ -30,9 +31,11 @@ const TabNavigation = () => {
             iconName = "newspaper-outline";
           } else if (route.name === "Transaction") {
             iconName = "reader-outline";
-          } 
+          } else if (route.name === "Team") {
+            iconName = "people-outline";
+          }
 
-          const customizeSize = 25;
+          const customizeSize = 27;
           return (
             <Ionicons
               name={iconName}
@@ -44,7 +47,7 @@ const TabNavigation = () => {
         tabBarActiveTintColor: "#6079FE",
         tabBarInactiveTintColor: "#CDCDE0",
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 16,
           fontWeight: "bold",
         },
         ...TransitionPresets.SlideFromRightIOS,
@@ -58,7 +61,7 @@ const TabNavigation = () => {
       <Tab.Screen name="Gigs" component={GigsNavigation} />
       <Tab.Screen name="Task" component={TaskNavigation} />
       <Tab.Screen name="Transaction" component={TransactionNavigation} />
-      {/* <Tab.Screen name="Profile" component={ProfileNavigation} /> */}
+      <Tab.Screen name="Team" component={TeamNavigation} />
     </Tab.Navigator>
   );
 };

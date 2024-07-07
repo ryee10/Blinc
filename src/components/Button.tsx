@@ -10,9 +10,9 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({ title, action }: ButtonProps) => {
   return (
     <LinearGradient
-      colors={['#DA84FE', '#6079FE']}
-      start={[0, 0]}
-      end={[1, 1]}
+    colors={['#DA84FE', '#6079FE']}
+    start={[0, 0]}
+    end={[1, 1]}
       style={{ borderRadius: 15, padding: 3 }}
     >
       <Pressable

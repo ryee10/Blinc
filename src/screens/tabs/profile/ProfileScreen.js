@@ -6,7 +6,7 @@ import { AntDesign, Feather, FontAwesome5, FontAwesome6, MaterialCommunityIcons,
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const Profile = () => {
+const ProfileScreen = () => {
     const navigation = useNavigation();
 
     const handleLogout = () => {
@@ -31,19 +31,19 @@ const Profile = () => {
           <View style={styles.outerContainer2}>
           <View style={styles.buttonContainer}>
             <TouchableOpacity 
-            style={styles.buttons} /* onPress={() => navigation.navigate('Profile')} */>
+            style={styles.buttons} onPress={() => navigation.navigate('PersonalS')}>
                 <MaterialCommunityIcons name="shield-account-outline" size={24} color="black" /> 
                 <Text style={styles.title}>Personal Settings</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttons} /* onPress={() => navigation.navigate('Account')} */>
+            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('AccountS')}>
                 <FontAwesome5 name="user-circle" size={22} color="black" /> 
                 <Text style={styles.title}>Account Settings</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttons} /* onPress={() => navigation.navigate('Password')} */>
+            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('Password')}>
                 <MaterialCommunityIcons name="lock-outline" size={22} color="black" /> 
                 <Text style={styles.title}>Password Settings</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttons} /* onPress={() => navigation.navigate('KYC')} */>
+            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('KYC')}>
                 <FontAwesome6 name="check-circle" size={20} color="black" /> 
                 <Text style={styles.title}>KYC Verified</Text>
             </TouchableOpacity>
@@ -114,4 +114,4 @@ const styles = StyleSheet.create({
     }
 })
     
-    export default Profile;
+    export default ProfileScreen;

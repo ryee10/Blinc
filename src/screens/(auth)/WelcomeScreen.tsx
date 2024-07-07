@@ -40,27 +40,35 @@ const WelcomeScreen = () => {
         <View className="justify-center items-center">
           <Animated.Text 
             entering={FadeInDown.duration(100).delay(100).springify()}
-            className="text-neutral-500 text-3xl font-medium leading-[60px]"
+            className="text-neutral-500 text-3xl font-medium leading-[45px] "
             style={{
               fontFamily: "Poppins-SemiBold",
               alignItems: 'center',
               justifyContent: 'center',
-
+              textAlign: 'center',
+              marginBottom: 20,
             }}
           >
-            Where Businesses
+            Where Businesses and Digital Workers Flourish
           </Animated.Text>
           <Animated.Text 
             entering={FadeInDown.duration(100).delay(150).springify()}
-            className="text-neutral-500 text-3xl font-medium leading-[60px]"
+            className="text-neutral-500 font-medium leading-[45px]"
             style={{
               fontFamily: "Poppins-SemiBold",
               alignItems: 'center',
               justifyContent: 'center',
+              fontSize: 16,
+              textAlign: 'center',
+              lineHeight: 24,
+              marginBottom: 20
+
 
             }}
-          >
-            & Digital Workers Flourish
+          >As employee hiring methods evolve and remote work gains momentum, we foster
+          cross-cultural connections and reflect a broader trend of valuing work-life balance,
+          remote options, and career independence.
+
           </Animated.Text>
         </View>
 

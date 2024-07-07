@@ -5,7 +5,7 @@ import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const Tab2 = () => {
+const OrderScreen = () => {
   const [activeTab, setActiveTab] = useState('Team');
 
   const renderContent = () => {
@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
   titleContainer: {
     width: screenWidth,
     height: '13%',
-    backgroundColor: '#6079FE',
     justifyContent: 'center',
+    backgroundColor: '#6079FE',
     alignItems: 'center'
   },
   title: {
@@ -133,4 +133,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Tab2;
+export default OrderScreen;
