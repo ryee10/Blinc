@@ -244,10 +244,11 @@ const styles = StyleSheet.create({
     width: screenWidth,
     height: screenHeight,
     marginTop: 40,
-    backgroundColor: "#F1F1F1",
-    borderRadius: 50,
+    backgroundColor: "#f0f4f7",
     alignItems: "center",
     paddingBottom: 20,
+    borderTopEndRadius: 35,
+    borderTopStartRadius: 35
   },
 
   label3: {

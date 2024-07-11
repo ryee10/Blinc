@@ -31,10 +31,7 @@ const TabNavigation = () => {
             iconName = "newspaper-outline";
           } else if (route.name === "Transaction") {
             iconName = "reader-outline";
-          } else if (route.name === "Team") {
-            iconName = "people-outline";
-          }
-
+          } 
           const customizeSize = 27;
           return (
             <Ionicons
@@ -61,7 +58,7 @@ const TabNavigation = () => {
       <Tab.Screen name="Gigs" component={GigsNavigation} />
       <Tab.Screen name="Task" component={TaskNavigation} />
       <Tab.Screen name="Transaction" component={TransactionNavigation} />
-      <Tab.Screen name="Team" component={TeamNavigation} />
+      
     </Tab.Navigator>
   );
 };

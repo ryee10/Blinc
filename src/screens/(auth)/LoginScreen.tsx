@@ -25,7 +25,7 @@ const LoginScreen = () => {
   const navigation = useNavigation<NavigationProp<AuthNavigationType>>();
   return (
     <LinearGradient
-      colors={["#4c669f", "#3b5998", "#192f6a"]}
+      colors={['#DA84FE', '#6079FE']}
       style={{ flex: 1 }}
     >
       <View className="flex-1 bg-white">

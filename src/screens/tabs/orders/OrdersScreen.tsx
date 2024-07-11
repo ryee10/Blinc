@@ -82,14 +82,14 @@ const styles = StyleSheet.create({
     width: screenWidth,
     height: '13%',
     justifyContent: 'center',
-    backgroundColor: '#6079FE',
+    backgroundColor: '#fff',
     alignItems: 'center'
   },
   title: {
-    fontSize: 18,
+    fontSize: 25,
     marginTop: 30,
-    color: "#fff",
-    fontWeight: 'bold',
+    color: "black",
+    
     textAlign: 'center',
   },
   buttonContainer: {

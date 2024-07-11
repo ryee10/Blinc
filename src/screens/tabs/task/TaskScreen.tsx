@@ -95,14 +95,14 @@ const styles = StyleSheet.create({
     height: '13%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#6079FE',
+    backgroundColor: '#fff',
   },
   title: {
-    fontSize: 18,
+    fontSize: 25,
     marginTop: 30,
-    color: "#fff",
-    fontWeight: 'bold',
-    // backgroundColor: 'green'
+    color: "black",
+   
+    
   },
   buttonContainer: {
     width: screenWidth,

@@ -11,7 +11,7 @@ const ProfileScreen = () => {
 
     const handleLogout = () => {
         Alert.alert('Successfully logged out!');
-        /* navigation.navigate('Login') */;
+         navigation.navigate('Login') ;
     }
 
     return (

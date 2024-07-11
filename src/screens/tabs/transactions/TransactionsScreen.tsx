@@ -48,14 +48,13 @@ const styles = StyleSheet.create({
     height: '13%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#6079FE',
+    backgroundColor: 'white',
   },
   title: {
-    fontSize: 18,
+    fontSize: 25,
     marginTop: 30,
-    color: "#fff",
-    fontWeight: 'bold',
-    // backgroundColor: 'green'
+    color: "black",
+    
   },
   contentContainer: {
     width: screenWidth,
@@ -67,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   transacContainer: {
-    width: '90%',
+    width: '100%',
     height: 80,
     backgroundColor: '#fff',
     flexDirection: 'row',

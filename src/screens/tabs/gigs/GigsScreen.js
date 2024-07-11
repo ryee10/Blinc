@@ -37,7 +37,7 @@ const screenWidth = Dimensions.get("window").width;
 
 export default function App() {
   const navigation = useNavigation();
-  const snapPoints = useMemo(() => ["25%", "50%", "75%", "100%", ], []);
+  const snapPoints = useMemo(() => ["35%", "50%", "75%", "100%", ], []);
   const bottomSheetRef = useRef(null);
   const [isSheetVisible, setSheetVisible] = useState(false);
 
@@ -73,9 +73,7 @@ export default function App() {
                 <Text style={styles.activeStatus}>{gigData.status}</Text>
               </Text>
             </View>
-            <View style={styles.userIconWrapper}>
-              <FontAwesome5 name="user" size={30} color="black" />
-            </View>
+            
           </Animated.View>
         </TouchableOpacity>
       </View>
@@ -95,6 +93,7 @@ export default function App() {
           snapPoints={snapPoints}
           onClose={handleClose}
         >
+          
           <View style={styles.bottomSheetContent}>
             <View style={styles.imageContainer}>
               <Image source={gigData.image} style={styles.gigImageb} />
@@ -129,6 +128,7 @@ export default function App() {
             </View>
             <Text style={styles.sheetFooter}>Any Issue Regarding Product ? <Text style={styles.reportText}>Report</Text></Text>
           </View>
+          
         </BottomSheet>
       )}
     </ScrollView>
@@ -144,21 +144,19 @@ const styles = StyleSheet.create({
     width: screenWidth,
     height: "13%",
     justifyContent: "center",
-    backgroundColor: "#6079FE",
     alignItems: "center",
+    backgroundColor: "white"
   },
   title: {
-    fontSize: 18,
+    fontSize: 25,
     marginTop: 30,
-    color: "#fff",
-    fontWeight: "bold",
+    color: "black",
     textAlign: "center",
   },
   gigCard: {
     marginTop: 20,
-    width: "90%",
+    width: "100%",
     backgroundColor: "white",
-    borderRadius: 10,
     overflow: "hidden",
     elevation: 3,
     flexDirection: "row",
