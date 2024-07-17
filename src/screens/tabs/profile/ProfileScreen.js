@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, Dimensions, Image, Alert, TouchableOpacity, ScrollView, TextComponent } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign, Feather, FontAwesome5, FontAwesome6, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { AntDesign, Ionicons, Feather, FontAwesome5, FontAwesome6, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -11,14 +11,14 @@ const ProfileScreen = () => {
 
     const handleLogout = () => {
         Alert.alert('Successfully logged out!');
-         navigation.navigate('Login') ;
+        navigation.navigate('Login');
     }
 
     return (
         <View style={styles.container}>
             <View style={styles.arrowContainer}>
               <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Feather name="arrow-left-circle" size={40} color="#647CFF" />
+              <Ionicons name="chevron-back" size={22} color="black" /> 
           </TouchableOpacity>
           </View>
           <View style={styles.outerContainer}>
@@ -31,11 +31,11 @@ const ProfileScreen = () => {
           <View style={styles.outerContainer2}>
           <View style={styles.buttonContainer}>
             <TouchableOpacity 
-            style={styles.buttons} onPress={() => navigation.navigate('PersonalS')}>
+            style={styles.buttons} onPress={() => navigation.navigate('Personal')}>
                 <MaterialCommunityIcons name="shield-account-outline" size={24} color="black" /> 
                 <Text style={styles.title}>Personal Settings</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('AccountS')}>
+            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('Account')}>
                 <FontAwesome5 name="user-circle" size={22} color="black" /> 
                 <Text style={styles.title}>Account Settings</Text>
             </TouchableOpacity>
@@ -65,9 +65,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#F1F1F1'
     },
     arrowContainer: {
-        margin: 50,
+        marginStart: 20,
+        marginTop: 50,
+        marginBottom: 40
         // backgroundColor: 'green'
-
     },
     outerContainer: {
         alignItems: 'center',

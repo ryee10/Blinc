@@ -1,9 +1,17 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity, FlatList } from 'react-native';
+import { LinearGradient } from "expo-linear-gradient";
+import { FontAwesome6 } from '@expo/vector-icons';
 
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
+
+const data = [
+  { id: '1', title: 'Item 1' },
+  { id: '1', title: 'Item 2' },
+];
+
 
 const OrderScreen = () => {
   const [activeTab, setActiveTab] = useState('Team');
@@ -12,14 +20,136 @@ const OrderScreen = () => {
     if (activeTab === 'Active') {
       return (
         <View style={styles.contentContainer}>
-          <Text style={styles.contentText}>No orders available</Text>
+  
         </View>
       );
     } else if (activeTab === 'For Approval') {
       return (
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.contentContainer}>
-          <Text style={styles.contentText}>No orders available</Text>
+          <View style={styles.itemContainer}>
+            <View style={styles.item1}>
+              <View style={styles.imageHolder}/>
+            </View>
+            <View style={styles.item2}>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+              <Text style={styles.itemLabel}>July 12, 2024</Text>
+              <Text style={styles.itemLabel}>Alwyne Paglingayen</Text>
+            </View>
+            <View style={styles.item3}>
+              <Text style={styles.itemLabel}>Price</Text>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]}>$1,000.00 </Text>
+            </View>
+          </View>
+
+          <View style={styles.itemContainer}>
+            <View style={styles.item1}>
+              <View style={styles.imageHolder}/>
+            </View>
+            <View style={styles.item2}>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+              <Text style={styles.itemLabel}>July 12, 2024</Text>
+              <Text style={styles.itemLabel}>Alwyne Paglingayen</Text>
+            </View>
+            <View style={styles.item3}>
+              <Text style={styles.itemLabel}>Price</Text>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]}>$1,000.00 </Text>
+            </View>
+          </View>
+
+          <View style={styles.itemContainer}>
+            <View style={styles.item1}>
+              <View style={styles.imageHolder}/>
+            </View>
+            <View style={styles.item2}>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+              <Text style={styles.itemLabel}>July 12, 2024</Text>
+              <Text style={styles.itemLabel}>Alwyne Paglingayen</Text>
+            </View>
+            <View style={styles.item3}>
+              <Text style={styles.itemLabel}>Price</Text>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]}>$1,000.00 </Text>
+            </View>
+          </View>
+
+          <View style={styles.itemContainer}>
+            <View style={styles.item1}>
+              <View style={styles.imageHolder}/>
+            </View>
+            <View style={styles.item2}>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+              <Text style={styles.itemLabel}>July 12, 2024</Text>
+              <Text style={styles.itemLabel}>Alwyne Paglingayen</Text>
+            </View>
+            <View style={styles.item3}>
+              <Text style={styles.itemLabel}>Price</Text>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]}>$1,000.00 </Text>
+            </View>
+          </View>
+
+          <View style={styles.itemContainer}>
+            <View style={styles.item1}>
+              <View style={styles.imageHolder}/>
+            </View>
+            <View style={styles.item2}>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+              <Text style={styles.itemLabel}>July 12, 2024</Text>
+              <Text style={styles.itemLabel}>Alwyne Paglingayen</Text>
+            </View>
+            <View style={styles.item3}>
+              <Text style={styles.itemLabel}>Price</Text>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]}>$1,000.00 </Text>
+            </View>
+          </View>
+
+          <View style={styles.itemContainer}>
+            <View style={styles.item1}>
+              <View style={styles.imageHolder}/>
+            </View>
+            <View style={styles.item2}>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+              <Text style={styles.itemLabel}>July 12, 2024</Text>
+              <Text style={styles.itemLabel}>Alwyne Paglingayen</Text>
+            </View>
+            <View style={styles.item3}>
+              <Text style={styles.itemLabel}>Price</Text>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]}>$1,000.00 </Text>
+            </View>
+          </View>
+
+          <View style={styles.itemContainer}>
+            <View style={styles.item1}>
+              <View style={styles.imageHolder}/>
+            </View>
+            <View style={styles.item2}>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+              <Text style={styles.itemLabel}>July 12, 2024</Text>
+              <Text style={styles.itemLabel}>Alwyne Paglingayen</Text>
+            </View>
+            <View style={styles.item3}>
+              <Text style={styles.itemLabel}>Price</Text>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]}>$1,000.00 </Text>
+            </View>
+          </View>
+
+          <View style={styles.itemContainer}>
+            <View style={styles.item1}>
+              <View style={styles.imageHolder}/>
+            </View>
+            <View style={styles.item2}>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+              <Text style={styles.itemLabel}>July 12, 2024</Text>
+              <Text style={styles.itemLabel}>Alwyne Paglingayen</Text>
+            </View>
+            <View style={styles.item3}>
+              <Text style={styles.itemLabel}>Price</Text>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]}>$1,000.00 </Text>
+            </View>
+          </View>
+
         </View>
+        </ScrollView>
+
       );
     } else if (activeTab === 'Completed') {
       return (
@@ -38,11 +168,10 @@ const OrderScreen = () => {
   };
   
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
+      <LinearGradient colors={['#6079FE','#DA84FE']} start={[0, 3]} end={[1, 1]}  style={styles.titleContainer}>
         <Text style={styles.title}>My Orders</Text>
-      </View>
+      </LinearGradient>
       <View style={styles.buttonContainer}>
         <ScrollView horizontal = {true}>
         <TouchableOpacity 
@@ -69,7 +198,6 @@ const OrderScreen = () => {
       </View>
       {renderContent()}
     </View>
-    </ScrollView>
   );
 };
 
@@ -81,15 +209,15 @@ const styles = StyleSheet.create({
   titleContainer: {
     width: screenWidth,
     height: '13%',
+    backgroundColor: '#6079FE',
     justifyContent: 'center',
-    backgroundColor: '#fff',
     alignItems: 'center'
   },
   title: {
-    fontSize: 25,
+    fontSize: 18,
     marginTop: 30,
-    color: "black",
-    
+    color: "#fff",
+    fontWeight: 'bold',
     textAlign: 'center',
   },
   buttonContainer: {
@@ -121,8 +249,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     width: screenWidth,
-    height: '50%',
-    justifyContent: 'center',
+    height: '100%',
     alignItems: 'center',
     // backgroundColor: 'green'
   }, 
@@ -130,6 +257,54 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign:'center',
     color: '#515151'
+  },
+
+  itemContainer: {
+    width: '95%',
+    height: 100,
+    elevation: 3,
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    marginBottom: 0.5,
+  },
+
+  item1: {
+    width: '30%',
+    height: 100,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems:'center',
+    // backgroundColor: 'yellow',
+  },
+  item2: {
+    width: '40%',
+    height: 90,
+    borderRadius: 5,
+    marginStart: 10,
+    marginTop: 10,
+    // backgroundColor: 'green',
+  },
+  item3: {
+    width: '30%',
+    height: 90,
+    marginTop: 10,
+    borderRadius: 5,
+    // backgroundColor: 'yellow',
+  },
+  itemLabel:{
+    fontSize: 14,
+    marginTop: 5,
+    color: '#515151'
+
+  },
+  desc: {
+    fontSize: 14,
+  },
+  imageHolder: {
+    width: 80,
+    height: 80,
+    borderRadius: 5,
+    backgroundColor:'gray',
   }
 });
 

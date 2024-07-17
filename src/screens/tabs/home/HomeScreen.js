@@ -1,38 +1,25 @@
-import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  Dimensions,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import {
-  AntDesign,
-  FontAwesome5,
-  FontAwesome6,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import React from 'react';
+import { View, Text, StyleSheet, ImageBackground, Dimensions, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { AntDesign, FontAwesome5, FontAwesome6, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { LinearGradient } from "expo-linear-gradient";
 
-const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-
+  
   return (
-    <LinearGradient colors={["#DA84FE", "#6079FE"]} style={styles.container}>
+    <LinearGradient colors={['#DA84FE', '#6079FE']} 
+    start={{ x: 1, y: 0 }}
+    end={{ x: .90, y: .7 }}
+    locations={[0.1, 0.90]} 
+    style={styles.container}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container1}>
-          <TouchableOpacity
-            style={styles.icon}
-            onPress={() => navigation.navigate("ProfileS")}
-          >
-            <FontAwesome5 name="user" size={24} color="black" />
+          <TouchableOpacity style={styles.icon} onPress={() => navigation.navigate('ProfileS')}> 
+          <FontAwesome5 name="user" size={24} color="black" />
           </TouchableOpacity>
           <View style={styles.greetings}>
             <Text style={styles.g1}>Hello</Text>
@@ -59,41 +46,36 @@ const HomeScreen = () => {
                 <View style={styles.dot} />
               </View>
               <View style={styles.chipContainer}>
-                <Image
-                  source={require("../../../../assets/images/chip.png")}
-                  style={styles.chip}
-                />
+                <Image source={require('../../../../assets/images/chip.png')} style={styles.chip} />
               </View>
             </View>
           </LinearGradient>
           <View style={styles.Box2}>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('TopUp')}> 
+              <TouchableOpacity style={styles.box} onPress = {() => navigation.navigate('TopUp')}>
                 <View style={styles.inner}>
                   <AntDesign name="totop" size={24} color="white" />
-                  <Text style={styles.label3}>TOP UP</Text>
+                  <Text style={styles.label3}>Top Up</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('Transfer')}>
+              <TouchableOpacity style={styles.box}  onPress = {() => navigation.navigate('TransferReceipt')}>
                 <View style={styles.inner}>
-                  <FontAwesome6
-                    name="money-bill-transfer"
-                    size={24}
-                    color="white"
-                  />
-                  <Text style={styles.label3}>TRANSFER</Text>
+                  <FontAwesome6 name="money-bill-transfer" size={24} color="white" />
+                  <Text style={styles.label3}>Transfer</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.box}  onPress = {() => navigation.navigate('Transfer')}>
+                <View style={styles.inner}>
+                  <MaterialIcons name="money-off" size={24} color="white" />
+                  <Text style={styles.label3}>Withdraw</Text>
                 </View>
               </TouchableOpacity>
             </View>
 
             <View style={styles.countContainer}>
-              <View style={styles.box2}>
+            <View style={styles.box2}>
                 <View style={styles.inner2}>
-                  <MaterialCommunityIcons
-                    name="cart-minus"
-                    size={28}
-                    color="blue"
-                  />
+                 <MaterialCommunityIcons name="cart-minus" size={28} color="blue"/>
                   <Text style={styles.label4}>Total Orders:</Text>
                   <Text style={styles.label4value}>0</Text>
                 </View>
@@ -101,11 +83,7 @@ const HomeScreen = () => {
 
               <View style={styles.box2}>
                 <View style={styles.inner2}>
-                  <MaterialCommunityIcons
-                    name="cart-check"
-                    size={28}
-                    color="green"
-                  />
+                  <MaterialCommunityIcons name="cart-check"  size={28} color="green" />
                   <Text style={styles.label4}>Completed Orders:</Text>
                   <Text style={styles.label4value}>0</Text>
                 </View>
@@ -113,7 +91,7 @@ const HomeScreen = () => {
 
               <View style={styles.box2}>
                 <View style={styles.inner2}>
-                  <FontAwesome5 name="hand-holding-usd" size={28} color="red" />
+                  <FontAwesome5 name="hand-holding-usd"  size={28} color="#DA0000" />
                   <Text style={styles.label4}>Total Spent:</Text>
                   <Text style={styles.label4value}>0</Text>
                 </View>
@@ -123,6 +101,7 @@ const HomeScreen = () => {
             <View style={styles.container3}>
               <Text style={styles.recent}>Recent Activity</Text>
             </View>
+
           </View>
         </View>
       </ScrollView>
@@ -138,79 +117,81 @@ const styles = StyleSheet.create({
   },
   container1: {
     padding: 35,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-
+  
   icon: {
     width: 50,
     height: 50,
     borderRadius: 25,
     marginTop: 20,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   greetings: {
-    color: "white",
-    justifyContent: "center",
+    color: 'white',
+    justifyContent: 'center',
     marginTop: 15,
-    padding: 10,
+    padding: 10
   },
 
   g1: {
-    color: "white",
+    color: 'white',
   },
 
   g2: {
-    color: "white",
-    fontWeight: "bold",
+    color: 'white',
+    fontWeight: 'bold'
   },
 
   container2: {
-    alignItems: "center",
+    alignItems: 'center'
   },
 
   card: {
-    flexDirection: "row",
-    width: "90%",
+    flexDirection: 'row',
+    width: '90%',
     height: 180,
     borderRadius: 10,
     padding: 20,
-    justifyContent: "space-between",
-    alignItems: "center",
+    backgroundColor: '#466DFE', 
+    // backgroundColor: '#000', 
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 
   leftContainer: {
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
   },
 
   rightContainer: {
-    justifyContent: "space-between",
-    alignItems: "flex-end",
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
   },
 
   label1: {
-    color: "white",
+    color: 'white',
     fontSize: 18,
     marginBottom: 10,
   },
 
   label2: {
-    color: "white",
+    color: 'white',
     fontSize: 14,
   },
 
   value1: {
-    color: "white",
+    color: 'white',
     fontSize: 22,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 
   value2: {
-    color: "white",
+    color: 'white',
     fontSize: 18,
     // fontWeight: 'bold',
   },
@@ -220,20 +201,20 @@ const styles = StyleSheet.create({
   },
 
   dotsContainer: {
-    flexDirection: "row",
-    justifyContent: "flex-end",
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
     marginBottom: 60,
   },
 
   dot: {
     width: 7,
     height: 7,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 5,
     marginHorizontal: 5,
   },
   chipContainer: {
-    alignItems: "flex-end",
+    alignItems: 'flex-end',
   },
   chip: {
     width: 40,
@@ -244,30 +225,29 @@ const styles = StyleSheet.create({
     width: screenWidth,
     height: screenHeight,
     marginTop: 40,
-    backgroundColor: "#f0f4f7",
-    alignItems: "center",
+    backgroundColor: '#F1F1F1',
+    borderRadius: 50,
+    alignItems: 'center',
     paddingBottom: 20,
-    borderTopEndRadius: 35,
-    borderTopStartRadius: 35
   },
 
   label3: {
-    color: "white",
-    fontSize: 14,
-    marginLeft: 8,
+    color: 'white',
+    marginTop: 3,
+    fontSize: 12,
   },
 
   buttonContainer: {
-    width: "100%",
+    width: '100%',
     marginTop: 10,
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: 20,
-    justifyContent: "space-around",
+    justifyContent: 'space-around',
     // backgroundColor: '#000'
   },
 
   box: {
-    width: "45%",
+    width: '30%',
     height: 60,
     borderRadius: 10,
   },
@@ -275,22 +255,22 @@ const styles = StyleSheet.create({
   inner: {
     flex: 1,
     borderRadius: 10,
-    backgroundColor: "#6079FE",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#6079FE',
+    // flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   countContainer: {
-    height: "10%",
-    width: "90%",
+    height: '10%',
+    width: '90%',
     // backgroundColor: '#000',
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 
   box2: {
-    width: "32%",
+    width: '32%',
     height: 100,
     padding: 2,
     borderRadius: 10,
@@ -299,34 +279,36 @@ const styles = StyleSheet.create({
   inner2: {
     flex: 1,
     borderRadius: 10,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 
   label4: {
-    color: "black",
+    color: 'black',
     fontSize: 12,
     marginTop: 5,
   },
 
   label4value: {
-    color: "black",
+    color: 'black',
     fontSize: 14,
-    fontWeight: "bold",
+    fontWeight: 'bold',
+
   },
 
   container3: {
     width: screenWidth,
-    height: "30%",
+    height: screenHeight,
     marginTop: 20,
-    // backgroundColor: 'green'
+    backgroundColor: '#f1f1f1'
   },
   recent: {
     fontSize: 14,
     padding: 25,
-    color: "#515151",
-  },
+    color: '#515151'
+  }
+
 });
 
 export default HomeScreen;

@@ -13,6 +13,7 @@ import Button from "@/src/components/Button";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useNavigation } from "@react-navigation/native";
 import BottomSheet from "@gorhom/bottom-sheet";
+import { LinearGradient } from "expo-linear-gradient";
 
 const gigData = {
   title: "Branding",
@@ -56,9 +57,9 @@ export default function App() {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.container}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Gigs</Text>
-        </View>
+      <LinearGradient colors={['#6079FE','#DA84FE']} start={[0, 3]} end={[1, 1]}  style={styles.titleContainer}>
+        <Text style={styles.title}>Gigs</Text>
+      </LinearGradient>
         <TouchableOpacity onPress={handleGigPress}>
           <Animated.View
             style={styles.gigCard}
@@ -139,20 +140,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    // backgroundColor: 'green'
   },
   titleContainer: {
     width: screenWidth,
-    height: "13%",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white"
+    height: 106,
+    backgroundColor: '#6079FE',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   title: {
-    fontSize: 25,
+    fontSize: 18,
     marginTop: 30,
-    color: "black",
-    textAlign: "center",
+    color: "#fff",
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
+  
   gigCard: {
     marginTop: 20,
     width: "100%",

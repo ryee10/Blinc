@@ -28,11 +28,11 @@ const TabNavigation = () => {
           } else if (route.name === "Gigs") {
             iconName = "rocket-outline";
           } else if (route.name === "Task") {
-            iconName = "newspaper-outline";
+            iconName = "list-outline";
           } else if (route.name === "Transaction") {
-            iconName = "reader-outline";
+            iconName = "receipt-outline";
           } 
-          const customizeSize = 27;
+          const customizeSize = 32;
           return (
             <Ionicons
               name={iconName}
@@ -43,9 +43,13 @@ const TabNavigation = () => {
         },
         tabBarActiveTintColor: "#6079FE",
         tabBarInactiveTintColor: "#CDCDE0",
-        tabBarLabelStyle: {
-          fontSize: 16,
-          fontWeight: "bold",
+        tabBarShowLabel: false,
+        // tabBarLabelStyle: {
+        //   fontSize: 16,
+        //   fontWeight: "bold",
+        // },
+          tabBarStyle: {
+          height: 55,
         },
         ...TransitionPresets.SlideFromRightIOS,
         animationEnabled: true,
@@ -60,6 +64,7 @@ const TabNavigation = () => {
       <Tab.Screen name="Transaction" component={TransactionNavigation} />
       
     </Tab.Navigator>
+    
   );
 };
 
