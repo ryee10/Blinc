@@ -76,7 +76,7 @@ const styles=StyleSheet.create({
     title: {
         fontSize: 18,
         marginStart: 5,
-        fontWeight: 'bold'
+        fontFamily:'WorkSans-SemiBold'
     },
     inputContainer: {
         width: '90%',
@@ -125,7 +125,8 @@ const styles=StyleSheet.create({
     updateText: {
         fontSize: 15,
         marginStart: 5,
-        color: '#647CFF'
+        color: '#647CFF',
+        fontFamily:'WorkSans-Regular'
 
     }
 

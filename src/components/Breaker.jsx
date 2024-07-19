@@ -12,7 +12,7 @@ const Breaker = () => {
         <View className="border-t-2 border-gray-400 w-full"></View>
       </View>
       <View className="w-[20%] justify-center items-center">
-        <Text className="text-base text-neutral-500">OR</Text>
+        <Text className="text-base text-neutral-500 fontFamily:'WorkSans-SemiBold">OR</Text>
       </View>
       <View className="h-5 w-[40%] justify-center items-center">
         <View className="border-t-2 border-gray-400 w-full"></View>

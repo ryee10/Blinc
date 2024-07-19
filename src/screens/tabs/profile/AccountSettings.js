@@ -143,7 +143,8 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         marginStart: 5,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontFamily:'WorkSans-Regular'
     },
     line: {
         width: '100%',
@@ -172,8 +173,9 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
     },
     label: {
-        fontSize: 14,
+        fontSize: 16,
         marginStart: 10,
+        fontFamily:'WorkSans-Regular'
     },
     container2: {
         width: 'auto',
@@ -240,13 +242,15 @@ const styles = StyleSheet.create({
     updateText: {
         fontSize: 15,
         marginStart: 5,
-        color: '#647CFF'
+        color: '#647CFF',
+        fontFamily:'WorkSans-Regular'
 
     },
     dateLabel: {
         fontSize: 14,
         margin: 12,
-        color: '#CCC'
+        color: '#CCC',
+        fontFamily:'WorkSans-Regular'
     }
 
 });

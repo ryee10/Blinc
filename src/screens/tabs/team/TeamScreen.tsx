@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 18,
     marginRight: 10,
+    fontFamily:'WorkSans-Regular'
   },
   
   tabs: {
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
   noTasksText: {
     fontSize: 20,
     color: '#aaa',
+    fontFamily:'WorkSans-Regular'
   },
 });
 

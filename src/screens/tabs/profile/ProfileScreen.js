@@ -92,7 +92,7 @@ const ProfileScreen = () => {
         <TouchableOpacity
           style={
             styles.buttons
-          } /* onPress={() => navigation.navigate('Team')} */
+          } onPress={() => navigation.navigate('Team')}
         >
           <FontAwesome6 name="user-plus" size={20} color="black" />
           <Text style={styles.title}>Team</Text>

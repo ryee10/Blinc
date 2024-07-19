@@ -53,7 +53,7 @@ const LoginScreen = () => {
               <Text
                 className="text-neutral-600 text-2xl leading-[60px]"
                 style={{
-                  fontFamily: "Poppins-Bold",
+                  fontFamily:'WorkSans-SemiBold',
                 }}
               >
                 Login
@@ -66,7 +66,7 @@ const LoginScreen = () => {
               <Text
                 className="text-neutral-500 text-lg font-medium leading-[38px] text-center"
                 style={{
-                  fontFamily: "Poppins-Medium",
+                  fontFamily:'WorkSans-Medium',
                 }}
               >
                 Dont have an account yet?{" "}
@@ -75,7 +75,7 @@ const LoginScreen = () => {
                 <Text
                   className="text-[#6079FE] text-lg font-medium leading-[38px] text-center"
                   style={{
-                    fontFamily: "Poppins-Bold",
+                    fontFamily:'WorkSans-SemiBold',
                   }}
                 >
                   {" "}
@@ -102,17 +102,18 @@ const LoginScreen = () => {
             >
               <View className="border-2 border-gray-400 rounded-lg">
                 <TextInput
-                  className="p-4 text-gray"
+                  className="p-4 text-gray fontFamily:'WorkSans-Regular'"
                   onChangeText={(text) => setEmail(text)}
                   value={email}
                   placeholder="Email or mobile number"
                   placeholderTextColor="#888888"
                   autoCapitalize="none"
+                  
                 />
               </View>
               <View className="border-2 border-gray-400 rounded-lg">
                 <TextInput
-                  className="p-4 text-gray"
+                  className="p-4 text-gray fontFamily:'WorkSans-Regular'"
                   onChangeText={(text) => setPassword(text)}
                   value={password}
                   placeholder="Password"

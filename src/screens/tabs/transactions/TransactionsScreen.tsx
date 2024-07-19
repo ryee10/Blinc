@@ -75,8 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 30,
     color: "#fff",
-    fontWeight: 'bold',
-    fontFamily:'WorkSans-Regular'
+    fontFamily:'WorkSans-SemiBold'
     // backgroundColor: 'green'
   },
   contentContainer: {

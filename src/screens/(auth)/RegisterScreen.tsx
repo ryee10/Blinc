@@ -47,7 +47,7 @@ const RegisterScreen = () => {
             <Text
               className="text-neutral-600 text-2xl leading-[60px] "
               style={{
-                fontFamily: "Poppins-ExtraBold",
+                fontFamily:'WorkSans-Medium',
               }}
             >
               Sign Up
@@ -60,7 +60,7 @@ const RegisterScreen = () => {
               <Text
                 className="text-neutral-500 text-lg font-medium leading-[38px] text-center"
                 style={{
-                  fontFamily: "Poppins-Medium",
+                  fontFamily: "WorkSans-Medium",
                 }}
               >
                 Already have an account?{" "}
@@ -69,7 +69,7 @@ const RegisterScreen = () => {
                 <Text
                   className="text-[#6079FE] text-lg font-medium leading-[38px] text-center"
                   style={{
-                    fontFamily: "Poppins-Bold",
+                    fontFamily: 'WorkSans-Medium',
                   }}
                 >
                   {" "}

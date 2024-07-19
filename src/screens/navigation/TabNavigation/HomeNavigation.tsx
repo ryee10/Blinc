@@ -10,6 +10,7 @@ import PersonalSettings from '../../tabs/profile/PersonalSettings';
 import AccountSettings from '../../tabs/profile/AccountSettings'
 import Password from '../../tabs/profile/Password'
 import KYC from '../../tabs/profile/KYC'
+import TeamScreen from '../../tabs/team/TeamScreen'
 
 const Stack = createStackNavigator( );
 
@@ -34,6 +35,7 @@ const HomeNavigation = () => {
       <Stack.Screen name="AccountS" component={AccountSettings}/>
       <Stack.Screen name="Password" component={Password}/>
       <Stack.Screen name="KYC" component={KYC}/>
+      <Stack.Screen name="Team" component={TeamScreen}/>
       
     </Stack.Navigator>
   )
