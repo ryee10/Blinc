@@ -18,7 +18,7 @@ const Tab5 = () => {
       </LinearGradient>
 
       <View style={styles.contentContainer}>
-          <View style={styles.transacContainer}>
+          <View style={styles.transacContainer}> 
           <View style={styles.icon}>
           <FontAwesome5 name="user" size={24} color="black" /> 
           </View>
@@ -83,12 +83,11 @@ const styles = StyleSheet.create({
     height: 'auto',
     marginEnd: 10,
     // backgroundColor: 'green',
-    marginTop: 0.5,
     marginStart: 10,
     alignItems: 'center',
   },
   transacContainer: {
-    width: '95%',
+    width: '100%',
     height: 80,
     backgroundColor: '#fff',
     flexDirection: 'row',

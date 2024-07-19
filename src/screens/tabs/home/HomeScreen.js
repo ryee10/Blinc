@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ImageBackground, Dimensions, Image, TouchableOp
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, FontAwesome5, FontAwesome6, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { LinearGradient } from "expo-linear-gradient";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -16,15 +17,12 @@ const HomeScreen = () => {
     end={{ x: .90, y: .7 }}
     locations={[0.1, 0.90]} 
     style={styles.container}>
+      <SafeAreaView>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container1}>
           <TouchableOpacity style={styles.icon} onPress={() => navigation.navigate('ProfileS')}> 
-          <FontAwesome5 name="user" size={24} color="black" />
+          <FontAwesome5 name="bars" size={24} color="#252525" />
           </TouchableOpacity>
-          <View style={styles.greetings}>
-            <Text style={styles.g1}>Hello</Text>
-            <Text style={styles.g2}>Juan Dela Cruz</Text>
-          </View>
         </View>
         <View style={styles.container2}>
           <LinearGradient colors={["#2b9fff", "#476afe"]} style={styles.card}>
@@ -105,6 +103,7 @@ const HomeScreen = () => {
           </View>
         </View>
       </ScrollView>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -116,7 +115,8 @@ const styles = StyleSheet.create({
     width: screenWidth,
   },
   container1: {
-    padding: 35,
+    marginStart: 25,
+    marginTop: 20,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -124,31 +124,10 @@ const styles = StyleSheet.create({
   icon: {
     width: 50,
     height: 50,
-    borderRadius: 25,
-    marginTop: 20,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  greetings: {
-    color: 'white',
-    justifyContent: 'center',
-    marginTop: 15,
-    padding: 10
-  },
-
-  g1: {
-    color: 'white',
-  },
-
-  g2: {
-    color: 'white',
-    fontWeight: 'bold'
   },
 
   container2: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
 
   card: {
@@ -158,7 +137,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 20,
     backgroundColor: '#466DFE', 
-    // backgroundColor: '#000', 
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -193,7 +171,7 @@ const styles = StyleSheet.create({
   value2: {
     color: 'white',
     fontSize: 18,
-    // fontWeight: 'bold',
+    
   },
 
   accountContainer: {
@@ -304,7 +282,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f1f1f1'
   },
   recent: {
-    fontSize: 14,
+    fontSize: 18,
     padding: 25,
     color: '#515151'
   }

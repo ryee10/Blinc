@@ -52,6 +52,7 @@ export default function App() {
 
   const handleClose = useCallback(() => {
     setSheetVisible(false);
+    
   }, []);
 
   return (

@@ -42,7 +42,7 @@ const WelcomeScreen = () => {
             entering={FadeInDown.duration(100).delay(100).springify()}
             className="text-neutral-500 text-3xl font-medium leading-[45px] "
             style={{
-              fontFamily: "Poppins-SemiBold",
+              fontFamily: "WorkSans-SemiBold",
               alignItems: 'center',
               justifyContent: 'center',
               textAlign: 'center',
@@ -55,7 +55,7 @@ const WelcomeScreen = () => {
             entering={FadeInDown.duration(100).delay(150).springify()}
             className="text-neutral-500 font-medium leading-[45px]"
             style={{
-              fontFamily: "Poppins-SemiBold",
+              fontFamily: "WorkSans-SemiBold",
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: 16,

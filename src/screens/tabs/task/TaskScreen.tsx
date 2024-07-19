@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
     color: '#515151'
   },
   itemContainer: {
-    width: '95%',
+    width: '100%',
     height: 100,
     elevation: 3,
     backgroundColor: '#fff',
