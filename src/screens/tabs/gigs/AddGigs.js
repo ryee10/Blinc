@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 17,
     marginBottom: 8,
+    fontFamily:'WorkSans-Regular'
   },
   input: {
     borderWidth: 1,
@@ -123,8 +124,9 @@ const styles = StyleSheet.create({
   },
   helperText: {
     fontSize: 16,
-    color: "#888",
+    color: "#949494",
     marginBottom: 16,
+    fontFamily:'WorkSans-Regular'
   },
   row: {
     flexDirection: "row",
@@ -146,10 +148,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6  ,
     marginRight: 8,
     marginBottom: 8,
+    fontFamily:'WorkSans-Regular'
   },
   tagText: {
     color: "white",
-    fontSize: 18,
+    fontSize: 17,
+    fontFamily:'WorkSans-Regular'
   },
   imageUpload: {
     height: 80,
@@ -167,12 +171,14 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "#fff",
     fontSize: 16,
+    fontFamily:'WorkSans-Regular'
   },
   cancelText: {
-    color: "#888",
+    color: "#EB4335",
     fontSize: 16,
     textAlign: "center",
-    paddingBottom: 6
+    marginBottom: 30,
+    fontFamily:'WorkSans-Regular'
   },
 });
 

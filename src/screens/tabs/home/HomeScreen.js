@@ -155,22 +155,26 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
     marginBottom: 10,
+    fontFamily:'WorkSans-Regular'
   },
 
   label2: {
     color: 'white',
     fontSize: 14,
+    fontFamily:'WorkSans-Regular'
   },
 
   value1: {
     color: 'white',
     fontSize: 22,
     fontWeight: 'bold',
+    fontFamily:'WorkSans-Regular'
   },
 
   value2: {
     color: 'white',
     fontSize: 18,
+    fontFamily:'WorkSans-Regular'
     
   },
 
@@ -213,6 +217,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 3,
     fontSize: 12,
+    fontFamily:'WorkSans-Regular'
   },
 
   buttonContainer: {
@@ -266,13 +271,14 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 12,
     marginTop: 5,
+    fontFamily:'WorkSans-Regular'
   },
 
   label4value: {
     color: 'black',
     fontSize: 14,
     fontWeight: 'bold',
-
+    fontFamily:'WorkSans-Regular'
   },
 
   container3: {
@@ -284,7 +290,8 @@ const styles = StyleSheet.create({
   recent: {
     fontSize: 18,
     padding: 25,
-    color: '#515151'
+    color: '#515151',
+    fontFamily:'WorkSans-Regular'
   }
 
 });

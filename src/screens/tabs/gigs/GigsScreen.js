@@ -148,7 +148,8 @@ const styles = StyleSheet.create({
     height: 106,
     backgroundColor: '#6079FE',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    fontFamily:'WorkSans-Regular'
   },
   title: {
     fontSize: 18,
@@ -156,6 +157,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily:'WorkSans-Regular',
   },
   
   gigCard: {
@@ -178,35 +180,26 @@ const styles = StyleSheet.create({
   gigDetails: {
     flex: 1,
     justifyContent: "center",
+    fontFamily:'WorkSans-Regular'
   },
   gigTitle: {
     fontSize: 18,
     fontWeight: "bold",
+    fontFamily:'WorkSans-Regular'
   },
   gigPrice: {
     fontSize: 16,
     color: "gray",
+    fontFamily:'WorkSans-Regular'
   },
   gigStatus: {
     fontSize: 16,
+    fontFamily:'WorkSans-Regular'
   },
   activeStatus: {
     color: "green",
   },
-  userIconWrapper: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: "white",
-    borderColor: "#ccc",
-    borderWidth: 1,
-    position: "absolute",
-    right: 15,
-    top: "70%",
-    transform: [{ translateY: -20 }],
-  },
+  
   bottomSheetContent: {
     padding: 20,
   },
@@ -222,24 +215,29 @@ const styles = StyleSheet.create({
   sheetTitle: {
     fontSize: 20,
     fontWeight: "bold",
+    fontFamily:'WorkSans-Regular'
   },
   sheetDescription: {
     marginTop: 10,
     fontSize: 16,
+    fontFamily:'WorkSans-Regular'
   },
   sheetPrice: {
     marginTop: 10,
     fontSize: 16,
+    fontFamily:'WorkSans-Regular'
   },
   sheetStatus: {
     marginTop: 10,
     fontSize: 16,
     color: "green",
+    fontFamily:'WorkSans-Regular'
   },
   sheetTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    fontFamily:'WorkSans-Regular'
   },
   sheetRow: {
     flexDirection: 'row',
@@ -249,15 +247,18 @@ const styles = StyleSheet.create({
   sheetLabel: {
     fontSize: 16,
     fontWeight: 'bold',
+    fontFamily:'WorkSans-Regular'
   },
   sheetValue: {
     fontSize: 16,
+    fontFamily:'WorkSans-Regular'
   },
   sheetSubTitle: {
     fontSize: 16,
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 10,
+    fontFamily:'WorkSans-Regular'
   },
   sheetFeature: {
     flexDirection: 'row',
@@ -266,7 +267,8 @@ const styles = StyleSheet.create({
   },
   sheetFeatureText: {
     marginLeft: 5,
-    fontSize: 14,
+    fontSize: 16,
+    fontFamily:'WorkSans-Regular'
   },
   sheetTotalRow: {
     flexDirection: 'row',
@@ -277,16 +279,19 @@ const styles = StyleSheet.create({
   sheetTotalLabel: {
     fontSize: 16,
     fontWeight: 'bold',
+    fontFamily:'WorkSans-Regular'
   },
   sheetTotalValue: {
     fontSize: 16,
     fontWeight: 'bold',
     color: '#6079FE',
+    fontFamily:'WorkSans-Regular'
   },
   sheetFooter: {
     marginTop: 10,
     fontSize: 14,
     textAlign: 'center',
+    fontFamily:'WorkSans-Regular'
   },
   reportText: {
     color: '#6079FE',

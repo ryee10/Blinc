@@ -237,6 +237,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     color: "#fff",
     fontWeight: 'bold',
+    fontFamily:'WorkSans-Regular'
     // backgroundColor: 'green'
   },
   buttonContainer: {
@@ -261,10 +262,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#6079FE',
   },
   buttonText: {
-    color: '#000'
+    color: '#000',
+    fontFamily:'WorkSans-Regular'
+
   },
   activeButtonText: {
-    color: '#fff'
+    color: '#fff',
+    fontFamily:'WorkSans-Regular'
+
   },
   contentContainer: {
     width: screenWidth,
@@ -276,7 +281,9 @@ const styles = StyleSheet.create({
   contentText: {
     fontSize: 18,
     textAlign:'center',
-    color: '#515151'
+    color: '#515151',
+    fontFamily:'WorkSans-Regular'
+
   },
   itemContainer: {
     width: '100%',
@@ -314,7 +321,9 @@ const styles = StyleSheet.create({
   itemLabel:{
     fontSize: 14,
     marginTop: 5,
-    color: '#515151'
+    color: '#515151',
+    fontFamily:'WorkSans-Regular'
+
 
   },
   imageHolder: {

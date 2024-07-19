@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     color: "#fff",
     fontWeight: 'bold',
+    fontFamily:'WorkSans-Regular'
     // backgroundColor: 'green'
   },
   contentContainer: {
@@ -122,11 +123,13 @@ const styles = StyleSheet.create({
     // backgroundColor: 'blue'
   },
   Details: {
-    fontSize: 14,
+    fontSize: 16,
+    fontFamily:'WorkSans-Regular'
   },
   Details2: {
-    fontSize: 14,
-    color: '#6079FE'
+    fontSize: 16,
+    color: '#6079FE',
+    fontFamily:'WorkSans-Regular'
   },
  
 });

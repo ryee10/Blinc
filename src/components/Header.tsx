@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 60,
         gap: 10,
-
     },
     roundBtn: {
         width: 40,

@@ -47,6 +47,7 @@ const WelcomeScreen = () => {
               justifyContent: 'center',
               textAlign: 'center',
               marginBottom: 20,
+              lineHeight: 30
             }}
           >
             Where Businesses and Digital Workers Flourish
@@ -55,12 +56,12 @@ const WelcomeScreen = () => {
             entering={FadeInDown.duration(100).delay(150).springify()}
             className="text-neutral-500 font-medium leading-[45px]"
             style={{
-              fontFamily: "WorkSans-SemiBold",
+              fontFamily: "WorkSans-Regular",
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: 16,
               textAlign: 'center',
-              lineHeight: 24,
+              lineHeight: 20,
               marginBottom: 20
 
 
