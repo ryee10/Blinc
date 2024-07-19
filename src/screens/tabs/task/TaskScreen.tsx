@@ -60,122 +60,65 @@ const Tab4 = () => {
             </View>
           </View>
 
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
         </View>
         </ScrollView>
       );
     } else if (activeTab === 'New Tasks') {
       return (
-        <View style={styles.contentContainer}>
-          <Text style={styles.contentText}>You don't have any task.</Text>
+        <View style={styles.contentContainer2}>
+          <Text style={styles.contentText}>No new task</Text>
         </View>
       );
     } else if (activeTab === 'In Progress') {
       return (
-        <View style={styles.contentContainer}>
-          <Text style={styles.contentText}>You don't have any task.</Text>
-        </View>
+        <View style={styles.itemContainer}>
+            <View style={styles.item1}>
+              <View style={styles.imageHolder}/>
+            </View>
+            <View style={styles.item2}>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+              <Text style={styles.itemLabel}>July 12, 2024</Text>
+              <Text style={styles.itemLabel}>Short Description</Text>
+            </View>
+            <View style={styles.item3}>
+              <Text style={styles.itemLabel}>Status:</Text>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'},  {color: '#6079FE'}]}>In Progress</Text>
+            </View>
+            </View>
       );
     } else if (activeTab === 'On Review') {
       return (
-        <View style={styles.contentContainer}>
-          <Text style={styles.contentText}>You don't have any task.</Text>
+        <View style={styles.itemContainer}>
+        <View style={styles.item1}>
+          <View style={styles.imageHolder}/>
         </View>
+        <View style={styles.item2}>
+          <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+          <Text style={styles.itemLabel}>July 12, 2024</Text>
+          <Text style={styles.itemLabel}>Short Description</Text>
+        </View>
+        <View style={styles.item3}>
+          <Text style={styles.itemLabel}>Status:</Text>
+          <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
+        </View>
+      </View>
       );
     } else if (activeTab === 'Approved') {
       return (
-        <View style={styles.contentContainer}>
-          <Text style={styles.contentText}>You don't have any task.</Text>
-        </View>
+        <View style={styles.itemContainer}>
+            <View style={styles.item1}>
+              <View style={styles.imageHolder}/>
+            </View>
+            <View style={styles.item2}>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
+              <Text style={styles.itemLabel}>July 12, 2024</Text>
+              <Text style={styles.itemLabel}>Short Description</Text>
+            </View>
+            <View style={styles.item3}>
+              <Text style={styles.itemLabel}>Status:</Text>
+              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: 'green'} ]}>Approved</Text>
+            </View>
+          </View>
       );
     }
     
@@ -245,7 +188,8 @@ const styles = StyleSheet.create({
     // backgroundColor: 'green',
     margin: 10,
     alignItems: 'flex-start',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingHorizontal: 5,
 
   },
   button: {
@@ -259,9 +203,12 @@ const styles = StyleSheet.create({
   },
   activeButton: {
     backgroundColor: '#6079FE',
+    fontSize: 12,
+    fontFamily: 'WorkSans-Regular'
   },
   buttonText: {
     color: '#000',
+    fontSize: 12,
     fontFamily:'WorkSans-Regular'
 
   },
@@ -277,11 +224,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // backgroundColor: 'green'
   }, 
+  contentContainer2: {
+    width: screenWidth,
+    height: 500,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: 'green'
+  }, 
   contentText: {
     fontSize: 18,
     textAlign:'center',
     color: '#515151',
-    fontFamily:'WorkSans-Regular'
+    fontFamily:'WorkSans-Medium'
 
   },
   itemContainer: {

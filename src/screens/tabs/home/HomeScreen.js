@@ -21,7 +21,7 @@ const HomeScreen = () => {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container1}>
           <TouchableOpacity style={styles.icon} onPress={() => navigation.navigate('ProfileS')}> 
-          <FontAwesome5 name="bars" size={24} color="#252525" />
+          <FontAwesome5 name="bars" size={24} color="#fff" />
           </TouchableOpacity>
         </View>
         <View style={styles.container2}>
@@ -30,7 +30,7 @@ const HomeScreen = () => {
               <View>
                 <Text style={styles.label1}>Wallet Balance</Text>
                 <Text style={styles.label2}>Balance</Text>
-                <Text style={styles.value1}>Php 100,000.00</Text>
+                <Text style={styles.value1}>USD 100.00</Text>
               </View>
               <View style={styles.accountContainer}>
                 <Text style={styles.label2}>Account No.</Text>
@@ -56,7 +56,7 @@ const HomeScreen = () => {
                   <Text style={styles.label3}>Top Up</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.box}  onPress = {() => navigation.navigate('TransferReceipt')}>
+              <TouchableOpacity style={styles.box}  onPress = {() => navigation.navigate('Transfer')}>
                 <View style={styles.inner}>
                   <FontAwesome6 name="money-bill-transfer" size={24} color="white" />
                   <Text style={styles.label3}>Transfer</Text>
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
   },
   
   icon: {
+    marginTop: 10,
     width: 50,
     height: 50,
   },

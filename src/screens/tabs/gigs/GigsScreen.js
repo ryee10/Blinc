@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     width: screenWidth,
-    height: 106,
+    height: 98,
     backgroundColor: '#6079FE',
     justifyContent: 'center',
     alignItems: 'center',

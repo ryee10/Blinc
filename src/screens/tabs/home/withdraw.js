@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import RNPickerSelect from 'react-native-picker-select';
 import { LinearGradient } from "expo-linear-gradient";
-import { ViewBase } from 'react-native';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -24,20 +23,19 @@ const RadioButton = ({ label, selected, onPress }) => {
     );
 };
 
-const TopUp = () => {
+const Withdraw = () => {
     const navigation = useNavigation();
     const [method, setMethod] = useState('');
     const [selectedMethod, setSelectedMethod] = useState('');
 
     return(
-        <View
-        style={styles.container}>
+        <ImageBackground source={require('./Gradient2.png')} style={styles.container}>
             <View style={styles.upperContainer}>
                 <View style={styles.arrowContainer}>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Ionicons name="chevron-back" size={28} color="#fff" /> 
                     </TouchableOpacity>
-                    <Text style={styles.title}>Top-Up</Text>
+                    <Text style={styles.title}>Withdraw</Text>
                 </View>
             </View>
             <View style={styles.titleContainer}>
@@ -46,19 +44,19 @@ const TopUp = () => {
             <View style={styles.outerContainer}>
                 <View style={styles.innerContainer}>
                     <View style={styles.labelContainer}>
-                        <Text style={styles.label}>Payment Method</Text>
+                        <Text style={styles.label}>Select Method</Text>
                     </View>
                     <View style={styles.radioButtonContainer}>
-                        <Image source={require('../../../../assets/images/Metamask.png')} style={styles.iconContainer}></Image>
+                        <View style={styles.iconContainer}></View>
                     <RadioButton
-                        label="Metamask"
+                        label="..."
                         selected={selectedMethod === 'Metamask'}
                         onPress={() => setSelectedMethod('Metamask')}/>
                          </View>
                          <View style={styles.radioButtonContainer}>
-                            <Image source={require('../../../../assets/images/Metamask.png')} style={styles.iconContainer}></Image>
+                            <View style={styles.iconContainer}></View>
                             <RadioButton
-                            label="E-wallet"
+                            label="..."
                             selected={selectedMethod === 'E-wallet'}
                             onPress={() => setSelectedMethod('E-wallet')}/>
                             </View>
@@ -82,7 +80,7 @@ const TopUp = () => {
                             </View>
                 </View>
             </View>
-        </View>
+        </ImageBackground>
     );
 };
 
@@ -223,4 +221,4 @@ const pickerSelectStyles = StyleSheet.create({
     },
   });
 
-export default TopUp;
+export default Withdraw;
