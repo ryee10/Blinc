@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'; // For icons
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'; // For Ant Design icons
+import { Ionicons } from '@expo/vector-icons';
 
 const TopUpScreen = () => {
   const [selectedMethod, setSelectedMethod] = useState('Metamask');
@@ -39,7 +40,7 @@ const TopUpScreen = () => {
               <Text style={styles.methodText}>{method.name}</Text>
             </View>
             {selectedMethod === method.name && (
-              <AntDesignIcon name="checkcircle" size={24} color="#007bff" />
+              <Ionicons name="checkmark-circle" size={24} color="#4769FE" />
             )}
           </TouchableOpacity>
         ))}

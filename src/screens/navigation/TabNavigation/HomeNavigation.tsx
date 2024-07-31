@@ -9,6 +9,7 @@ import TopUpReceipt from '../../tabs/home/TopUpReceipt';
 import Transfer from '../../tabs/home/Transfer';
 import AccountSettings from '../../tabs/profile/AccountSettings';
 import { DrawerActions } from '@react-navigation/native';
+import Withdraw from '../../tabs/home/withdraw';
 
 const Stack = createStackNavigator();
 
@@ -66,11 +67,11 @@ const HomeNavigation = () => {
           headerTitleAlign: 'center'
         }}  
       />
-      <Stack.Screen name="TopUpReceipt" component={TopUpReceipt}
+      <Stack.Screen name="Withdraw" component={Withdraw}
       options={{ 
         headerTitle: () => (
           <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
-             TopUpReceipt
+             Withdraw
           </Text>
         ),
         headerTitleAlign: 'center'

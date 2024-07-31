@@ -90,7 +90,7 @@ const HomeScreen = () => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.button}
-                  onPress={() => navigation.navigate("Widthraw")}
+                  onPress={() => navigation.navigate("Withdraw")}
                 >
                   <View style={styles.circleButton}>
                     <Ionicons name="wallet-outline" size={24} color="#F43F5E" />
@@ -108,7 +108,7 @@ const HomeScreen = () => {
                       color="#4769FE"
                     />
                     <Text style={styles.label4}>Total Orders:</Text>
-                    <Text style={styles.label4value}>0</Text>
+                    <Text style={styles.label4value}>1</Text>
                   </View>
                 </View>
 
@@ -120,7 +120,7 @@ const HomeScreen = () => {
                       color="#DB77FD"
                     />
                     <Text style={styles.label4}>Completed Orders:</Text>
-                    <Text style={styles.label4value}>0</Text>
+                    <Text style={styles.label4value}>2</Text>
                   </View>
                 </View>
 
@@ -132,7 +132,7 @@ const HomeScreen = () => {
                       color="#F43F5E"
                     />
                     <Text style={styles.label4}>Total Spent:</Text>
-                    <Text style={styles.label4value}>0</Text>
+                    <Text style={styles.label4value}>$15.00</Text>
                   </View>
                 </View>
               </View>
@@ -140,7 +140,7 @@ const HomeScreen = () => {
               <View style={styles.recentContainer}>
                 <Text style={styles.recent}>Recent Activity</Text>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate("RecentActivity")}
+                  onPress={() => navigation.navigate("Transaction")}
                 >
                   <Text style={styles.viewAll}>View All</Text>
                 </TouchableOpacity>
@@ -154,8 +154,21 @@ const HomeScreen = () => {
                     <Text style={styles.transactionTitle}>Order Payment</Text>
                     <Text style={styles.transactionDate}>07-04-24</Text>
                   </View>
-                  <Text style={styles.transactionAmount}>+ $15</Text>
+                  <Text style={styles.transactionAmount}>+$15</Text>
                 </View>
+              </View>
+              <View style={styles.transactions}>
+                <View style={styles.transactionItem}>
+                  <View style={styles.circleIcon}>
+                    <Ionicons name="card-outline" size={24} color="#4769FE" />
+                  </View>
+                  <View style={styles.transactionDetails}>
+                    <Text style={styles.transactionTitle}>Withdraw</Text>
+                    <Text style={styles.transactionDate}>07-13-24</Text>
+                  </View>
+                  <Text style={styles.transactionAmounts}>-$15</Text>
+                </View>
+              
               </View>
             </View>
           </View>
@@ -338,9 +351,8 @@ const styles = StyleSheet.create({
 
   label4value: {
     color: "black",
-    fontSize: 14,
-    fontWeight: "bold",
-    fontFamily: "WorkSans-Regular",
+    fontSize: 16,
+    fontFamily: "WorkSans-Medium",
   },
 
   recentContainer: {
@@ -402,6 +414,12 @@ const styles = StyleSheet.create({
     marginRight: "5%",
     color: "#17A34E",
   },
+  transactionAmounts:{
+    fontSize: 16,
+    fontFamily: "WorkSans-Medium",
+    marginRight: "5%",
+    color: '#F43F5E'
+  }
 });
 
 export default HomeScreen;

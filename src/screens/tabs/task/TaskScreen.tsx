@@ -141,10 +141,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#CBD3FF'
+    backgroundColor: '#E2E8F0'
   },
   activeButton: {
-    backgroundColor: '#6079FE',
+    backgroundColor: '#4769FE',
   },
   buttonText: {
     color: '#000',
