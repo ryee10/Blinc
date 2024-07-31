@@ -8,14 +8,24 @@ const TaskNavigation = () => {
   return (
     <Stack.Navigator
     screenOptions={{
-      headerShown: false,
+      headerShown: true,
       ...TransitionPresets.SlideFromRightIOS,
       animationEnabled: true,
       gestureEnabled: true,
       gestureDirection: "horizontal",
      }}
      >
-      <Stack.Screen name="TaskS" component={TaskScreen}/>
+      <Stack.Screen name="TaskS" component={TaskScreen}
+        options={{
+          headerLeft: () => null,
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+              Task
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}
+      />
      </Stack.Navigator>
   )
 }

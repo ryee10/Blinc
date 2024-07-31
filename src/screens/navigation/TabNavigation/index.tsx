@@ -10,6 +10,7 @@ import GigsNavigation from "./GigsNavigation";
 import TeamNavigation from "./TeamNavigation";
 
 import { TransitionPresets } from "@react-navigation/stack"
+import DrawerNavigation from "../DrawerNavigation";
 
 const Tab = createBottomTabNavigator();
 
@@ -43,11 +44,11 @@ const TabNavigation = () => {
         },
         tabBarActiveTintColor: "#6079FE",
         tabBarInactiveTintColor: "#CDCDE0",
-        tabBarShowLabel: false,
-        // tabBarLabelStyle: {
-        //   fontSize: 16,
-        //   fontWeight: "bold",
-        // },
+        tabBarShowLabel: true,
+         tabBarLabelStyle: {
+            fontSize: 16,
+            fontFamily: 'WorkSans-Medium',
+         },
           tabBarStyle: {
           height: 55,
         },

@@ -7,7 +7,7 @@ import LoginScreen from '../(auth)/LoginScreen';
 import RegisterScreen from '../(auth)/RegisterScreen';
 import VerifyScreen from '../(auth)/VerifyScreen';
 import TabNavigation from './TabNavigation';
-import DrawerNavigation from './DrawerNavigation';
+
 
 
 const Stack = createStackNavigator();

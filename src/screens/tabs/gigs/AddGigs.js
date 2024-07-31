@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 16,
     backgroundColor: "#fff",
-    marginTop: 25
   },
   label: {
     fontSize: 17,
@@ -117,7 +116,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 10,
     marginBottom: 16,
-    backgroundColor: "#f0f4f7",
+    backgroundColor: "#ffff",
   },
   textArea: {
     height: 100,

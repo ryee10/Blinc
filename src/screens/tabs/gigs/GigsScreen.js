@@ -36,9 +36,9 @@ const gigData = {
 
 const screenWidth = Dimensions.get("window").width;
 
-export default function App() {
+export default function GigsScreen() {
   const navigation = useNavigation();
-  const snapPoints = useMemo(() => ["35%", "50%", "75%", "100%", ], []);
+  const snapPoints = useMemo(() => [ "50%", "75%", "100%"], []);
   const bottomSheetRef = useRef(null);
   const [isSheetVisible, setSheetVisible] = useState(false);
 
@@ -52,15 +52,12 @@ export default function App() {
 
   const handleClose = useCallback(() => {
     setSheetVisible(false);
-    
   }, []);
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      
       <View style={styles.container}>
-      <LinearGradient colors={['#6079FE','#DA84FE']} start={[0, 3]} end={[1, 1]}  style={styles.titleContainer}>
-        <Text style={styles.title}>Gigs</Text>
-      </LinearGradient>
         <TouchableOpacity onPress={handleGigPress}>
           <Animated.View
             style={styles.gigCard}
@@ -75,7 +72,6 @@ export default function App() {
                 <Text style={styles.activeStatus}>{gigData.status}</Text>
               </Text>
             </View>
-            
           </Animated.View>
         </TouchableOpacity>
       </View>
@@ -94,8 +90,15 @@ export default function App() {
           ref={bottomSheetRef}
           snapPoints={snapPoints}
           onClose={handleClose}
+          enablePanDownToClose={true}
+          backdropComponent={({ style }) => (
+            <TouchableOpacity
+              style={[style, styles.backdrop]}
+              activeOpacity={1}
+              onPress={handleClose}
+            />
+          )}
         >
-          
           <View style={styles.bottomSheetContent}>
             <View style={styles.imageContainer}>
               <Image source={gigData.image} style={styles.gigImageb} />
@@ -124,13 +127,7 @@ export default function App() {
                 <Text style={styles.sheetFeatureText}>{feature}</Text>
               </View>
             ))}
-            <View style={styles.sheetTotalRow}>
-              <Text style={styles.sheetTotalLabel}>Total</Text>
-              <Text style={styles.sheetTotalValue}>{gigData.price}</Text>
-            </View>
-            <Text style={styles.sheetFooter}>Any Issue Regarding Product ? <Text style={styles.reportText}>Report</Text></Text>
           </View>
-          
         </BottomSheet>
       )}
     </ScrollView>
@@ -141,7 +138,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    // backgroundColor: 'green'
   },
   titleContainer: {
     width: screenWidth,
@@ -149,16 +145,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#6079FE',
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
   title: {
     fontSize: 18,
     marginTop: 30,
     color: "#fff",
     textAlign: 'center',
-    fontFamily:'WorkSans-SemiBold',
+    fontFamily: 'WorkSans-SemiBold',
   },
-  
   gigCard: {
     marginTop: 20,
     width: "100%",
@@ -179,26 +174,25 @@ const styles = StyleSheet.create({
   gigDetails: {
     flex: 1,
     justifyContent: "center",
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
   gigTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
   gigPrice: {
     fontSize: 16,
     color: "gray",
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
   gigStatus: {
     fontSize: 16,
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
   activeStatus: {
     color: "green",
   },
-  
   bottomSheetContent: {
     padding: 20,
   },
@@ -207,36 +201,29 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   gigImageb: {
-    width: 300,
-    height: 200,
+    width: 150,
+    height: 100,
     borderRadius: 10,
   },
   sheetTitle: {
     fontSize: 20,
-    fontWeight: "bold",
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-SemiBold'
   },
   sheetDescription: {
     marginTop: 10,
     fontSize: 16,
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
   sheetPrice: {
     marginTop: 10,
-    fontSize: 16,
-    fontFamily:'WorkSans-Regular'
+    fontSize: 18,
+    fontFamily: 'WorkSans-Medium'
   },
   sheetStatus: {
     marginTop: 10,
     fontSize: 16,
     color: "green",
-    fontFamily:'WorkSans-Regular'
-  },
-  sheetTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
   sheetRow: {
     flexDirection: 'row',
@@ -246,18 +233,18 @@ const styles = StyleSheet.create({
   sheetLabel: {
     fontSize: 16,
     fontWeight: 'bold',
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
   sheetValue: {
     fontSize: 16,
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
   sheetSubTitle: {
     fontSize: 16,
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 10,
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
   sheetFeature: {
     flexDirection: 'row',
@@ -267,32 +254,10 @@ const styles = StyleSheet.create({
   sheetFeatureText: {
     marginLeft: 5,
     fontSize: 16,
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular'
   },
-  sheetTotalRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20,
-    marginBottom: 10,
-  },
-  sheetTotalLabel: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    fontFamily:'WorkSans-Regular'
-  },
-  sheetTotalValue: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#6079FE',
-    fontFamily:'WorkSans-Regular'
-  },
-  sheetFooter: {
-    marginTop: 10,
-    fontSize: 14,
-    textAlign: 'center',
-    fontFamily:'WorkSans-Regular'
-  },
-  reportText: {
-    color: '#6079FE',
+  backdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
 });

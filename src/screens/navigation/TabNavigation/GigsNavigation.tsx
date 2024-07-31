@@ -1,5 +1,6 @@
 import React from 'react'
 import { TransitionPresets, createStackNavigator } from '@react-navigation/stack'
+import { View, Text } from 'react-native'
 import GigsScreen from '../../tabs/gigs/GigsScreen';
 import AddGigs from '../../tabs/gigs/AddGigs';
 
@@ -9,15 +10,33 @@ const GigsNavigation = () => {
   return (
     <Stack.Navigator
     screenOptions={{
-      headerShown: false,
+      headerShown: true,
       ...TransitionPresets.SlideFromRightIOS,
       animationEnabled: true,
       gestureEnabled: true,
       gestureDirection: "horizontal",
      }}
      >
-        <Stack.Screen name="GigsS" component={GigsScreen}/>
-        <Stack.Screen name="AddG" component={AddGigs}/>
+        <Stack.Screen name="GigsS" component={GigsScreen}
+        options={{
+          headerLeft: () => null,
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+              Gigs
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}/>        
+        <Stack.Screen name="AddG" component={AddGigs}
+        options={{
+          headerLeft: () => null,
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+               Add Gigs
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}/>
       
     </Stack.Navigator>
   )

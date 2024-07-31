@@ -1,218 +1,107 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
-import { LinearGradient } from "expo-linear-gradient";
-
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const Tab4 = () => {
-  const [activeTab, setActiveTab] = useState('Team');
+const tasks = [
+  {
+    title: "Title(Branding)",
+    date: "July 12, 2024",
+    description: "Short Description",
+    status: "In Progress",
+    statusColor: "#6079FE",
+  },
+  {
+    title: "Title(Branding)",
+    date: "July 12, 2024",
+    description: "Short Description",
+    status: "Approved",
+    statusColor: "green",
+  },
+  {
+    title: "Title(Branding)",
+    date: "July 12, 2024",
+    description: "Short Description",
+    status: "On Review",
+    statusColor: "#DA0000",
+  },
+  
+];
+
+const TaskScreen = () => {
+  const [activeTab, setActiveTab] = useState('All Tasks');
+
+  const filterTasks = () => {
+    if (activeTab === 'All Tasks') {
+      return tasks;
+    }
+    return tasks.filter(task => task.status === activeTab);
+  };
 
   const renderContent = () => {
-    if (activeTab === 'All Tasks') {
-      return (
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={styles.contentContainer}>
+    const filteredTasks = filterTasks();
 
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'},  {color: '#6079FE'}]}>In Progress</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: 'green'} ]}>Approved</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-          <View style={styles.itemContainer}>
-            <View style={styles.item1}>
-              <View style={styles.imageHolder}/>
-            </View>
-            <View style={styles.item2}>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}]} >Title(Branding)</Text>
-              <Text style={styles.itemLabel}>July 12, 2024</Text>
-              <Text style={styles.itemLabel}>Short Description</Text>
-            </View>
-            <View style={styles.item3}>
-              <Text style={styles.itemLabel}>Status:</Text>
-              <Text style={[styles.itemLabel, {fontWeight: 'bold'}, {color: '#DA0000'}]}>On Review</Text>
-            </View>
-          </View>
-
-        </View>
-        </ScrollView>
-      );
-    } else if (activeTab === 'New Tasks') {
-      return (
-        <View style={styles.contentContainer}>
-          <Text style={styles.contentText}>You don't have any task.</Text>
-        </View>
-      );
-    } else if (activeTab === 'In Progress') {
-      return (
-        <View style={styles.contentContainer}>
-          <Text style={styles.contentText}>You don't have any task.</Text>
-        </View>
-      );
-    } else if (activeTab === 'On Review') {
-      return (
-        <View style={styles.contentContainer}>
-          <Text style={styles.contentText}>You don't have any task.</Text>
-        </View>
-      );
-    } else if (activeTab === 'Approved') {
+    if (filteredTasks.length === 0) {
       return (
         <View style={styles.contentContainer}>
           <Text style={styles.contentText}>You don't have any task.</Text>
         </View>
       );
     }
-    
+
+    return (
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <View style={styles.contentContainer}>
+          {filteredTasks.map((task, index) => (
+            <View key={index} style={styles.itemContainer}>
+              <View style={styles.item1}>
+                <View style={styles.imageHolder} />
+              </View>
+              <View style={styles.item2}>
+                <Text style={[styles.itemLabel, { fontWeight: 'bold' }]}>{task.title}</Text>
+                <Text style={styles.itemLabel}>{task.date}</Text>
+                <Text style={styles.itemLabel}>{task.description}</Text>
+              </View>
+              <View style={styles.item3}>
+                <Text style={styles.itemLabel}>Status:</Text>
+                <Text style={[styles.itemLabel, { fontWeight: 'bold', color: task.statusColor }]}>{task.status}</Text>
+              </View>
+            </View>
+          ))}
+        </View>
+      </ScrollView>
+    );
   };
-  
+
   return (
     <View style={styles.container}>
-      <LinearGradient colors={['#6079FE','#DA84FE']} start={[0, 3]} end={[1, 1]} style={styles.titleContainer}>
-        <Text style={styles.title}>Tasks</Text>
-      </LinearGradient>
       <View style={styles.buttonContainer}>
-        <ScrollView horizontal = {true}>
-        <TouchableOpacity 
-        style={[styles.button, activeTab === 'All Tasks' && styles.activeButton]}
-        onPress={() => setActiveTab('All Tasks')}>
-          <Text style={activeTab === 'All Tasks' ? styles.activeButtonText : styles.buttonText}>All Tasks</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-        style={[styles.button, activeTab === 'New Tasks' && styles.activeButton]}
-        onPress={() => setActiveTab('New Tasks')}>
-          <Text style={activeTab === 'New Tasks' ? styles .activeButtonText : styles.buttonText}>New Task</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-        style={[styles.button, activeTab === 'In Progress' && styles.activeButton]}
-        onPress={() => setActiveTab('In Progress')}>
-          <Text style={activeTab === 'In Progress' ? styles.activeButtonText : styles.buttonText}>In Progress</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-        style={[styles.button, activeTab === 'On Review' && styles.activeButton]}
-        onPress={() => setActiveTab('On Review')}>
-          <Text style={activeTab === 'On Review' ? styles .activeButtonText : styles.buttonText}>On Review</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-        style={[styles.button, activeTab === 'Approved' && styles.activeButton]}
-        onPress={() => setActiveTab('Approved')}>
-          <Text style={activeTab === 'Approved' ? styles .activeButtonText : styles.buttonText}>Approved</Text>
-        </TouchableOpacity>
+        <ScrollView horizontal={true}>
+          <TouchableOpacity
+            style={[styles.button, activeTab === 'All Tasks' && styles.activeButton]}
+            onPress={() => setActiveTab('All Tasks')}
+          >
+            <Text style={activeTab === 'All Tasks' ? styles.activeButtonText : styles.buttonText}>All Tasks</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, activeTab === 'In Progress' && styles.activeButton]}
+            onPress={() => setActiveTab('In Progress')}
+          >
+            <Text style={activeTab === 'In Progress' ? styles.activeButtonText : styles.buttonText}>In Progress</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, activeTab === 'On Review' && styles.activeButton]}
+            onPress={() => setActiveTab('On Review')}
+          >
+            <Text style={activeTab === 'On Review' ? styles.activeButtonText : styles.buttonText}>On Review</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.button, activeTab === 'Approved' && styles.activeButton]}
+            onPress={() => setActiveTab('Approved')}
+          >
+            <Text style={activeTab === 'Approved' ? styles.activeButtonText : styles.buttonText}>Approved</Text>
+          </TouchableOpacity>
         </ScrollView>
       </View>
       {renderContent()}
@@ -236,17 +125,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 30,
     color: "#fff",
-    fontFamily:'WorkSans-SemiBold'
-    // backgroundColor: 'green'
+    fontFamily: 'WorkSans-SemiBold'
   },
   buttonContainer: {
     width: screenWidth,
     height: 50,
-    // backgroundColor: 'green',
     margin: 10,
     alignItems: 'flex-start',
     flexDirection: 'row'
-
   },
   button: {
     width: 100,
@@ -262,27 +148,22 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#000',
-    fontFamily:'WorkSans-Regular'
-
+    fontFamily: 'WorkSans-Regular'
   },
   activeButtonText: {
     color: '#fff',
-    fontFamily:'WorkSans-Regular'
-
+    fontFamily: 'WorkSans-Regular'
   },
   contentContainer: {
     width: screenWidth,
     height: '50%',
-    // justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: 'green'
-  }, 
+  },
   contentText: {
     fontSize: 18,
-    textAlign:'center',
+    textAlign: 'center',
     color: '#515151',
-    fontFamily:'WorkSans-Regular'
-
+    fontFamily: 'WorkSans-Regular'
   },
   itemContainer: {
     width: '100%',
@@ -292,14 +173,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 0.5,
   },
-
   item1: {
     width: '30%',
     height: 100,
     borderRadius: 5,
     justifyContent: 'center',
-    alignItems:'center',
-    // backgroundColor: 'yellow',
+    alignItems: 'center',
   },
   item2: {
     width: '40%',
@@ -307,31 +186,25 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginStart: 10,
     marginTop: 10,
-    
-    // backgroundColor: 'green',
   },
   item3: {
     width: '30%',
     height: 100,
     borderRadius: 5,
     marginTop: 10,
-    // backgroundColor: 'yellow',
   },
-  itemLabel:{
+  itemLabel: {
     fontSize: 14,
     marginTop: 5,
     color: '#515151',
-    fontFamily:'WorkSans-Regular'
-
-
+    fontFamily: 'WorkSans-Regular'
   },
   imageHolder: {
     width: 80,
     height: 80,
     borderRadius: 5,
-    backgroundColor:'gray',
+    backgroundColor: 'gray',
   }
-
 });
 
-export default Tab4;
+export default TaskScreen;

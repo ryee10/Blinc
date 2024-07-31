@@ -10,14 +10,24 @@ const TransactionNavigation = () => {
   return (
     <Stack.Navigator
     screenOptions={{
-      headerShown: false,
+      headerShown: true,
       ...TransitionPresets.SlideFromRightIOS,
       animationEnabled: true,
       gestureEnabled: true,
-      gestureDirection: "horizontal",
+      gestureDirection: "horizontal",                
      }}
      >
-      <Stack.Screen name="TransS" component={TransactionsScreen}/>
+      <Stack.Screen name="TransS" component={TransactionsScreen}
+        options={{
+          headerLeft: () => null,
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+              Transactions
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }} 
+      />
      </Stack.Navigator>
   )
 }

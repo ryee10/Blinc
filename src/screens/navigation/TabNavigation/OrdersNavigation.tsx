@@ -9,14 +9,24 @@ const OrdersNavigation = () => {
   return (
     <Stack.Navigator
     screenOptions={{
-      headerShown: false,
+      headerShown: true,
       ...TransitionPresets.SlideFromRightIOS,
       animationEnabled: true,
       gestureEnabled: true,
       gestureDirection: "horizontal",
      }}
      >
-      <Stack.Screen name="OrderS" component={OrdersScreen}/>
+      <Stack.Screen name="OrderS" component={OrdersScreen}
+        options={{
+          headerLeft: () => null,
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium',  }}>
+              My Orders
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}
+      />
      </Stack.Navigator>
   )
 }

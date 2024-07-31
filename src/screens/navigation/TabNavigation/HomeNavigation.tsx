@@ -1,44 +1,92 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { TransitionPresets, createStackNavigator } from '@react-navigation/stack'
-import HomeScreen from '../../tabs/home/HomeScreen'
-import ProfileScreen from '../../tabs/profile/ProfileScreen'
-import TopUp from '../../tabs/home/TopUp'
-import TopUpReceipt from '../../tabs/home/TopUpReceipt'
-import Transfer from '../../tabs/home/Transfer'
-import PersonalSettings from '../../tabs/profile/PersonalSettings';
-import AccountSettings from '../../tabs/profile/AccountSettings'
-import Password from '../../tabs/profile/Password'
-import KYC from '../../tabs/profile/KYC'
-import TeamScreen from '../../tabs/team/TeamScreen'
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { TransitionPresets, createStackNavigator } from '@react-navigation/stack';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import DrawerNavigation from '../DrawerNavigation';
+import TopUp from '../../tabs/home/TopUp';
+import TopUpReceipt from '../../tabs/home/TopUpReceipt';
+import Transfer from '../../tabs/home/Transfer';
+import AccountSettings from '../../tabs/profile/AccountSettings';
+import { DrawerActions } from '@react-navigation/native';
 
-const Stack = createStackNavigator( );
-
+const Stack = createStackNavigator();
 
 const HomeNavigation = () => {
+  const navigation = useNavigation();
+
   return (
     <Stack.Navigator
-    screenOptions={{
-      headerShown: false,
-      ...TransitionPresets.SlideFromRightIOS,
-      animationEnabled: true,
-      gestureEnabled: true,
-      gestureDirection: "horizontal",
-     }}
-     >
-      <Stack.Screen name="HomeS" component={HomeScreen}/>
-      <Stack.Screen name="ProfileS"component={ProfileScreen}/>
-      <Stack.Screen name="TopUp" component={TopUp}/>
-      <Stack.Screen name="TopUpReceipt" component={TopUpReceipt}/>
-      <Stack.Screen name="Transfer" component={Transfer}/>
-      <Stack.Screen name="PersonalS" component={PersonalSettings}/>
-      <Stack.Screen name="AccountS" component={AccountSettings}/>
-      <Stack.Screen name="Password" component={Password}/>
-      <Stack.Screen name="KYC" component={KYC}/>
-      <Stack.Screen name="Team" component={TeamScreen}/>
-      
+      screenOptions={{
+        headerShown: true,
+        ...TransitionPresets.SlideFromRightIOS,
+        animationEnabled: true,
+        gestureEnabled: true,
+        gestureDirection: "horizontal",
+      }}
+    >
+      <Stack.Screen 
+        name="Drawer" 
+        component={DrawerNavigation}
+        options={{
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+              <Ionicons 
+                name='menu-outline' 
+                size={24} 
+                color={'#252525'}
+                style={{ width: 24, height: 24, marginLeft: 17 }}
+              />
+            </TouchableOpacity>
+          ),
+          headerRight: () => (
+            <Ionicons 
+              name='notifications-outline' 
+              size={24} 
+              color={'#252525'} 
+              style={{ marginRight: 17 }}
+            /> 
+          ),
+          headerTitle: () => (
+            <Image 
+              source={require('../../../../assets/images/logo-default-title.png')}
+              style={{ width: 144, height: 36, resizeMode: 'contain' }}
+            />
+          ),
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen name="TopUp" component={TopUp} 
+        options={{
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+               Top Up
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}  
+      />
+      <Stack.Screen name="TopUpReceipt" component={TopUpReceipt}
+      options={{ 
+        headerTitle: () => (
+          <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+             TopUpReceipt
+          </Text>
+        ),
+        headerTitleAlign: 'center'
+      }} />
+      <Stack.Screen name="Transfer" component={Transfer} 
+        options={{ 
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+               Transfer
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}
+      />
     </Stack.Navigator>
-  )
-}
+  );
+};
 
-export default HomeNavigation
+export default HomeNavigation;

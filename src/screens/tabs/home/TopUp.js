@@ -1,214 +1,127 @@
-import React, {useState} from 'react';
-import { View, Text, StyleSheet, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { Ionicons } from '@expo/vector-icons';
-import RNPickerSelect from 'react-native-picker-select';
-import { LinearGradient } from 'expo-linear-gradient';
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons'; // For icons
+import AntDesignIcon from 'react-native-vector-icons/AntDesign'; // For Ant Design icons
 
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
+const TopUpScreen = () => {
+  const [selectedMethod, setSelectedMethod] = useState('Metamask');
 
-const RadioButton = ({ label, selected, onPress }) => {
-    return (
-        <TouchableOpacity style={styles.radioButtonContainer2} onPress={onPress}>
-            <View style={styles.leftContainer}>
-                <Text style={styles.radioButtonLabel}>{label}</Text>
+  const handleSelectMethod = (method) => {
+    setSelectedMethod(method);
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.searchInput}
+        placeholder="Search"
+        placeholderTextColor="#aaa"
+      />
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        <Text style={styles.sectionTitle}>MY FAVORITES</Text>
+        <Text style={styles.subtitle}>Complete a transaction to add it to your favorites</Text>
+        <View style={styles.favoritesContainer}>
+          {Array(4).fill(null).map((_, index) => (
+            <TouchableOpacity key={index} style={styles.favoritePlaceholder}>
+              <AntDesignIcon name="plus" size={15} color="#5977FD " />
+            </TouchableOpacity>
+          ))}
+        </View>
+        <Text style={styles.sectionTitle}>Top-up Methods</Text>
+        {topUpMethods.map((method, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.methodContainer}
+            onPress={() => handleSelectMethod(method.name)}
+          >
+            <View style={styles.methodInfo}>
+              <Icon name={method.icon} size={24} color="#000" />
+              <Text style={styles.methodText}>{method.name}</Text>
             </View>
-            <View style={styles.rightContainer}>
-                <View style={styles.radioButton}>
-                {selected ? <View style={styles.radioButtonSelected} /> : null}
-            </View>
-            </View>
-        </TouchableOpacity>
-    );
+            {selectedMethod === method.name && (
+              <AntDesignIcon name="checkcircle" size={24} color="#007bff" />
+            )}
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </View>
+  );
 };
 
-const TopUp = () => {
-    const navigation = useNavigation();
-    const [method, setMethod] = useState('');
-    const [selectedMethod, setSelectedMethod] = useState('');
-
-    return(
-        <LinearGradient colors={["#DA84FE", "#6079FE"]} style={styles.container}>
-            <View style={styles.arrowContainer}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Ionicons name="chevron-back" size={22} color="#fff" /> 
-                </TouchableOpacity>
-            </View>
-            <View style={styles.titleContainer}>
-                <Text style={styles.title}>Top-Up</Text>
-            </View>
-            <View style={styles.outerContainer}>
-                <View style={styles.innerContainer}>
-                    <View style={styles.labelContainer}>
-                        <Text style={styles.label}>Payment Method</Text>
-                    </View>
-                    <View style={styles.radioButtonContainer}>
-                    <RadioButton
-                        label="Metamask"
-                        selected={selectedMethod === 'Metamask'}
-                        onPress={() => setSelectedMethod('Metamask')}/>
-                    <RadioButton
-                        label="E-wallet"
-                        selected={selectedMethod === 'E-wallet'}
-                        onPress={() => setSelectedMethod('E-wallet')}/>
-                        </View>
-                    <View style={styles.labelContainer}>
-                        <Text style={styles.label}>Enter Amount:</Text>
-                    </View>
-                    <View style={styles.inputContainer1}>
-                        <TextInput 
-                            style={styles.inputContainer2}
-                            placeholder='Amount'
-                            keyboardType="phone-pad"
-                        />
-                    </View>
-                    <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.sendButton} onPress={() => navigation.navigate('TopUpReceipt')}>
-                            <Text style={styles.buttonText}>Confirm</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </View>
-        </LinearGradient>
-    );
-};
+const topUpMethods = [
+  { name: 'Metamask', icon: 'account-balance-wallet' },
+  { name: 'E-wallet', icon: 'account-balance-wallet' },
+  { name: 'Linked Bank Account', icon: 'account-balance' },
+  { name: 'Debit or Credit Card', icon: 'credit-card' },
+];
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F1F1F1',
-    },
-    arrowContainer: {
-        marginStart: 20,
-        marginTop: 50,
-        marginBottom: 30,
-    },
-    titleContainer: {
-        width: screenWidth,
-        height: 'auto',
-        alignItems: 'center',
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#FFF',
-    },
-    outerContainer: {
-        width: screenWidth,
-        height: 'auto',
-        alignItems: 'center',
-        paddingBottom: 20,
-        justifyContent: 'center',
-        // backgroundColor: 'green'
-    },
-    innerContainer: {
-        width: '90%',
-        height: '80%',
-        margin: 10,
-        borderRadius: 10,
-        backgroundColor: '#FFF',
-    },
-    labelContainer: {
-        flexDirection: 'row',
-        padding: 20,
-    },
-    label: {
-        fontSize: 14,
-        marginStart: 10,
-        marginTop: 20,
-    },
-    inputContainer1: {
-        width: '100%',
-        height: 50,
-        alignItems: 'center',
-        // backgroundColor: 'green'
-    },
-    inputContainer2: {
-        width: '90%',
-        height: 50,
-        borderRadius: 5,
-        backgroundColor: '#f1f1f1',
-        paddingHorizontal: 10,
-    },
-    buttonContainer: {
-        width: '100%',
-        alignItems: 'center',
-        marginTop: 50,
-    },
-    sendButton: {
-        width: '90%',
-        height: 50,
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'rgba(218, 132, 254, 0.7)',
-    },
-    buttonText: {
-        fontSize: 15,
-        color: '#FFF',
-        fontWeight: 'bold',
-    },
-    radioButtonContainer: {
-        alignItems: 'center',
-        // backgroundColor: 'yellow'
-    },
-    radioButtonContainer2: {
-        width: '90%',
-        height: 60,
-        borderRadius: 5,
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 10,
-        backgroundColor: '#f1f1f1'
-    },
-    leftContainer: {
-        width: '80%',
-        height: 'auto',
-        // backgroundColor: 'white'
-    },
-    rightContainer: {
-        width: '20%',
-        height: 'auto',
-        // backgroundColor: 'white'
-    },
-    radioButton: {
-        height: 20,
-        width: 20,
-        marginStart: 20,
-        borderRadius: 12,
-        borderWidth: 2,
-        borderColor: '#4b9fa5',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    radioButtonSelected: {
-        height: 12,
-        width: 12,
-        borderRadius: 6,
-        backgroundColor: '#4b9fa5',
-    },
-    radioButtonLabel: {
-        margin: 10,
-        fontSize: 14,
-    },
-    icon: {
-        width: 30,
-        height: 30,
-    }
+  container: {
+    flex: 1,
+    backgroundColor: '#F0F4F7',
+
+  },
+  backButton: {
+    marginRight: 10,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  searchInput: {
+    height: 40,
+    backgroundColor: '#EBEBEB',
+    margin: 15,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ddd',
+  },
+  contentContainer: {
+    paddingHorizontal: 15,
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontFamily: 'WorkSans-Medium',
+    marginBottom: 5,
+  },
+  subtitle: {
+    color: '#949494',
+    fontFamily: 'WorkSans-Regular',
+    marginBottom: 18,
+  },
+  favoritesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 18,
+  },
+  favoritePlaceholder: {
+    width: 56,
+    height: 56,
+    borderRadius: 30,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#5977FD',
+    borderStyle: 'dashed'
+  },
+  methodContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    padding: 25,
+    borderColor: '#ddd',
+    width: '100%'
+  },
+  methodInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  methodText: {
+    marginLeft: 10,
+    fontSize: 16,
+  },
 });
 
-const pickerSelectStyles = StyleSheet.create({
-    inputAndroid: {
-        width: '90%',
-        borderColor: '#ccc',
-        borderRadius: 5,
-        color: 'black',
-        paddingHorizontal: 10,
-        marginStart: 20,
-        backgroundColor: '#f1f1f1',
-        textAlign: 'center',
-    },
-  });
-
-export default TopUp;
+export default TopUpScreen;

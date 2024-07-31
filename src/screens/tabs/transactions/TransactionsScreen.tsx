@@ -1,7 +1,7 @@
 // screens/AnimationTab1.js
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
-import { FontAwesome5} from '@expo/vector-icons';
+import { View, Text, StyleSheet, Dimensions, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import { FontAwesome5, Ionicons} from '@expo/vector-icons';
 import { LinearGradient } from "expo-linear-gradient";
 
 
@@ -13,10 +13,11 @@ const Tab5 = () => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
     <View style={styles.container}>
-      <LinearGradient colors={['#6079FE','#DA84FE']} start={[0, 3]} end={[1, 1]}  style={styles.titleContainer}>
-        <Text style={styles.title}>Transactions List</Text>
-      </LinearGradient>
-
+    <View style={styles.searchContainer}>
+          <Ionicons name="search-outline" size={20} color="#000000" style={styles.searchIcon} />
+          <TextInput placeholder="Search" style={styles.searchInput} />
+          <FontAwesome5 name="filter" size={20} color="#999" style={styles.filterIcon} />
+        </View>
       <View style={styles.contentContainer}>
           <View style={styles.transacContainer}> 
           <View style={styles.icon}>
@@ -62,13 +63,35 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    color: '#F0F4F7'
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+    padding: 10,
+    borderRadius: 10,
+    width: '90%',
+    marginVertical: 20,
+    elevation: 3,
+  },
+  searchIcon: {
+    marginHorizontal: 10,
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: 16,
+    color: '#999',
+  },
+  filterIcon: {
+    marginHorizontal: 10,
   },
   titleContainer: {
     width: screenWidth,
     height: '13%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#6079FE',
+    backgroundColor: '',
     marginBottom: 10,
   },
   title: {

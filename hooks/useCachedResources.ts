@@ -14,15 +14,6 @@ export default function useCachedResources(){
                 SplashScreen.preventAutoHideAsync();
 
                 await Font.loadAsync({
-                    "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
-                    "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
-                    "Poppins-ExtraBold": require("../assets/fonts/Poppins-ExtraBold.ttf"),
-                    "Poppins-ExtraLight": require("../assets/fonts/Poppins-ExtraLight.ttf"),
-                    "Poppins-Light": require("../assets/fonts/Poppins-Light.ttf"),
-                    "Poppins-Medium": require("../assets/fonts/Poppins-Medium.ttf"),
-                    "Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
-                    "Poppins-SemiBold": require("../assets/fonts/Poppins-SemiBold.ttf"),
-                    "Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
                     "WorkSans-Black": require("../assets/fonts/WorkSans-Black.ttf"),
                     "WorkSans-BlackItalic": require("../assets/fonts/WorkSans-BlackItalic.ttf"),
                     "WorkSans-BoldItalic": require("../assets/fonts/WorkSans-BoldItalic.ttf"),
@@ -40,6 +31,7 @@ export default function useCachedResources(){
                     "WorkSans-SemiBoldI": require("../assets/fonts/WorkSans-SemiBoldItalic.ttf"),
                     "WorkSans-Thin": require("../assets/fonts/WorkSans-Thin.ttf"),
                     "WorkSans-ThinI": require("../assets/fonts/WorkSans-ThinItalic.ttf"),
+                    "WorkSans-Bold": require("../assets/fonts/WorkSans-Bold.ttf"),
 
 
 

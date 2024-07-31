@@ -14,7 +14,7 @@ const data = [
 
 
 const OrderScreen = () => {
-  const [activeTab, setActiveTab] = useState('Team');
+  const [activeTab, setActiveTab] = useState('Active');
 
   const renderContent = () => {
     if (activeTab === 'Active') {
@@ -168,10 +168,7 @@ const OrderScreen = () => {
   };
   
   return (
-    <View style={styles.container}>
-      <LinearGradient colors={['#6079FE','#DA84FE']} start={[0, 3]} end={[1, 1]}  style={styles.titleContainer}>
-        <Text style={styles.title}>My Orders</Text>
-      </LinearGradient>
+    <View style={styles.container}>       
       <View style={styles.buttonContainer}>
         <ScrollView horizontal = {true}>
         <TouchableOpacity 
@@ -236,7 +233,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#CBD3FF'
+    backgroundColor: '#E2E8F0'
   },
   activeButton: {
     backgroundColor: '#6079FE',
