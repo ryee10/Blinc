@@ -1,11 +1,9 @@
-import React, {useState}from 'react';
-import {View, Text, StyleSheet, Dimensions, TouchableOpacity, ScrollView, TextComponent} from 'react-native';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { Button, TextInput } from 'react-native-paper';
 import RNPickerSelect from 'react-native-picker-select';
-
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -28,105 +26,132 @@ const PersonalSettings = () => {
         setBirthdate(currentDate)
     }
 
-    const handleSave = () => {
-
-    }
-
-    return (
+    return(
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container}>
             <View style={styles.arrowContainer}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Ionicons name="chevron-back" size={25} color="black" />
+                    <Ionicons name="chevron-back" size={22} color="#000" /> 
                 </TouchableOpacity>
             </View>
-            <View style={styles.innerContainer}>
-   
-            <View style={styles.inputContainer}>
-                <View style={styles.titleContainer}>
-                <MaterialCommunityIcons name="shield-account-outline" size={22} color="black" /> 
-                <Text style={styles.title}>Personal Settings</Text>
-                </View>
-                <View style={styles.line}></View>
-            
-                <View style={styles.inputContainer2}>
-                <Text style={styles.label}>First Name</Text>
-                <TextInput 
-                style={styles.inputContainer3}
-                placeholder='First Name'
-                value={firstName}
-                onChangeText={setFirstName}>
-                </TextInput>
-                <Text style={styles.label}>Last Name</Text>
-                <TextInput style={styles.inputContainer3}
-                 placeholder='Last Name'
-                 value={lastName}
-                 onChangeText={setLastName}>
-                </TextInput>
-                <Text style={styles.label}>Username</Text>
-                <TextInput style={styles.inputContainer3}
-                 placeholder='Username'
-                 value={username}
-                 onChangeText={setUsername}>
-                </TextInput>
-                <Text style={styles.label}>Phone Number</Text>
-                <TextInput style={styles.inputContainer3}
-                 placeholder='+01 234-567-890'
-                 value={phoneNo}
-                 keyboardType='phone-pad'
-                 onChangeText={setPhoneNo}>
-                </TextInput>
-                <Text style={styles.label}>Date of Birth</Text>
-                <TouchableOpacity
-                style={styles.inputContainer3}
-                onPress={() => setShow(true)}>
-                <Text style={styles.dateLabel}>{birthdate.toDateString()}</Text>
-                </TouchableOpacity>
-                {show && (
-                    <DateTimePicker
-                    testID="DatePicker"
-                    value={birthdate}
-                    mode="date"
-                    display="default"
-                    onChange={onChange}/>
-                )}
-                <Text style={styles.label}>Gender</Text>
-                <RNPickerSelect
-                onValueChange={(value) => setGender (value)}
-                items={[
-                    {label: 'Male', value: 'Male'},
-                    {label: 'Female', value: 'Female'},
-                ]}
-                style={pickerSelectStyles}
-                value={gender}>
+            <View style={styles.outerContainer}>
+                <View style={styles.innerContainer}>
+                    <View style={styles.titleContainer}>
+                        <MaterialCommunityIcons name="shield-account-outline" size={22} color="black" /> 
+                        <Text style={styles.title}>Personal Settings</Text>
+                        </View>
+                        <View style={styles.line}></View>
+                        
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>First Name</Text>
+                        </View>
+                        <View style={styles.inputContainer1}>
+                            <TextInput 
+                                style={styles.inputContainer2}
+                                placeholder='First Name'
+                                value={firstName}
+                                onChangeText={setFirstName}
+                            />
+                        </View>
 
-                </RNPickerSelect>
-                <Text style={styles.label}>Bio</Text>
-                <TextInput style={styles.inputContainer3}
-                 placeholder='Bio'
-                 value={bio}
-                 onChangeText={setBio}>
-                </TextInput>
-                
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Last Name</Text>
+                        </View>
+                        <View style={styles.inputContainer1}>
+                            <TextInput 
+                                style={styles.inputContainer2}
+                                placeholder='Last Name'
+                                value={lastName}
+                                onChangeText={setLastName}
+                            />
+                        </View>
+
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Username</Text>
+                        </View>
+                        <View style={styles.inputContainer1}>
+                            <TextInput 
+                                style={styles.inputContainer2}
+                                placeholder='Username'
+                                value={username}
+                                onChangeText={setUsername}
+                            />
+                        </View>
+
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Phone Number</Text>
+                        </View>
+                        <View style={styles.inputContainer1}>
+                            <TextInput 
+                                style={styles.inputContainer2}
+                                placeholder='+01 234-567-890'
+                                keyboardType='phone-pad'
+                                value={phoneNo}
+                                onChangeText={setPhoneNo}
+                            />
+                        </View>
+
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Date of Birth</Text>
+                        </View>
+                        <View style={styles.inputContainer1}>
+                            <TouchableOpacity
+                                style={styles.inputContainer3}
+                                onPress={() => setShow(true)}>
+                                <Text style={styles.dateLabel}>{birthdate.toDateString()}</Text>
+                            </TouchableOpacity>
+                                {show && (
+                                    <DateTimePicker
+                                    testID="DatePicker"
+                                    value={birthdate}
+                                    mode="date"
+                                    display="default"
+                                    onChange={onChange}/>
+                                )}
+                        </View>
+
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Gender</Text>
+                        </View>
+                        <View style={styles.inputContainer1}>
+                        <RNPickerSelect
+                        onValueChange={(value) => setGender (value)}
+                        items={[
+                            {label: 'Male', value: 'Male'},
+                            {label: 'Female', value: 'Female'},
+                        ]}
+                        style={pickerSelectStyles}
+                        value={gender}>
+
+                        </RNPickerSelect>
+                        </View>
+
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Bio</Text>
+                        </View>
+                        <View style={styles.inputContainer1}>
+                            <TextInput 
+                                style={styles.inputContainer2}
+                                placeholder='Bio'
+                            />
+                        </View>
                 </View>
-                
-            </View>
-            <View style={styles.buttonContainer}>
+
+                <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.updateButton}>
                 <MaterialCommunityIcons name="update" size={30} color="#647CFF" /> 
-                <Text style={styles.updateText}>Update Information</Text>
+                <Text style={styles.updateText} onPress={() => navigation.navigate("Personal")}>Update Information</Text>
             </TouchableOpacity>
             </View>
+
             </View>
+            
         </View>
         </ScrollView>
-
     );
-
 };
 
-const styles=StyleSheet.create({
-
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F1F1F1',
@@ -134,49 +159,72 @@ const styles=StyleSheet.create({
     arrowContainer: {
         marginStart: 20,
         marginTop: 50,
-        marginBottom: 40
-    },
-    innerContainer: {
-        alignItems: 'center',
-        justifyContent: 'center'
-        // backgroundColor: 'green',
+        marginBottom: 20
     },
     titleContainer: {
+        width: 'auto',
+        height: 'auto',
+        // backgroundColor: 'green',
+        alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: 'row',
         padding: 20,
     },
     title: {
         fontSize: 18,
         marginStart: 5,
-        fontFamily:'WorkSans-SemiBold'
-    },
-    inputContainer: {
-        width: '90%',
-        height: 920,
-        borderRadius: 10,
-        alignItems: 'center',
-        backgroundColor: '#FFF',
+        fontWeight: 'bold'
     },
     line: {
         width: '100%',
         height: 1,
         backgroundColor: '#CCC',
     },
-    inputContainer2: {
-        width: '80%',
-        height: '40%',
-        marginTop: 20,
-        // backgroundColor: 'green',
+    outerContainer: {
+        width: screenWidth,
+        height: 'auto',
+        alignItems: 'center',
+        paddingBottom: 20,
+        // justifyContent: 'center',
+        // backgroundColor: 'green'
     },
-    inputContainer3: {
-        width: 'auto',
-        height: 50,
-        marginTop: 20,
+    innerContainer: {
+        width: '90%',
+        height: 850,
+        margin: 10,
         borderRadius: 10,
-        backgroundColor: '#F1F1F1',
+        backgroundColor: '#FFF',
+    },
+    labelContainer: {
+        flexDirection: 'row',
+        paddingStart: 20,
+        paddingTop: 20,
+        paddingBottom: 10,
     },
     label: {
-        marginTop: 20,
+        fontSize: 14,
+        marginStart: 10,
+    },
+    inputContainer1: {
+        width: '100%',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // backgroundColor: 'green'
+    },
+    inputContainer2: {
+        width: '80%',
+        height: 50,
+        borderRadius: 5,
+        backgroundColor: '#f1f1f1',
+        paddingHorizontal: 10,
+    },
+    inputContainer3: {
+        width: '80%',
+        height: 50,
+        borderRadius: 5,
+        justifyContent: 'center',
+        backgroundColor: '#F1F1F1',
     },
     buttonContainer: {
         width: '90%',
@@ -198,40 +246,30 @@ const styles=StyleSheet.create({
     updateText: {
         fontSize: 15,
         marginStart: 5,
-        color: '#647CFF',
-        fontFamily:'WorkSans-Regular'
+        color: '#647CFF'
 
     },
     dateLabel: {
-        fontSize: 16,
+        fontSize: 14,
         margin: 12,
-        color: '#CCC',
-        fontFamily:'WorkSans-Regular'
+        color: '#CCC'
     }
 
 });
 
 const pickerSelectStyles = StyleSheet.create({
     inputIOS: {
-      fontSize: 16,
-      paddingVertical: 12,
-      paddingHorizontal: 10,
-      borderWidth: 1,
-      borderColor: '#ccc',
-      borderRadius: 10,
-      color: 'black',
-      paddingRight: 30,
-      backgroundColor: 'white',
-      textAlign: 'center',
+        margin: 35,
+        width: '80%',
+        height: 'auto',
+        backgroundColor: '#f1f1f1'
+     
     },
     inputAndroid: {
-      fontSize: 16,
-      borderColor: '#ccc',
-      borderRadius: 10,
-      marginTop: 20,
-      color: 'black',
-      backgroundColor: '#f1f1f1',
-      textAlign: 'center',
+        margin: 35,
+        width: '80%',
+        height: 'auto',
+        backgroundColor: '#f1f1f1'
     },
   });
 

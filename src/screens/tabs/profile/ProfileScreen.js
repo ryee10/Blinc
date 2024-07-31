@@ -39,7 +39,7 @@ const ProfileScreen = () => {
       <LinearGradient colors={["#6079FE", "#DA84FE"]} style={styles.header}>
         <View style={styles.arrowContainer}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name="chevron-back" size={22} color="black" />
+            <Ionicons name="chevron-back" size={28} color="#fff" />
           </TouchableOpacity>
         </View>
         <View style={styles.profileInfo}>
@@ -112,31 +112,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F4F7',
   },
   header: {
-    paddingVertical: 20,
-    paddingHorizontal: 15,
-    height: 175,
+    height: 195,
   },
   arrowContainer: {
-    marginStart: 7,
-    marginTop: 20,
+    marginStart: 20,
+    marginTop: 50,
+    marginEnd: 20,
   },
   profileInfo: {
+    width: screenWidth,
+    height: 100,
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    // backgroundColor: 'red'
   },
   avatarPlaceholder: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     borderRadius: 30,
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 20,
-    marginLeft: 14,
+    marginLeft: 20,
   },
   avatarText: {
-    fontSize: 24,
+    fontSize: 14,
     color: '#6a11cb',
     fontFamily:'WorkSans-Regular'
   },
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
   },
   userName: {
     color: '#F0F4F7',
-    fontSize: 20,
+    fontSize: 14,
     fontWeight: 'bold',
     fontFamily:'WorkSans-Regular'
   },
@@ -153,17 +154,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     borderRadius: 8,
-    width: 95,
+    marginTop: 5,
+    width: 120,
     fontFamily:'WorkSans-Regular'
   },
   userRole: {
     color: '#6a11cb',
-    fontSize: 16,
+    fontSize: 14,
     fontFamily:'WorkSans-Regular'
   },
   userBalance: {
     color: '#F0F4F7',
     fontSize: 16,
+    marginTop: 5,
     fontFamily:'WorkSans-Regular'
   },
   buttonContainer: {

@@ -23,40 +23,43 @@ const RadioButton = ({ label, selected, onPress }) => {
     );
 };
 
-const Transfer = () => {
+const Withdraw = () => {
     const navigation = useNavigation();
     const [method, setMethod] = useState('');
     const [selectedMethod, setSelectedMethod] = useState('');
 
     return(
-        <View style={styles.container}>
+        <ImageBackground source={require('./Gradient2.png')} style={styles.container}>
             <View style={styles.upperContainer}>
                 <View style={styles.arrowContainer}>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Ionicons name="chevron-back" size={28} color="#FFF" /> 
+                        <Ionicons name="chevron-back" size={28} color="#fff" /> 
                     </TouchableOpacity>
-                    <Text style={styles.title}>Transfer</Text>
+                    <Text style={styles.title}>Withdraw</Text>
                 </View>
+            </View>
+            <View style={styles.titleContainer}>
+                {/* <Text style={styles.title}>Top-Up</Text> */}
             </View>
             <View style={styles.outerContainer}>
                 <View style={styles.innerContainer}>
                     <View style={styles.labelContainer}>
-                        <Text style={styles.label}>Send To</Text>
+                        <Text style={styles.label}>Select Method</Text>
                     </View>
-                    <View style={styles.inputContainer1}>
-                        <TextInput 
-                        style={styles.inputContainer2}
-                        placeholder='Account No.'
-                        keyboardType="phone-pad"/>
-                    </View>
-
-                    <View style={styles.inputContainer1}>
-                        <TextInput 
-                        style={styles.inputContainer2}
-                        placeholder='Full Name'/>
-                    </View>
-    
-       
+                    <View style={styles.radioButtonContainer}>
+                        <View style={styles.iconContainer}></View>
+                    <RadioButton
+                        label="..."
+                        selected={selectedMethod === 'Metamask'}
+                        onPress={() => setSelectedMethod('Metamask')}/>
+                         </View>
+                         <View style={styles.radioButtonContainer}>
+                            <View style={styles.iconContainer}></View>
+                            <RadioButton
+                            label="..."
+                            selected={selectedMethod === 'E-wallet'}
+                            onPress={() => setSelectedMethod('E-wallet')}/>
+                            </View>
                             <View style={styles.labelContainer}>
                                 <Text style={styles.label}>Enter Amount:</Text>
                             </View>
@@ -68,7 +71,7 @@ const Transfer = () => {
                                 />
                             </View>
                             <View style={styles.buttonContainer}>
-                                <TouchableOpacity style={styles.sendButton} onPress={() => navigation.navigate('TransferReceipt')}>
+                                <TouchableOpacity style={styles.sendButton} onPress={() => navigation.navigate('TopUpReceipt')}>
                                     <LinearGradient colors={['#6079FE','#DA84FE']} start={[0, 3]} end={[1, 1]}  style={styles.sendButton}>
                                     <Text style={styles.buttonText}>Confirm</Text>
                                     </LinearGradient>
@@ -77,7 +80,7 @@ const Transfer = () => {
                             </View>
                 </View>
             </View>
-        </View>
+        </ImageBackground>
     );
 };
 
@@ -124,7 +127,6 @@ const styles = StyleSheet.create({
     inputContainer1: {
         width: screenWidth,
         height: 'auto',
-        marginTop: 1.5,
         alignItems: 'center',
         backgroundColor: '#FFF'
     },
@@ -219,4 +221,4 @@ const pickerSelectStyles = StyleSheet.create({
     },
   });
 
-export default Transfer;
+export default Withdraw;

@@ -33,7 +33,7 @@ const TabNavigation = () => {
           } else if (route.name === "Transaction") {
             iconName = "receipt-outline";
           } 
-          const customizeSize = 32;
+          const customizeSize = 28;
           return (
             <Ionicons
               name={iconName}
@@ -50,7 +50,7 @@ const TabNavigation = () => {
             fontFamily: 'WorkSans-Medium',
          },
           tabBarStyle: {
-          height: 55,
+          height: 50,
         },
         ...TransitionPresets.SlideFromRightIOS,
         animationEnabled: true,

@@ -1,9 +1,9 @@
-import React from 'react';
-import {View, Text, StyleSheet, Dimensions, TouchableOpacity, ScrollView, TextComponent} from 'react-native';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import React, {useState} from 'react';
+import { View, Text, StyleSheet, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Button, TextInput } from 'react-native-paper';
-
+import { Ionicons, MaterialCommunityIcons, FontAwesome5, FontAwesome, Entypo, Foundation } from '@expo/vector-icons';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import RNPickerSelect from 'react-native-picker-select';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -11,50 +11,76 @@ const screenHeight = Dimensions.get('window').height;
 const PasswordSettings = () => {
     const navigation = useNavigation();
 
-    return (
+    const [password, setPassword] = useState('');
+   
+    const handleSave = () => {
+        console.log('New Password', password);
+       
+    }
+
+    return(
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container}>
             <View style={styles.arrowContainer}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Ionicons name="chevron-back" size={22} color="black" /> 
+                    <Ionicons name="chevron-back" size={22} color="#000" /> 
                 </TouchableOpacity>
             </View>
-            <View style={styles.innerContainer}>
-   
-            <View style={styles.inputContainer}>
-                <View style={styles.titleContainer}>
-                <MaterialCommunityIcons name="lock-outline" size={22} color="black" /> 
-                <Text style={styles.title}>Password Settings</Text>
+            <View style={styles.outerContainer}>
+                <View style={styles.innerContainer}>
+                    <View style={styles.titleContainer}>
+                        <MaterialCommunityIcons name="lock-outline" size={22} color="black" /> 
+                        <Text style={styles.title}>Password Settings</Text>
+                        </View>
+                        <View style={styles.line}></View>
+                        
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Old Password</Text>
+                        </View>
+                        <View style={styles.inputContainer1}>
+                            <TextInput 
+                                style={styles.inputContainer2}
+                                placeholder='Old Password'
+                            />
+                        </View>
+
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>New Password</Text>
+                        </View>
+                        <View style={styles.inputContainer1}>
+                            <TextInput 
+                                style={styles.inputContainer2}
+                                placeholder='New Password'
+                                value={password}
+                                onChangeText={setPassword}/>
+                        </View>
+
+                        <View style={styles.labelContainer}>
+                            <Text style={styles.label}>Confirm Password</Text>
+                        </View>
+                        <View style={styles.inputContainer1}>
+                            <TextInput 
+                                style={styles.inputContainer2}
+                                placeholder='Confirm Password'/>
+                        </View>
+
                 </View>
-                <View style={styles.line}></View>
-            
-                <View style={styles.inputContainer2}>
-                <Text style={styles.label}>New Password</Text>
-                <TextInput style={styles.inputContainer3}
-                placeholder='New Password'>
-                </TextInput>
-                <Text style={styles.label}>Confirm Password</Text>
-                <TextInput style={styles.inputContainer3}
-                placeholder='Confirm Password'>
-                </TextInput>
-                </View>
-                
-            </View>
-            <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.updateButton}>
+
+                <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.updateButton} onPress={handleSave}>
                 <MaterialCommunityIcons name="update" size={30} color="#647CFF" /> 
-                <Text style={styles.updateText}>Update Password</Text>
+                <Text style={styles.updateText}>Update Information</Text>
             </TouchableOpacity>
             </View>
+
             </View>
-           
+            
         </View>
-
+        </ScrollView>
     );
-
 };
 
-const styles=StyleSheet.create({
-
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F1F1F1',
@@ -62,52 +88,99 @@ const styles=StyleSheet.create({
     arrowContainer: {
         marginStart: 20,
         marginTop: 50,
-        marginBottom: 40
-    },
-    innerContainer: {
-        alignItems: 'center',
-        justifyContent: 'center'
-        // backgroundColor: 'green',
+        marginBottom: 20
     },
     titleContainer: {
+        width: 'auto',
+        height: 'auto',
+        // backgroundColor: 'green',
+        alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: 'row',
         padding: 20,
     },
     title: {
         fontSize: 18,
         marginStart: 5,
-        fontFamily:'WorkSans-SemiBold'
-    },
-    inputContainer: {
-        width: '90%',
-        height: '60%',
-        borderRadius: 10,
-        alignItems: 'center',
-        backgroundColor: '#FFF',
+        fontWeight: 'bold'
     },
     line: {
         width: '100%',
         height: 1,
         backgroundColor: '#CCC',
     },
-    inputContainer2: {
-        width: '80%',
-        height: '40%',
-        marginTop: 20,
-        // backgroundColor: 'green',
+    outerContainer: {
+        width: screenWidth,
+        height: 'auto',
+        alignItems: 'center',
+        paddingBottom: 20,
+        // justifyContent: 'center',
+        // backgroundColor: 'green'
     },
-    inputContainer3: {
-        width: 'auto',
-        height: 50,
-        marginTop: 20,
+    innerContainer: {
+        width: '90%',
+        height: 400,
+        margin: 10,
         borderRadius: 10,
-        backgroundColor: '#F1F1F1',
+        backgroundColor: '#FFF',
+    },
+    labelContainer: {
+        flexDirection: 'row',
+        paddingStart: 20,
+        paddingTop: 20,
+        paddingBottom: 10,
     },
     label: {
+        fontSize: 14,
+        marginStart: 10,
+    },
+    container2: {
+        width: 'auto',
+        height: 'auto',
+        justifyContent: 'center',
+        alignItems: 'center',
+        // backgroundColor: 'green'
+    },
+    inputContainer1: {
+        width: '100%',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // backgroundColor: 'green'
+    },
+    inputContainer2: {
+        width: '80%',
+        height: 50,
+        borderRadius: 5,
+        backgroundColor: '#f1f1f1',
+        paddingHorizontal: 10,
+    },
+    inputContainer3: {
+        width: '70%',
+        height: 50,
+        borderRadius: 5,
+        justifyContent: 'center',
+        backgroundColor: '#F1F1F1',
+    },
+    inputContainer4: {
+        width:'80%',
+        flexDirection: 'row',
         marginTop: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // backgroundColor: 'green'
+    },
+    logoContainer: {
+        width: 50,
+        height: 50,
+        marginEnd: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        backgroundColor: '#F1F1F1'
     },
     buttonContainer: {
-        width: '80%',
+        width: '90%',
         height: 'auto',
         marginTop: 50,
         alignItems: 'flex-end',
@@ -116,6 +189,7 @@ const styles=StyleSheet.create({
     updateButton: {
         width: 200,
         height: 50,
+        marginBottom: 30,
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
@@ -125,11 +199,31 @@ const styles=StyleSheet.create({
     updateText: {
         fontSize: 15,
         marginStart: 5,
-        color: '#647CFF',
-        fontFamily:'WorkSans-Regular'
+        color: '#647CFF'
 
+    },
+    dateLabel: {
+        fontSize: 14,
+        margin: 12,
+        color: '#CCC'
     }
 
-})
+});
+
+const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+        margin: 35,
+        width: '80%',
+        height: 'auto',
+        backgroundColor: '#f1f1f1'
+     
+    },
+    inputAndroid: {
+        margin: 35,
+        width: '80%',
+        height: 'auto',
+        backgroundColor: '#f1f1f1'
+    },
+  });
 
 export default PasswordSettings;
