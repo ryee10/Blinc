@@ -8,7 +8,6 @@ import TaskNavigation from "./TaskNavigation";
 import TransactionNavigation from "./TransactionNavigation";
 import GigsNavigation from "./GigsNavigation";
 import TeamNavigation from "./TeamNavigation";
-
 import { TransitionPresets } from "@react-navigation/stack"
 import DrawerNavigation from "../DrawerNavigation";
 
