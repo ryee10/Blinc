@@ -50,7 +50,7 @@ const TabNavigation = () => {
             fontFamily: 'WorkSans-Medium',
          },
           tabBarStyle: {
-          height: 50,
+          height: 55,
         },
         ...TransitionPresets.SlideFromRightIOS,
         animationEnabled: true,
