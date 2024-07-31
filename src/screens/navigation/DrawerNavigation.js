@@ -1,55 +1,47 @@
-import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
-import React from 'react';
-import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
-import { MaterialCommunityIcons, FontAwesome6, Ionicons, FontAwesome5, } from '@expo/vector-icons';
-import HomeNavigation from './TabNavigation/HomeNavigation';
-import AccountSettings from '../tabs/profile/AccountSettings';
-import PasswordSettings from '../tabs/profile/Password';
-import TabNavigation from './TabNavigation';
-import HomeScreen from '../tabs/home/HomeScreen';
-import KycVerified from '../tabs/profile/KYC';
-import TeamScreen from '../tabs/team/TeamScreen'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import React from "react";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { createDrawerNavigator, DrawerItemList } from "@react-navigation/drawer";
+import {
+  MaterialCommunityIcons,
+  FontAwesome6,
+  Ionicons,
+  FontAwesome5,
+} from "@expo/vector-icons";
+import HomeScreen from "../tabs/home/HomeScreen";
+import AccountSettings from "../tabs/profile/AccountSettings";
+import PasswordSettings from "../tabs/profile/Password";
+import KycVerified from "../tabs/profile/KYC";
+import TeamScreen from "../tabs/team/TeamScreen";
+import PersonalSettings from "../tabs/profile/PersonalSettings";
 import { LinearGradient } from "expo-linear-gradient";
-import PersonalSettings from '../tabs/profile/PersonalSettings';
-
-
-const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
   return (
     <Drawer.Navigator
-      drawerContent={
-        (props)=>{
-          return (
-            <SafeAreaView>
-              <LinearGradient colors={['#6079FE', '#DA84FE']}
-                start={{ x: 0, y: 0 }}
-                end={{ x: .90, y: .7 }}
-                >
-                <View style={styles.profileInfo}>
-    
-                  <View style={styles.avatarPlaceholder}>
-            <Text style={styles.avatarText}>JD</Text>
-          </View>
-          <View style={styles.userInfo}>
-            <Text style={styles.userName}>Juan Dela Cruz</Text>
-            <View style={styles.userRoleContainer}>
-              <Text style={styles.userRole}>Digital Worker</Text>
+      drawerContent={(props) => (
+        <View style={styles.drawerContent}>
+          <LinearGradient colors={['#6079FE','#DA84FE']} start={[0, 3]} end={[1, 1]} style={styles.headerContainer}>
+          <View style={styles.profileInfo}>
+            <View style={styles.leftContainer}>
+            <View style={styles.avatarPlaceholder}>
+              <Text style={styles.avatarText}>JD</Text>
             </View>
-            <Text style={styles.userBalance}>Bal: $100.00</Text>
+            </View>
+            <View style={styles.rightContainer}>
+            <View style={styles.userInfo}>
+              <Text style={styles.userName}>Juan Dela Cruz</Text>
+              <View style={styles.userRoleContainer}>
+                <Text style={styles.userRole}>Digital Worker</Text>
+              </View>
+            </View>
+            </View>
           </View>
-                </View>
-              </LinearGradient>
-              <DrawerItemList {...props}/> 
-            </SafeAreaView>
-          )
-        }
-      }
-
+          </LinearGradient>
+          <DrawerItemList {...props} />
+        </View>
+      )}
       screenOptions={{
         drawerStyle: {
           backgroundColor: '#fff',
@@ -134,7 +126,8 @@ const DrawerNavigation = () => {
           headerShadowVisible: false,
           headerShown: false,
           drawerIcon: () => (
-            <FontAwesome6 name="check-circle"
+            <FontAwesome6
+              name="check-circle"
               size={22}
               color="black"
             />
@@ -150,7 +143,8 @@ const DrawerNavigation = () => {
           headerShadowVisible: false,
           headerShown: false,
           drawerIcon: () => (
-            <Ionicons name="people-outline"
+            <Ionicons
+              name="people-outline"
               size={22}
               color="black"
             />
@@ -179,56 +173,72 @@ const DrawerNavigation = () => {
 };
 
 const styles = StyleSheet.create({
-  profileInfo: {
+  drawerContent: {
+    flex: 1,
+  },
+  headerContainer: {
     width: 'auto',
+    height: '15%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  profileInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 30,
-    marginBottom: 30,
-    // backgroundColor: 'green'
+    justifyContent: 'center',
+    margin: 10,
+  },
+  leftContainer: {
+    width: '30%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  rightContainer: {
+    width: '70%',
+    marginTop: 5
   },
   avatarPlaceholder: {
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: '#fff',
+    backgroundColor: '#f1f1f1',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: 20,
-    marginLeft: 14,
+    // backgroundColor: 'yellow'
   },
   avatarText: {
-    fontSize: 24,
+    fontSize: 20,
     color: '#6a11cb',
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular',
   },
   userInfo: {
-    width: 'auto',
+    flex: 1,
   },
   userName: {
     color: '#F0F4F7',
-    fontSize: 20,
-    fontWeight: 'bold',
-    fontFamily:'WorkSans-Regular'
+    fontSize: 18,
+    fontFamily: 'WorkSans-Semibold',
+    marginBottom: 5,
   },
   userRoleContainer: {
-    width: 150,
+    width: 130,
+    height: 20,
     backgroundColor: '#fff',
     alignItems: 'center',
     borderRadius: 8,
-    fontFamily:'WorkSans-Regular'
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   userRole: {
     color: '#6a11cb',
     fontSize: 15,
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular',
   },
   userBalance: {
     color: '#F0F4F7',
     fontSize: 16,
-    fontFamily:'WorkSans-Regular'
+    fontFamily: 'WorkSans-Regular',
   },
+});
 
-})
 export default DrawerNavigation;
-

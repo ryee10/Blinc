@@ -78,7 +78,7 @@ const PasswordSettings = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F1F1F1',
+        backgroundColor: '#f0f4f7',
     },
     arrowContainer: {
         marginStart: 20,

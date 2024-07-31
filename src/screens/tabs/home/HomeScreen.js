@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
 
   container2: {
     alignItems: "center",
-    backgroundColor: 'green'
+    // backgroundColor: 'green'
   },
 
   card: {
