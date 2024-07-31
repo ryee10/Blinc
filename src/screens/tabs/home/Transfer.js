@@ -48,7 +48,8 @@ const TransferScreen = () => {
             style={[styles.input, styles.noteInput]}
             placeholder="Add a note"
           />
-          <Button  title="Continue" />
+          <Button  title="Continue" 
+          action={() => navigation.navigate("TopUpReceipt")}/>
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -61,8 +61,7 @@ export default function GigsScreen() {
         <TouchableOpacity onPress={handleGigPress}>
           <Animated.View
             style={styles.gigCard}
-            entering={FadeInDown.duration(100).delay(100).springify()}
-          >
+            entering={FadeInDown.duration(100).delay(100).springify()}>
             <Image source={gigData.image} style={styles.gigImage} />
             <View style={styles.gigDetails}>
               <Text style={styles.gigTitle}>{gigData.title}</Text>
@@ -78,12 +77,10 @@ export default function GigsScreen() {
       <Animated.View
         entering={FadeInDown.duration(100).delay(300).springify()}
         style={{ marginLeft: 16, marginRight: 16 }}
-        className="pb-5"
-      >
+        className="pb-5">
         <Button
           title="Add new gig"
-          action={() => navigation.navigate("AddG")}
-        />
+          action={() => navigation.navigate("AddG")}/>
       </Animated.View>
       {isSheetVisible && (
         <BottomSheet

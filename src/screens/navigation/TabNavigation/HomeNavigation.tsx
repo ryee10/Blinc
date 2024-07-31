@@ -86,6 +86,16 @@ const HomeNavigation = () => {
           headerTitleAlign: 'center'
         }}
       />
+      <Stack.Screen name="TopUpReceipt" component={TopUpReceipt} 
+        options={{ 
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+               Receipt
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}
+      />
     </Stack.Navigator>
   );
 };
