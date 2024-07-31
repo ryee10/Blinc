@@ -36,7 +36,7 @@ const HomeNavigation = () => {
                 name='menu-outline' 
                 size={24} 
                 color={'#252525'}
-                style={{ width: 24, height: 24, marginLeft: 17 }}
+                style={{ width: 28, height: 28, marginLeft: 20 }}
               />
             </TouchableOpacity>
           ),
@@ -45,57 +45,19 @@ const HomeNavigation = () => {
               name='notifications-outline' 
               size={24} 
               color={'#252525'} 
-              style={{ marginRight: 17 }}
+              style={{ marginRight: 20 }}
             /> 
           ),
           headerTitle: () => (
             <Image 
               source={require('../../../../assets/images/logo-default-title.png')}
-              style={{ width: 144, height: 36, resizeMode: 'contain' }}
+              style={{ width: 150, height: 36, resizeMode: 'contain' }}
             />
           ),
           headerTitleAlign: 'center',
         }}
       />
-      <Stack.Screen name="TopUp" component={TopUp} 
-        options={{
-          headerTitle: () => (
-            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
-               Top Up
-            </Text>
-          ),
-          headerTitleAlign: 'center'
-        }}  
-      />
-      <Stack.Screen name="Withdraw" component={Withdraw}
-      options={{ 
-        headerTitle: () => (
-          <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
-             Withdraw
-          </Text>
-        ),
-        headerTitleAlign: 'center'
-      }} />
-      <Stack.Screen name="Transfer" component={Transfer} 
-        options={{ 
-          headerTitle: () => (
-            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
-               Transfer
-            </Text>
-          ),
-          headerTitleAlign: 'center'
-        }}
-      />
-      <Stack.Screen name="TopUpReceipt" component={TopUpReceipt} 
-        options={{ 
-          headerTitle: () => (
-            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
-               Receipt
-            </Text>
-          ),
-          headerTitleAlign: 'center'
-        }}
-      />
+      
     </Stack.Navigator>
   );
 };

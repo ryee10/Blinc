@@ -21,15 +21,10 @@ const PasswordSettings = () => {
     return(
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container}>
-            <View style={styles.arrowContainer}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Ionicons name="chevron-back" size={22} color="#000" /> 
-                </TouchableOpacity>
-            </View>
             <View style={styles.outerContainer}>
                 <View style={styles.innerContainer}>
                     <View style={styles.titleContainer}>
-                        <MaterialCommunityIcons name="lock-outline" size={22} color="black" /> 
+                        <MaterialCommunityIcons name="lock-outline" size={22} color="#647CFF" /> 
                         <Text style={styles.title}>Password Settings</Text>
                         </View>
                         <View style={styles.line}></View>
@@ -102,7 +97,8 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         marginStart: 5,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#647CFF',
     },
     line: {
         width: '100%',
@@ -118,7 +114,7 @@ const styles = StyleSheet.create({
         // backgroundColor: 'green'
     },
     innerContainer: {
-        width: '90%',
+        width: '95%',
         height: 400,
         margin: 10,
         borderRadius: 10,
@@ -151,8 +147,8 @@ const styles = StyleSheet.create({
     inputContainer2: {
         width: '80%',
         height: 50,
-        borderRadius: 5,
-        backgroundColor: '#f1f1f1',
+        borderRadius: 3,
+        borderWidth: 0.2,
         paddingHorizontal: 10,
     },
     inputContainer3: {
@@ -182,7 +178,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         width: '90%',
         height: 'auto',
-        marginTop: 50,
+        marginTop: 10,
         alignItems: 'flex-end',
         // backgroundColor: 'green'
     },

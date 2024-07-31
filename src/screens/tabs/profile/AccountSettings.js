@@ -26,15 +26,10 @@ const AccountSettings = () => {
     return(
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container}>
-            <View style={styles.arrowContainer}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Ionicons name="chevron-back" size={22} color="#000" /> 
-                </TouchableOpacity>
-            </View>
             <View style={styles.outerContainer}>
                 <View style={styles.innerContainer}>
                     <View style={styles.titleContainer}>
-                        <FontAwesome5 name="user-circle" size={22} color="black" /> 
+                        <FontAwesome5 name="user-circle" size={22} color="#647CFF" /> 
                         <Text style={styles.title}>Account Settings</Text>
                         </View>
                         <View style={styles.line}></View>
@@ -144,7 +139,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginStart: 5,
         fontWeight: 'bold',
-        fontFamily:'WorkSans-Regular'
+        color: '#647CFF'
     },
     line: {
         width: '100%',
@@ -160,7 +155,7 @@ const styles = StyleSheet.create({
         // backgroundColor: 'green'
     },
     innerContainer: {
-        width: '90%',
+        width: '95%',
         height: 550,
         margin: 10,
         borderRadius: 10,
@@ -173,9 +168,8 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
     },
     label: {
-        fontSize: 16,
+        fontSize: 14,
         marginStart: 10,
-        fontFamily:'WorkSans-Regular'
     },
     container2: {
         width: 'auto',
@@ -194,8 +188,8 @@ const styles = StyleSheet.create({
     inputContainer2: {
         width: '80%',
         height: 50,
-        borderRadius: 5,
-        backgroundColor: '#f1f1f1',
+        borderRadius: 3,
+        borderWidth: 0.2,
         paddingHorizontal: 10,
     },
     inputContainer3: {
@@ -225,14 +219,13 @@ const styles = StyleSheet.create({
     buttonContainer: {
         width: '90%',
         height: 'auto',
-        marginTop: 50,
+        marginTop: 10,
         alignItems: 'flex-end',
         // backgroundColor: 'green'
     },
     updateButton: {
         width: 200,
         height: 50,
-        marginBottom: 30,
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
@@ -242,15 +235,13 @@ const styles = StyleSheet.create({
     updateText: {
         fontSize: 15,
         marginStart: 5,
-        color: '#647CFF',
-        fontFamily:'WorkSans-Regular'
+        color: '#647CFF'
 
     },
     dateLabel: {
         fontSize: 14,
         margin: 12,
-        color: '#CCC',
-        fontFamily:'WorkSans-Regular'
+        color: '#CCC'
     }
 
 });

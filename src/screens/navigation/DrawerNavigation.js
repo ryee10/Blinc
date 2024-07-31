@@ -1,7 +1,7 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import React from 'react';
 import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
-import { MaterialCommunityIcons, FontAwesome6, Ionicons, } from '@expo/vector-icons';
+import { MaterialCommunityIcons, FontAwesome6, Ionicons, FontAwesome5, } from '@expo/vector-icons';
 import HomeNavigation from './TabNavigation/HomeNavigation';
 import AccountSettings from '../tabs/profile/AccountSettings';
 import PasswordSettings from '../tabs/profile/Password';
@@ -11,6 +11,11 @@ import KycVerified from '../tabs/profile/KYC';
 import TeamScreen from '../tabs/team/TeamScreen'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from "expo-linear-gradient";
+import PersonalSettings from '../tabs/profile/PersonalSettings';
+
+
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
 
 const Drawer = createDrawerNavigator();
 
@@ -25,23 +30,8 @@ const DrawerNavigation = () => {
                 start={{ x: 0, y: 0 }}
                 end={{ x: .90, y: .7 }}
                 >
-                <View style={
-                  styles.profileInfo
-                  }
-                >
-                  {/* <Image 
-                    source={require('../../../assets/images/avatar.png')}
-                    style={{
-                      height:100,
-                      width:100,
-                      borderRadius: 50
-                    }}
-                  />
-                  <Text style={{
-                    fontFamily:'WorkSans-Medium',
-                    fontSize: 16,
-                    color: '#ffff'
-                  }}>Anita Break</Text> */}
+                <View style={styles.profileInfo}>
+    
                   <View style={styles.avatarPlaceholder}>
             <Text style={styles.avatarText}>JD</Text>
           </View>
@@ -85,6 +75,23 @@ const DrawerNavigation = () => {
         }}
       />
       <Drawer.Screen
+        name="PersonalSettings"
+        component={PersonalSettings}
+        options={{
+          drawerLabel: 'Personal Settings',
+          title: 'Account Settings',
+          headerShadowVisible: false,
+          headerShown: false,
+          drawerIcon: () => (
+            <MaterialCommunityIcons
+              name="shield-account-outline"
+              size={24}
+              color="black"
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
         name="AccountSettings"
         component={AccountSettings}
         options={{
@@ -93,8 +100,8 @@ const DrawerNavigation = () => {
           headerShadowVisible: false,
           headerShown: false,
           drawerIcon: () => (
-            <Ionicons
-              name="shield-outline"
+            <FontAwesome5
+              name="user-circle"
               size={24}
               color="black"
             />
@@ -110,8 +117,8 @@ const DrawerNavigation = () => {
           headerShadowVisible: false,
           headerShown: false,
           drawerIcon: () => (
-            <Ionicons
-              name="lock-closed-outline"
+            <MaterialCommunityIcons
+              name="lock-outline"
               size={22}
               color="black"
             />
@@ -127,7 +134,7 @@ const DrawerNavigation = () => {
           headerShadowVisible: false,
           headerShown: false,
           drawerIcon: () => (
-            <Ionicons name="checkmark-circle-outline"
+            <FontAwesome6 name="check-circle"
               size={22}
               color="black"
             />
@@ -173,10 +180,12 @@ const DrawerNavigation = () => {
 
 const styles = StyleSheet.create({
   profileInfo: {
+    width: 'auto',
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 40,
-    marginBottom:40
+    marginTop: 30,
+    marginBottom: 30,
+    // backgroundColor: 'green'
   },
   avatarPlaceholder: {
     width: 60,
@@ -194,7 +203,7 @@ const styles = StyleSheet.create({
     fontFamily:'WorkSans-Regular'
   },
   userInfo: {
-    flex: 1,
+    width: 'auto',
   },
   userName: {
     color: '#F0F4F7',
@@ -203,15 +212,15 @@ const styles = StyleSheet.create({
     fontFamily:'WorkSans-Regular'
   },
   userRoleContainer: {
+    width: 150,
     backgroundColor: '#fff',
     alignItems: 'center',
     borderRadius: 8,
-    width: 95,
     fontFamily:'WorkSans-Regular'
   },
   userRole: {
     color: '#6a11cb',
-    fontSize: 16,
+    fontSize: 15,
     fontFamily:'WorkSans-Regular'
   },
   userBalance: {

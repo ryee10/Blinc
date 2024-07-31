@@ -42,7 +42,7 @@ const HomeScreen = () => {
                 <View>
                   <Text style={styles.label1}>Wallet Balance</Text>
                   <Text style={styles.label2}>Balance</Text>
-                  <Text style={styles.value1}>$ 100.00</Text>
+                  <Text style={styles.value1}>$ 1,000.00</Text>
                 </View>
                 <View style={styles.accountContainer}>
                   <Text style={styles.label2}>Account No.</Text>
@@ -84,7 +84,7 @@ const HomeScreen = () => {
                   onPress={() => navigation.navigate("TopUp")}
                 >
                   <View style={styles.circleButton}>
-                    <Ionicons name="push-outline" size={24} color="#DB77FD" />
+                    <Ionicons name="push-outline" size={24} color="green" />
                   </View>
                   <Text style={styles.label3}>Top Up</Text>
                 </TouchableOpacity>
@@ -93,7 +93,7 @@ const HomeScreen = () => {
                   onPress={() => navigation.navigate("Withdraw")}
                 >
                   <View style={styles.circleButton}>
-                    <Ionicons name="wallet-outline" size={24} color="#F43F5E" />
+                    <Ionicons name="wallet-outline" size={24} color="#DA0000" />
                   </View>
                   <Text style={styles.label3}>Withdraw</Text>
                 </TouchableOpacity>
@@ -117,7 +117,7 @@ const HomeScreen = () => {
                     <MaterialCommunityIcons
                       name="cart-check"
                       size={28}
-                      color="#DB77FD"
+                      color="green"
                     />
                     <Text style={styles.label4}>Completed Orders:</Text>
                     <Text style={styles.label4value}>2</Text>
@@ -129,7 +129,7 @@ const HomeScreen = () => {
                     <FontAwesome5
                       name="hand-holding-usd"
                       size={28}
-                      color="#F43F5E"
+                      color="#DA0000"
                     />
                     <Text style={styles.label4}>Total Spent:</Text>
                     <Text style={styles.label4value}>$15.00</Text>
@@ -180,17 +180,9 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     height: screenHeight,
     width: screenWidth,
   },
-  container1: {
-    marginStart: 25,
-    marginTop: 20,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-
   icon: {
     width: 50,
     height: 50,
@@ -198,6 +190,7 @@ const styles = StyleSheet.create({
 
   container2: {
     alignItems: "center",
+    backgroundColor: 'green'
   },
 
   card: {
@@ -418,7 +411,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "WorkSans-Medium",
     marginRight: "5%",
-    color: '#F43F5E'
+    color: '#DA0000'
   }
 });
 
