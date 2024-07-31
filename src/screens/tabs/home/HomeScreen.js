@@ -90,7 +90,7 @@ const HomeScreen = () => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.button}
-                  onPress={() => navigation.navigate("Widthraw")}
+                  onPress={() => navigation.navigate("TopUpReceipt")}
                 >
                   <View style={styles.circleButton}>
                     <Ionicons name="wallet-outline" size={24} color="#F43F5E" />
