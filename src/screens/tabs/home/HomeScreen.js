@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -7,15 +7,14 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Keyboard,
+  TextInput
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useIsFocused } from "@react-navigation/native";
 import {
-  AntDesign,
-  FontAwesome5,
-  FontAwesome6,
   Ionicons,
   MaterialCommunityIcons,
-  MaterialIcons,
+  FontAwesome5
 } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -25,6 +24,36 @@ const screenHeight = Dimensions.get("window").height;
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true);
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false);
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isFocused) {
+      navigation.setOptions({
+        tabBarStyle: { display: isKeyboardVisible ? 'none' : 'flex' },
+      });
+    }
+  }, [isFocused, isKeyboardVisible, navigation]);
 
   return (
     <LinearGradient
@@ -168,7 +197,6 @@ const HomeScreen = () => {
                   </View>
                   <Text style={styles.transactionAmounts}>-$15</Text>
                 </View>
-              
               </View>
             </View>
           </View>

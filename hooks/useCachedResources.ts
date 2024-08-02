@@ -27,7 +27,7 @@ export default function useCachedResources(){
                     "WorkSans-Medium": require("../assets/fonts/WorkSans-Medium.ttf"),
                     "WorkSans-MediumI": require("../assets/fonts/WorkSans-MediumItalic.ttf"),
                     "WorkSans-Regular": require("../assets/fonts/WorkSans-Regular.ttf"),
-                    "WorkSans-SemiBold": require("../assets/fonts/WorkSans-SemiBold.ttf"),
+                    "WorkSans-Semibold": require("../assets/fonts/WorkSans-SemiBold.ttf"),
                     "WorkSans-SemiBoldI": require("../assets/fonts/WorkSans-SemiBoldItalic.ttf"),
                     "WorkSans-Thin": require("../assets/fonts/WorkSans-Thin.ttf"),
                     "WorkSans-ThinI": require("../assets/fonts/WorkSans-ThinItalic.ttf"),

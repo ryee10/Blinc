@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,28 +6,54 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Alert
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Camera } from 'expo-camera';
 import Button from "@/src/components/Button";
 
 const TransferScreen = () => {
   const navigation = useNavigation();
+  const [hasPermission, setHasPermission] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
+
+  const handleScanQRCode = () => {
+    if (hasPermission === null) {
+      return <Text>Requesting for camera permission</Text>;
+    }
+    if (hasPermission === false) {
+      Alert.alert('No access to camera');
+      return;
+    }
+    Alert.alert("QRScanner");
+  };
+  const handleTransfer = () => {
+    Alert.alert(
+      "Successfully Transferred"
+    )
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container}>
-          <View style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={handleScanQRCode}>
             <Ionicons name="qr-code-outline" size={24} color="#4769FE" />
             <Text style={styles.scanText}>Scan/Upload QR</Text>
             <Text style={styles.descriptionText}>
               Transfer by scanning or uploading a QR code.
             </Text>
-          </View>
+          </TouchableOpacity>
           <Text style={styles.headerText}>MY FAVORITES</Text>
           <View style={styles.favoritesCard}>
             <Ionicons name="person-outline" size={24} color="#4769FE" />
@@ -48,8 +74,8 @@ const TransferScreen = () => {
             style={[styles.input, styles.noteInput]}
             placeholder="Add a note"
           />
-          <Button  title="Continue" 
-          /* action={() => navigation.navigate("TopUpReceipt")} *//>
+          <Button title="Continue" 
+          action={(handleTransfer)}/>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -121,8 +147,6 @@ const styles = StyleSheet.create({
     color: "#949494",
     marginBottom: 20,
   },
-  
-
 });
 
 export default TransferScreen;

@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({ title, action }: ButtonProps) => {
         }}
         onPress={action}
       >
-        <Text style={{ color: 'white', fontSize: 18 , fontFamily:'WorkSans-SemiBold'}}>
+        <Text style={{ color: 'white', fontSize: 18 , fontFamily:'WorkSans-Medium'}}>
           {title}
         </Text>
       </Pressable>

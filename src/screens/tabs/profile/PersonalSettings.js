@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Dimensions, TextInput, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, Dimensions, TextInput, TouchableOpacity, SafeAreaView, KeyboardAvoidingView, Platform, Keyboard, ScrollView } from 'react-native';
+import { useNavigation, useIsFocused } from "@react-navigation/native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import RNPickerSelect from 'react-native-picker-select';
@@ -25,17 +25,43 @@ const PersonalSettings = () => {
         setShow(Platform.OS === 'ios');
         setBirthdate(currentDate);
     };
+    const isFocused = useIsFocused();
+    const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+    useEffect(() => {
+        const keyboardDidShowListener = Keyboard.addListener(
+        'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true);
+      }
+    );
+        const keyboardDidHideListener = Keyboard.addListener(
+        'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false);
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isFocused) {
+      navigation.setOptions({
+        tabBarStyle: { display: isKeyboardVisible ? 'none' : 'flex' },
+      });
+    }
+  }, [isFocused, isKeyboardVisible, navigation]);
 
     return (
-        <KeyboardAvoidingView
-            style={{ flex: 1 }}
+        <View style={{ flex: 1 }}
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
             <SafeAreaView style={{ flex: 1 }}>
-                <KeyboardAwareScrollView
-                    contentContainerStyle={{ flexGrow: 1, paddingBottom: 80 }} // Add padding to bottom to avoid tab overlap
-                    keyboardShouldPersistTaps="handled"
-                >
+                <ScrollView>
                     <View style={styles.container}>
                         <View style={styles.outerContainer}>
                             <View style={styles.innerContainer}>
@@ -151,9 +177,9 @@ const PersonalSettings = () => {
 
                         </View>
                     </View>
-                </KeyboardAwareScrollView>
+                </ScrollView>
             </SafeAreaView>
-        </KeyboardAvoidingView>
+        </View>
     );
 };
 

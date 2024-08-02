@@ -10,6 +10,7 @@ import Transfer from '../../tabs/home/Transfer';
 import AccountSettings from '../../tabs/profile/AccountSettings';
 import { DrawerActions } from '@react-navigation/native';
 import Withdraw from '../../tabs/home/withdraw';
+import NotificationScreen from '../../tabs/home/Notification';
 
 const Stack = createStackNavigator();
 
@@ -41,12 +42,14 @@ const HomeNavigation = () => {
             </TouchableOpacity>
           ),
           headerRight: () => (
-            <Ionicons 
-              name='notifications-outline' 
-              size={24} 
-              color={'#252525'} 
-              style={{ marginRight: 20 }}
-            /> 
+            <TouchableOpacity onPress={() => navigation.navigate('NotificationScreen')}>
+              <Ionicons 
+                name='notifications-outline' 
+                size={24} 
+                color={'#252525'} 
+                style={{ marginRight: 20 }}
+              /> 
+            </TouchableOpacity>
           ),
           headerTitle: () => (
             <Image 
@@ -59,45 +62,50 @@ const HomeNavigation = () => {
       />
       <Stack.Screen name="TopUp" component={TopUp}
         options={{
-          
           headerTitle: () => (
             <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
-               Top Up
+              Top Up
             </Text>
           ),
           headerTitleAlign: 'center'
         }}/>
-        <Stack.Screen name="Transfer" component={Transfer}
+      <Stack.Screen name="Transfer" component={Transfer}
         options={{
-          
           headerTitle: () => (
             <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
-               Transfer
+              Transfer
             </Text>
           ),
           headerTitleAlign: 'center'
         }}/>
-        <Stack.Screen name="Withdraw" component={Withdraw}
+      <Stack.Screen name="Withdraw" component={Withdraw}
         options={{
-          
           headerTitle: () => (
             <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
-               Withdraw
+              Withdraw
             </Text>
           ),
           headerTitleAlign: 'center'
         }}/>
-        <Stack.Screen name="Receipt" component={TopUpReceipt}
+      <Stack.Screen name="Receipt" component={TopUpReceipt}
         options={{
-          
           headerTitle: () => (
             <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
-               Receipt
+              Receipt
             </Text>
           ),
           headerTitleAlign: 'center'
         }}/>
-      
+      <Stack.Screen name="NotificationScreen" component={NotificationScreen} 
+        options={{
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+              Notification
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}
+      />
     </Stack.Navigator>
   );
 };

@@ -14,10 +14,7 @@ import { FontAwesome6, Ionicons } from "@expo/vector-icons";
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 
-const data = [
-  { id: "1", title: "Item 1" },
-  { id: "1", title: "Item 2" },
-];
+
 
 const OrderScreen = () => {
   const [activeTab, setActiveTab] = useState("Active");

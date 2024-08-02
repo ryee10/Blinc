@@ -1,12 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import { createDrawerNavigator, DrawerItemList } from "@react-navigation/drawer";
-import {
-  MaterialCommunityIcons,
-  FontAwesome6,
-  Ionicons,
-  FontAwesome5,
-} from "@expo/vector-icons";
+import { MaterialCommunityIcons, FontAwesome6, Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import HomeScreen from "../tabs/home/HomeScreen";
 import AccountSettings from "../tabs/profile/AccountSettings";
 import PasswordSettings from "../tabs/profile/Password";
@@ -14,37 +9,74 @@ import KycVerified from "../tabs/profile/KYC";
 import TeamScreen from "../tabs/team/TeamScreen";
 import PersonalSettings from "../tabs/profile/PersonalSettings";
 import { LinearGradient } from "expo-linear-gradient";
+import LoginScreen from "../(auth)/LoginScreen";
+import { useNavigation } from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
+  const navigation = useNavigation();
+
+  const handleLogout = () => {
+    Alert.alert(
+      "Logout",
+      "Are you sure you want to log out?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        {
+          text: "Log Out",
+          onPress: () => {
+            
+
+            navigation.navigate("Login"); 
+          }
+        }
+      ]
+    );
+  };
+
   return (
     <Drawer.Navigator
       drawerContent={(props) => (
         <View style={styles.drawerContent}>
           <LinearGradient colors={['#6079FE','#DA84FE']} start={[0, 3]} end={[1, 1]} style={styles.headerContainer}>
-          <View style={styles.profileInfo}>
-            <View style={styles.leftContainer}>
-            <View style={styles.avatarPlaceholder}>
-              <Text style={styles.avatarText}>JD</Text>
-            </View>
-            </View>
-            <View style={styles.rightContainer}>
-            <View style={styles.userInfo}>
-              <Text style={styles.userName}>Juan Dela Cruz</Text>
-              <View style={styles.userRoleContainer}>
-                <Text style={styles.userRole}>Digital Worker</Text>
+            <View style={styles.profileInfo}>
+              <View style={styles.leftContainer}>
+                <View style={styles.avatarPlaceholder}>
+                  <Text style={styles.avatarText}>JD</Text>
+                </View>
+              </View>
+              <View style={styles.rightContainer}>
+                <View style={styles.userInfo}>
+                  <Text style={styles.userName}>Juan Dela Cruz</Text>
+                  <View style={styles.userRoleContainer}>
+                    <Text style={styles.userRole}>Digital Worker</Text>
+                  </View>
+                </View>
               </View>
             </View>
-            </View>
-          </View>
           </LinearGradient>
           <DrawerItemList {...props} />
+          <TouchableOpacity
+            style={styles.logoutButton}
+            onPress={handleLogout}
+          >
+            <Ionicons
+              name="log-out-outline"
+              size={24}
+              color="black"
+              style={styles.logoutIcon}
+            />
+            <Text style={styles.logoutText}>Log Out</Text>
+          </TouchableOpacity>
         </View>
       )}
       screenOptions={{
         drawerStyle: {
-          backgroundColor: '#fff',
+          backgroundColor: '#f0f4f7',
           width: '65%',
         },
       }}
@@ -70,10 +102,10 @@ const DrawerNavigation = () => {
         name="PersonalSettings"
         component={PersonalSettings}
         options={{
+          
           drawerLabel: 'Personal Settings',
-          title: 'Account Settings',
-          headerShadowVisible: false,
-          headerShown: false,
+          title: 'Personal Settings',
+          headerShown: false, 
           drawerIcon: () => (
             <MaterialCommunityIcons
               name="shield-account-outline"
@@ -151,23 +183,6 @@ const DrawerNavigation = () => {
           ),
         }}
       />
-      <Drawer.Screen
-        name="LogOut"
-        component={TeamScreen}
-        options={{
-          drawerLabel: 'Log out',
-          title: 'Log out',
-          headerShadowVisible: false,
-          headerShown: false,
-          drawerIcon: () => (
-            <Ionicons
-              name="log-out-outline"
-              size={24}
-              color="black"
-            />
-          ),
-        }}
-      />
     </Drawer.Navigator>
   );
 };
@@ -204,7 +219,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#f1f1f1',
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: 'yellow'
   },
   avatarText: {
     fontSize: 20,
@@ -227,16 +241,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 8,
     justifyContent: 'center',
-    alignItems: 'center'
   },
   userRole: {
     color: '#6a11cb',
     fontSize: 15,
     fontFamily: 'WorkSans-Regular',
   },
-  userBalance: {
-    color: '#F0F4F7',
+  logoutButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
+    borderTopWidth: 1,
+    borderTopColor: '#e0e0e0',
+  },
+  logoutIcon: {
+    marginRight: 10,
+  },
+  logoutText: {
     fontSize: 16,
+    color: 'black',
     fontFamily: 'WorkSans-Regular',
   },
 });

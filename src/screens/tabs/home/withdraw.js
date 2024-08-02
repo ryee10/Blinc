@@ -13,8 +13,6 @@ import { useNavigation } from "@react-navigation/native";
 import Button from "@/src/components/Button";
 
 const WithdrawScreen = () => {
-  const navigation = useNavigation();
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>

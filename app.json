@@ -31,6 +31,18 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "expo": {
+    "android": {
+      "permissions": [
+        "CAMERA"
+      ]
+    },
+    "ios": {
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app needs access to your camera to scan QR codes."
+      }
     }
+  }
   }
 }
