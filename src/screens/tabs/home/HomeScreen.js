@@ -63,7 +63,6 @@ const HomeScreen = () => {
       locations={[0.1, 0.9]}
       style={styles.container}
     >
-      <SafeAreaView>
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
           <View style={styles.container2}>
             <LinearGradient colors={["#2b9fff", "#476afe"]} style={styles.card}>
@@ -201,7 +200,6 @@ const HomeScreen = () => {
             </View>
           </View>
         </ScrollView>
-      </SafeAreaView>
     </LinearGradient>
   );
 };
@@ -229,6 +227,7 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: "space-between",
     alignItems: "center",
+    marginTop: 40,
   },
 
   leftContainer: {
