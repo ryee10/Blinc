@@ -66,11 +66,13 @@ export default function GigsScreen() {
             <View style={styles.gigDetails}>
               <Text style={styles.gigTitle}>{gigData.title}</Text>
               <Text style={styles.gigPrice}>{gigData.price}</Text>
-              <Text style={styles.gigStatus}>
+            </View>
+            <View style={{marginRight:15}}>
+            <Text style={styles.gigStatus}>
                 Status:{" "}
                 <Text style={styles.activeStatus}>{gigData.status}</Text>
               </Text>
-            </View>
+              </View>
           </Animated.View>
         </TouchableOpacity>
       </View>
@@ -149,7 +151,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     color: "#fff",
     textAlign: 'center',
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily: 'WorkSans-Medium',
   },
   gigCard: {
     marginTop: 20,
@@ -175,16 +177,16 @@ const styles = StyleSheet.create({
   },
   gigTitle: {
     fontSize: 18,
-    fontWeight: "bold",
-    fontFamily: 'WorkSans-Regular'
+    fontFamily: 'WorkSans-Medium'
   },
   gigPrice: {
     fontSize: 16,
-    color: "gray",
+    color: "#252525",
     fontFamily: 'WorkSans-Regular'
   },
   gigStatus: {
     fontSize: 16,
+    
     fontFamily: 'WorkSans-Regular'
   },
   activeStatus: {
@@ -204,7 +206,7 @@ const styles = StyleSheet.create({
   },
   sheetTitle: {
     fontSize: 20,
-    fontFamily: 'WorkSans-SemiBold'
+    fontFamily: 'WorkSans-Medium'
   },
   sheetDescription: {
     marginTop: 10,

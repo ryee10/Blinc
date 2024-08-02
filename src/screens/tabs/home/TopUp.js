@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'; // For icons
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'; // For Ant Design icons
 import { Ionicons } from '@expo/vector-icons';
+import Button from '@/src/components/Button';
+import { useNavigation } from "@react-navigation/native";
 
 const TopUpScreen = () => {
   const [selectedMethod, setSelectedMethod] = useState('Metamask');
@@ -10,6 +11,7 @@ const TopUpScreen = () => {
   const handleSelectMethod = (method) => {
     setSelectedMethod(method);
   };
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -18,6 +20,7 @@ const TopUpScreen = () => {
         placeholder="Search"
         placeholderTextColor="#aaa"
       />
+      <ScrollView>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.sectionTitle}>MY FAVORITES</Text>
         <Text style={styles.subtitle}>Complete a transaction to add it to your favorites</Text>
@@ -29,14 +32,15 @@ const TopUpScreen = () => {
           ))}
         </View>
         <Text style={styles.sectionTitle}>Top-up Methods</Text>
-        {topUpMethods.map((method, index) => (
+      </ScrollView>
+      {topUpMethods.map((method, index) => (
           <TouchableOpacity
             key={index}
             style={styles.methodContainer}
             onPress={() => handleSelectMethod(method.name)}
           >
             <View style={styles.methodInfo}>
-              <Icon name={method.icon} size={24} color="#000" />
+              <Image source={method.image} style={styles.methodImage} />
               <Text style={styles.methodText}>{method.name}</Text>
             </View>
             {selectedMethod === method.name && (
@@ -44,23 +48,23 @@ const TopUpScreen = () => {
             )}
           </TouchableOpacity>
         ))}
-      </ScrollView>
+        </ScrollView>
+        <View style={styles.buttonContainer}>
+          <Button title="Continue" action={() => navigation.navigate("Receipt")} />
+        </View>
     </View>
   );
 };
 
 const topUpMethods = [
-  { name: 'Metamask', icon: 'account-balance-wallet' },
-  { name: 'E-wallet', icon: 'account-balance-wallet' },
-  { name: 'Linked Bank Account', icon: 'account-balance' },
-  { name: 'Debit or Credit Card', icon: 'credit-card' },
+  { name: 'Metamask', image: require('./../../../../assets/images/Metamask.png') },
+  { name: 'E-wallet', image: require('../../../../assets/images/digital-wallet.png') },
 ];
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F0F4F7',
-
   },
   backButton: {
     marginRight: 10,
@@ -105,7 +109,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: '#5977FD',
-    borderStyle: 'dashed'
+    borderStyle: 'dashed',
   },
   methodContainer: {
     flexDirection: 'row',
@@ -113,7 +117,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 25,
     borderColor: '#ddd',
-    width: '100%'
+    width: '100%',
+    borderWidth:0.2
   },
   methodInfo: {
     flexDirection: 'row',
@@ -122,6 +127,17 @@ const styles = StyleSheet.create({
   methodText: {
     marginLeft: 10,
     fontSize: 16,
+  },
+  methodImage: {
+    width: 24,
+    height: 24,
+  },
+  buttonContainer: {
+    marginTop: 20, 
+    marginBottom: 20, 
+    marginRight: 15,
+    marginLeft:15
+
   },
 });
 

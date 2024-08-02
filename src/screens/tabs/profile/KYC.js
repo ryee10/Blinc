@@ -168,7 +168,7 @@ const KycVerified = () => {
                         <View style={styles.outerIDContainer}>
                             <TouchableOpacity onPress={() => handleChoosePhoto(setFirstPageUri)}>
                             <View style={styles.idContainer}>
-                                    <Text>Upload First Page</Text>
+                                    <Text style={{fontFamily:'WorkSans-Regular', color:'#949494', fontSize:16}}>Upload Front Page</Text>
                                 </View>
                             </TouchableOpacity>
                             {/* {firstPageUri && (
@@ -179,7 +179,7 @@ const KycVerified = () => {
                         <View style={styles.outerIDContainer}>
                             <TouchableOpacity onPress={() => handleChoosePhoto(setFirstPageUri)}>
                                 <View style={styles.idContainer}>
-                                    <Text>Upload Second Page</Text>
+                                    <Text style={{fontFamily:'WorkSans-Regular', color:'#949494', fontSize:16}}>Upload Back Page</Text>
                                 </View>
                             </TouchableOpacity>
                             {/* {firstPageUri && (
@@ -342,12 +342,14 @@ const styles = StyleSheet.create({
         width: 300,
         height: 100,
         borderRadius: 3,
-        borderWidth: 0.2,
-        backgroundColor: '#f1f1f1',
+        borderWidth: 0.5,
+        borderColor: '#c8c8c8',
+        borderStyle: 'dashed',
+        backgroundColor: '#ffff',
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        elevation: 3,
+        
     }
 
 });

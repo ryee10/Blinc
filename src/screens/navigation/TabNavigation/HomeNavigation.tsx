@@ -57,6 +57,46 @@ const HomeNavigation = () => {
           headerTitleAlign: 'center',
         }}
       />
+      <Stack.Screen name="TopUp" component={TopUp}
+        options={{
+          
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+               Top Up
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}/>
+        <Stack.Screen name="Transfer" component={Transfer}
+        options={{
+          
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+               Transfer
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}/>
+        <Stack.Screen name="Withdraw" component={Withdraw}
+        options={{
+          
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+               Withdraw
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}/>
+        <Stack.Screen name="Receipt" component={TopUpReceipt}
+        options={{
+          
+          headerTitle: () => (
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+               Receipt
+            </Text>
+          ),
+          headerTitleAlign: 'center'
+        }}/>
       
     </Stack.Navigator>
   );

@@ -24,7 +24,7 @@ const screenWidth = Dimensions.get("window").width;
 
 export default function Transac() {
   const navigation = useNavigation();
-  const snapPoints = useMemo(() => [ "40%", "40%", "40%"], []);
+  const snapPoints = useMemo(() => [ "40%", "100%"], []);
   const bottomSheetRef = useRef(null);
   const [isSheetVisible, setSheetVisible] = useState(false);
 

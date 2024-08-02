@@ -49,7 +49,7 @@ const TransferScreen = () => {
             placeholder="Add a note"
           />
           <Button  title="Continue" 
-          action={() => navigation.navigate("TopUpReceipt")}/>
+          /* action={() => navigation.navigate("TopUpReceipt")} *//>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   noteInput: {
-    marginBottom: 20, // Add margin bottom to the note input field
+    marginBottom: 20, 
   },
   walletText: {
     fontSize: 12,
