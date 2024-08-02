@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator, Dimensions } from "react-native";
+import { View, Text, ActivityIndicator, Dimensions, Alert } from "react-native";
 import React, { useState } from "react";
 import Animated, { FadeInDown, FadeInRight } from "react-native-reanimated";
 import { TextInput } from "react-native-gesture-handler";
@@ -12,6 +12,7 @@ import Breaker from "@/src/components/Breaker";
 import ButtonOutline from "@/src/components/ButtonOutline";
 import { Pressable } from "react-native";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { width, height } = Dimensions.get("window");
 
@@ -20,9 +21,36 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoding] = useState(false);
 
+  const handleLoginDW = async () => {
+    if (email == 'dw@gmail.com' && password === 'test') {
+      await AsyncStorage.setItem('userToken', 'a1');
+      Alert.alert('Login Successful');
+      navigation.navigate('TabN');
+    } else {
+      Alert.alert('Invalid email or password');
+    }
+  }
+
+  const handleLoginC = async () => {
+    if (email == 'client@gmail.com' && password === 'test') {
+      await AsyncStorage.setItem('userToken', 'a1');
+      Alert.alert('Login Successful');
+      navigation.navigate('Client');
+    } else {
+      Alert.alert('Invalid email or password');
+    }
+  }
+
+  const handleLogin = () => {
+    handleLoginDW();
+    handleLoginC();
+  }
+
   const { navigate: navigateAuth }: NavigationProp<AuthNavigationType> =
     useNavigation();
   const navigation = useNavigation<NavigationProp<AuthNavigationType>>();
+
+
   return (
     <LinearGradient
       colors={['#DA84FE', '#6079FE']}
@@ -130,7 +158,7 @@ const LoginScreen = () => {
               <View className="pb-6">
                 <Button
                   title="Login"
-                  action={() => navigation.navigate("TabN")}
+                  action= {handleLogin}
                 />
               </View>
             </Animated.View>
