@@ -4,13 +4,14 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons, MaterialCommunityIcons, FontAwesome5, FontAwesome, Entypo, Foundation } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import RNPickerSelect from 'react-native-picker-select';
+import { useTabBarVisibility } from "../../navigation/TabBarVisibilityContext"; 
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const PasswordSettings = () => {
     const navigation = useNavigation();
-
+    const { setTextInputFocused } = useTabBarVisibility();
     const [password, setPassword] = useState('');
    
     const handleSave = () => {
@@ -34,6 +35,8 @@ const PasswordSettings = () => {
                         </View>
                         <View style={styles.inputContainer1}>
                             <TextInput 
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}
                                 style={styles.inputContainer2}
                                 placeholder='Old Password'
                             />
@@ -47,7 +50,9 @@ const PasswordSettings = () => {
                                 style={styles.inputContainer2}
                                 placeholder='New Password'
                                 value={password}
-                                onChangeText={setPassword}/>
+                                onChangeText={setPassword}
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}/>
                         </View>
 
                         <View style={styles.labelContainer}>
@@ -56,7 +61,9 @@ const PasswordSettings = () => {
                         <View style={styles.inputContainer1}>
                             <TextInput 
                                 style={styles.inputContainer2}
-                                placeholder='Confirm Password'/>
+                                placeholder='Confirm Password'
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}/>
                         </View>
 
                 </View>

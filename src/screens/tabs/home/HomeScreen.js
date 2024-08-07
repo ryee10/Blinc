@@ -24,36 +24,6 @@ const screenHeight = Dimensions.get("window").height;
 
 const HomeScreen = () => {
   const navigation = useNavigation();
-  const isFocused = useIsFocused();
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardDidShow',
-      () => {
-        setKeyboardVisible(true);
-      }
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      () => {
-        setKeyboardVisible(false);
-      }
-    );
-
-    return () => {
-      keyboardDidHideListener.remove();
-      keyboardDidShowListener.remove();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isFocused) {
-      navigation.setOptions({
-        tabBarStyle: { display: isKeyboardVisible ? 'none' : 'flex' },
-      });
-    }
-  }, [isFocused, isKeyboardVisible, navigation]);
 
   return (
     <LinearGradient

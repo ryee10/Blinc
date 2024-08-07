@@ -3,95 +3,115 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   ScrollView,
-  Dimensions,
   TouchableOpacity,
   TextInput,
+  Dimensions,
+  Alert,
 } from "react-native";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
-import Button from "@/src/components/Button";
-import Animated, { FadeInDown } from "react-native-reanimated";
-import { useNavigation } from "@react-navigation/native";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { LinearGradient } from "expo-linear-gradient";
-
-const gigData = {
-  title: "Filter Transaction",
-};
+import { useTabBarVisibility } from "../../navigation/TabBarVisibilityContext";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 const screenWidth = Dimensions.get("window").width;
 
 export default function Transac() {
-  const navigation = useNavigation();
-  const snapPoints = useMemo(() => [ "40%", "100%"], []);
+  const { setTextInputFocused } = useTabBarVisibility();
+  const snapPoints = useMemo(() => ["60%", "100%"], []);
   const bottomSheetRef = useRef(null);
   const [isSheetVisible, setSheetVisible] = useState(false);
+  const [selectedTransaction, setSelectedTransaction] = useState(null);
 
-  const handleGigPress = useCallback(() => {
-    if (isSheetVisible) {
-      bottomSheetRef.current?.close();
-    } else {
-      setSheetVisible(true);
-    }
-  }, [isSheetVisible]);
+  const transactionsData = [
+    {
+      name: "Juan Dela Cruz",
+      method: "Payment Method",
+      amount: "$10.00",
+      date: "01-07-2024",
+    },
+    {
+      name: "Juan Dela Cruz",
+      method: "Payment Method",
+      amount: "$10.00",
+      date: "01-07-2024",
+    },
+  ];
+
+  const handleTransactionPress = useCallback((transaction) => {
+    setSelectedTransaction(transaction);
+    setSheetVisible(true);
+  }, []);
 
   const handleClose = useCallback(() => {
     setSheetVisible(false);
   }, []);
 
+  const handleEditPress = () => {
+    Alert.alert("Edit", "Edit button pressed");
+  };
+
+  const handleDeletePress = () => {
+    Alert.alert("Delete", "Delete button pressed");
+  };
+
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      
-      <View style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.searchContainer}>
-          <Ionicons name="search-outline" size={20} color="#000000" style={styles.searchIcon} />
-          <TextInput placeholder="Search" style={styles.searchInput} />
-          <TouchableOpacity onPress={handleGigPress}>
-          <FontAwesome5 name="filter" size={20} color="#999" style={styles.filterIcon} />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.contentContainer}>
-
-          <View style={styles.transacContainer}> 
-          <View style={styles.icon}>
-          <FontAwesome5 name="user" size={24} color="black" /> 
-          </View>
-          <View style={styles.itemContainer}>
-          <View style={styles.detailsContainter2}>
-          <Text style = {styles.Details}>Juan Dela Cruz</Text>
-          <Text style = {styles.Details2}>Payment Method</Text>
-          </View>
-          <View style={styles.detailsContainter3}>
-          <Text style = {[styles.Details2, {fontWeight: 'bold'}]}>$10.00</Text>
-          <Text style = {styles.Details}>01-07-2024</Text>
-          </View>
-          </View>
-        </View>
-
-        <View style={styles.transacContainer}> 
-          <View style={styles.icon}>
-          <FontAwesome5 name="user" size={24} color="black" /> 
-          </View>
-          <View style={styles.itemContainer}>
-          <View style={styles.detailsContainter2}>
-          <Text style = {styles.Details}>Juan Dela Cruz</Text>
-          <Text style = {styles.Details2}>Payment Method</Text>
-          </View>
-          <View style={styles.detailsContainter3}>
-          <Text style = {[styles.Details2, {fontWeight: 'bold'}]}>$10.00</Text>
-          <Text style = {styles.Details}>01-07-2024</Text>
-          </View>
-          </View>
-        </View>
-        
-       </View>
-
-
+        <Ionicons
+          name="search-outline"
+          size={20}
+          color="#000000"
+          style={styles.searchIcon}
+        />
+        <TextInput
+          placeholder="Search"
+          style={styles.searchInput}
+          onFocus={() => setTextInputFocused(true)}
+          onBlur={() => setTextInputFocused(false)}
+        />
+        <TouchableOpacity onPress={handleTransactionPress}>
+          <FontAwesome5
+            name="filter"
+            size={20}
+            color="#999"
+            style={styles.filterIcon}
+          />
+        </TouchableOpacity>
       </View>
 
-      {isSheetVisible && (
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        {transactionsData.map((transaction, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => handleTransactionPress(transaction)}
+          >
+            <Animated.View
+              style={styles.transacContainer}
+              entering={FadeInDown.duration(100).delay(100).springify()}
+            >
+              <View style={styles.icon}>
+                <FontAwesome5 name="user" size={24} color="black" />
+              </View>
+              <View style={styles.itemContainer}>
+                <View style={styles.detailsContainter2}>
+                  <Text style={styles.Details}>{transaction.name}</Text>
+                  <Text style={styles.Details2}>{transaction.method}</Text>
+                </View>
+                <View style={styles.detailsContainter3}>
+                  <Text style={[styles.Details2, { fontWeight: "bold" }]}>
+                    {transaction.amount}
+                  </Text>
+                  <Text style={styles.Details}>{transaction.date}</Text>
+                </View>
+              </View>
+            </Animated.View>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+
+      {isSheetVisible && selectedTransaction && (
         <BottomSheet
           ref={bottomSheetRef}
           snapPoints={snapPoints}
@@ -101,50 +121,50 @@ export default function Transac() {
             <TouchableOpacity
               style={[style, styles.backdrop]}
               activeOpacity={1}
-              onPress={handleClose}/>
-          )}>
+              onPress={handleClose}
+            />
+          )}
+        >
           <View style={styles.bottomSheetContent}>
-            <Text style={styles.sheetTitle}>{gigData.title}</Text>
-            <View style={styles.detailsContainer}>
-                <View style={styles.leftContainer}>
-                    <Text style={[styles.labelFilter, {fontWeight: 'bold'}]}>BY DATE</Text>
-                </View>
-  
+            <Text style={styles.sheetTitle}>Transaction Details</Text>
+            <View style={styles.transactionDetailsContainer}>
+              <View style={styles.transactionDetails}>
+                <Text style={styles.transactionLabel}>Transaction ID:</Text>
+                <Text style={styles.transactionValue}>TRNnluE40YcuurHj</Text>
+              </View>
+              <View style={styles.transactionDetails}>
+                <Text style={styles.transactionLabel}>Type:</Text>
+                <Text style={styles.transactionValue}>Receive Payment</Text>
+              </View>
+              <View style={styles.transactionDetails}>
+                <Text style={styles.transactionLabel}>Amount:</Text>
+                <Text style={styles.transactionValue}>{selectedTransaction.amount}</Text>
+              </View>
+              <View style={styles.transactionDetails}>
+                <Text style={styles.transactionLabel}>From/To:</Text>
+                <Text style={styles.transactionValue}>Juan Dela Cruz</Text>
+              </View>
+              <View style={styles.transactionDetails}>
+                <Text style={styles.transactionLabel}>Description:</Text>
+                <Text style={styles.transactionValue}>Payment for order no.</Text>
+              </View>
+              <View style={styles.transactionDetails}>
+                <Text style={styles.transactionLabel}>Status:</Text>
+                <Text style={styles.transactionValue}>Success</Text>
+              </View>
+              <View style={styles.transactionDetails}>
+                <Text style={styles.transactionLabel}>Date Created:</Text>
+                <Text style={styles.transactionValue}>July 7, 2024</Text>
+              </View>
             </View>
-            <View style={styles.detailsContainer}>
-                <View style={styles.leftContainer}>
-                    <Text style={styles.labelFilter}>From</Text>
-                </View>
-                <View style={styles.rightContainer}>
-                    <Text style={styles.labelFilter}>To</Text>
-                </View>
-            </View>
-            <View style={styles.detailsContainer}>
-                <View style={styles.leftContainer}>
-                    <View style={styles.searchContainer2}>
-                        <Ionicons name="calendar-outline" size={20} color="#000000" style={styles.searchIcon} />
-                        <TextInput placeholder="Date" style={styles.searchInput} />
-                    </View>
-                </View>
-                <View style={styles.rightContainer}>
-                    <View style={styles.searchContainer2}>
-                        <Ionicons name="calendar-outline" size={20} color="#000000" style={styles.searchIcon} />
-                        <TextInput placeholder="Date" style={styles.searchInput} />
-                    </View>
-                </View>
-            </View>
-            <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button}>
-                <LinearGradient colors={['#6079FE','#DA84FE']} start={[0, 3]} end={[1, 1]}  style={styles.button}>
-                    <Text style={styles.buttonText}>Confirm</Text>
-                </LinearGradient>
+            <TouchableOpacity style={styles.shareButton}>
+              <FontAwesome5 name="share-alt" size={20} color="#6079FE" />
+              <Text style={styles.shareButtonText}> Share Transaction</Text>
             </TouchableOpacity>
-            </View>
-  
           </View>
         </BottomSheet>
       )}
-    </ScrollView>
+    </View>
   );
 }
 
@@ -153,28 +173,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
-  titleContainer: {
-    width: screenWidth,
-    height: 106,
-    backgroundColor: '#6079FE',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontFamily: 'WorkSans-Regular'
-  },
-  title: {
-    fontSize: 18,
-    marginTop: 30,
-    color: "#fff",
-    textAlign: 'center',
-    fontFamily: 'WorkSans-SemiBold',
-  },
   searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFF',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFF",
     padding: 10,
     borderRadius: 10,
-    width: '90%',
+    width: "90%",
     marginVertical: 20,
     elevation: 3,
   },
@@ -184,24 +189,16 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: 16,
-    color: '#999',
+    color: "#999",
   },
   filterIcon: {
     marginHorizontal: 10,
   },
-  contentContainer: {
-    width: screenWidth,
-    height: 'auto',
-    marginEnd: 10,
-    // backgroundColor: 'green',
-    marginStart: 10,
-    alignItems: 'center',
-  },
   transacContainer: {
-    width: '100%',
+    width: "100%",
     height: 80,
-    backgroundColor: '#fff',
-    flexDirection: 'row',
+    backgroundColor: "#fff",
+    flexDirection: "row",
     elevation: 3,
     marginTop: 0.5,
   },
@@ -210,97 +207,97 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     margin: 15,
-    backgroundColor: '#f1f1f1',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#f1f1f1",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  itemContainer:{
-    width: '75%',
-    // backgroundColor: 'red',
+  itemContainer: {
+    width: "75%",
     marginTop: 15,
-    flexDirection: 'row',
-
+    flexDirection: "row",
   },
   detailsContainter2: {
-    width: '50%',
-    height: 'auto',
-    // backgroundColor: 'green'
+    width: "50%",
   },
   detailsContainter3: {
-    width: '50%',
-    height: 'auto',
-    alignItems: 'flex-end',
-    // backgroundColor: 'blue'
+    width: "50%",
+    alignItems: "flex-end",
   },
   Details: {
     fontSize: 16,
-    fontFamily:'WorkSans-Regular'
+    fontFamily: "WorkSans-Regular",
   },
   Details2: {
     fontSize: 16,
-    color: '#6079FE',
-    fontFamily:'WorkSans-Regular',
+    color: "#6079FE",
+    fontFamily: "WorkSans-Regular",
   },
-  detailsContainer: {
-    // backgroundColor: 'green',
-    width: '100%',
-    height: 40,
-    flexDirection: 'row',
-  },
-  leftContainer: {
-    width: '50%',
-    height: 'auto',
-    padding: 10,
-    // backgroundColor: 'yellow'
-  },
-  rightContainer: {
-    width: '50%',
-    height: 'auto',
-    // backgroundColor: 'yellow',
-    padding: 10,
-  },
-  searchContainer2: {
-    width: '100%',
-    height: 40,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderRadius: 10,
-    borderWidth: 0.5,
-  },
-  labelFilter: {
-    fontSize: 14,
-  },
-  buttonContainer: {
-    height: 60,
-    width: '100%',
-    marginTop: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // backgroundColor: 'green'
-  },
-  button: {
-    height: 40,
-    width: '80%',
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttonText: {
-    fontSize: 16,
-    color: '#FFF',
-    fontWeight: 'bold',
-},
   bottomSheetContent: {
     padding: 20,
   },
   sheetTitle: {
-    width:'100%',
-    textAlign: 'center',
     fontSize: 20,
-    fontFamily: 'WorkSans-SemiBold'
+    fontFamily: "WorkSans-Medium",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  transactionDetailsContainer: {
+    backgroundColor: "#FFF",
+    borderRadius: 8,
+    padding: 10,
+    
+  },
+  transactionDetails: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+  transactionLabel: {
+    fontFamily: "WorkSans-Medium",
+    color: "#252525",
+    fontSize: 16
+  },
+  transactionValue: {
+    color: "#5E5E5E",
+    fontFamily: "WorkSans-Regular"
+  },
+  shareButton: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
+  },
+  shareButtonText: {
+    fontSize: 16,
+    color: "#6079FE",
+    marginLeft: 5,
   },
   backdrop: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginBottom: 20,
+  },
+  actionButton: {
+    backgroundColor: "#4CAF50",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    marginRight: 10,
+  },
+  actionButtons: {
+    backgroundColor: "#f44336",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    marginRight: 10,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
+

@@ -5,12 +5,16 @@ import { Ionicons, MaterialCommunityIcons, FontAwesome5, FontAwesome, Entypo, Fo
 import DateTimePicker from '@react-native-community/datetimepicker';
 import RNPickerSelect from 'react-native-picker-select';
 import * as ImagePicker from 'react-native-image-picker';
+import { useTabBarVisibility } from "../../navigation/TabBarVisibilityContext"; 
+
+
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const KycVerified = () => {
     const navigation = useNavigation();
+    const { setTextInputFocused } = useTabBarVisibility();
 
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -94,6 +98,8 @@ const KycVerified = () => {
                         </View>
                         <View style={styles.inputContainer1}>
                             <TextInput 
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}
                                 style={styles.inputContainer2}
                                 placeholder='Address'
                                 value={address}
@@ -109,7 +115,9 @@ const KycVerified = () => {
                                 style={styles.inputContainer2}
                                 placeholder='City'
                                 value={city}
-                                onChangeText={setCity}/>
+                                onChangeText={setCity}
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}/>
                         </View>
 
                         <View style={styles.labelContainer}>
@@ -120,7 +128,9 @@ const KycVerified = () => {
                                 style={styles.inputContainer2}
                                 placeholder=' '
                                 value={country}
-                                onChangeText={setCountry}/>
+                                onChangeText={setCountry}
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}/>
                         </View>
 
                         <View style={styles.labelContainer}>
@@ -131,7 +141,9 @@ const KycVerified = () => {
                                 style={styles.inputContainer2}
                                 placeholder='State'
                                 value={state}
-                                onChangeText={setState}/>
+                                onChangeText={setState}
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}/>
                         </View>
 
                         <View style={styles.labelContainer}>
@@ -143,7 +155,9 @@ const KycVerified = () => {
                                 placeholder='ZIP Code'
                                 keyboardType='phone-pad'
                                 value={zipCode}
-                                onChangeText={setZCode}/>
+                                onChangeText={setZCode}
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}/>
                         </View>
 
             

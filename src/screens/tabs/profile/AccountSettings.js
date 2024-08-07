@@ -4,14 +4,16 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons, MaterialCommunityIcons, FontAwesome5, FontAwesome, Entypo, Foundation } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import RNPickerSelect from 'react-native-picker-select';
+import { useTabBarVisibility } from "../../navigation/TabBarVisibilityContext"; 
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const AccountSettings = () => {
     const navigation = useNavigation();
+    const { setTextInputFocused } = useTabBarVisibility();
 
-    const [facebook, setFacebook] = useState('');
+    const [facebook, setFacebook] = useState(''); 
     const [twitter, setTwitter] = useState('');
     const [linkedin, setLinkedin] = useState('');
     const [website, setWebsite] = useState('');
@@ -41,6 +43,8 @@ const AccountSettings = () => {
                             <TextInput 
                                 style={styles.inputContainer2}
                                 placeholder='Skills'
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}
                             />
                         </View>
 
@@ -55,10 +59,14 @@ const AccountSettings = () => {
                                 <FontAwesome name="facebook" size={24} color="black" />
                             </View>
                             <TextInput 
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}
                                 style={styles.inputContainer2}
                                 placeholder="Facebook Link"
                                 value={facebook}
                                 onChangeText={setFacebook}>
+                                
+                                    
                             </TextInput>
                             </View>
 
@@ -67,6 +75,8 @@ const AccountSettings = () => {
                                 <FontAwesome name="twitter" size={24} color="black" />
                             </View>
                             <TextInput 
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}
                                 style={styles.inputContainer2}
                                 placeholder="Twitter Link"
                                 value={twitter}
@@ -79,6 +89,8 @@ const AccountSettings = () => {
                                 <Entypo name="linkedin" size={24} color="black" />
                             </View>
                             <TextInput 
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}
                                 style={styles.inputContainer2}
                                 placeholder="Linkedin Link"
                                 value={linkedin}
@@ -91,6 +103,8 @@ const AccountSettings = () => {
                                 <Foundation name="web" size={24} color="black" />
                             </View>
                             <TextInput 
+                                onFocus={() => setTextInputFocused(true)}
+                                onBlur={() => setTextInputFocused(false)}
                                 style={styles.inputContainer2}
                                 placeholder="Website Link"
                                 value={website}

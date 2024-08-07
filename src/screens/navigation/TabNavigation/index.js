@@ -8,12 +8,30 @@ import TaskNavigation from "./TaskNavigation";
 import TransactionNavigation from "./TransactionNavigation";
 import GigsNavigation from "./GigsNavigation";
 import TeamNavigation from "./TeamNavigation";
-import { TransitionPresets } from "@react-navigation/stack"
-import DrawerNavigation from "../DrawerNavigation";
+import { TransitionPresets } from "@react-navigation/stack";
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { useTabBarVisibility } from "../TabBarVisibilityContext";
 
 const Tab = createBottomTabNavigator();
 
+const getTabBarStyle = (route, isTextInputFocused) => {
+  const routeName = getFocusedRouteNameFromRoute(route) ?? "Home" ;
+  if (
+    routeName === "TopUp" ||
+    routeName === "Transfer" ||
+    routeName === "Withdraw" ||
+    routeName === "Receipt" ||
+    routeName === "NotificationScreen" ||
+    isTextInputFocused
+  ) {
+    return { display: "none" };
+  }
+  return { height: 55 };
+};
+
 const TabNavigation = () => {
+  const { isTextInputFocused } = useTabBarVisibility();
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -31,7 +49,7 @@ const TabNavigation = () => {
             iconName = "list-outline";
           } else if (route.name === "Transaction") {
             iconName = "receipt-outline";
-          } 
+          }
           const customizeSize = 28;
           return (
             <Ionicons
@@ -44,13 +62,11 @@ const TabNavigation = () => {
         tabBarActiveTintColor: "#6079FE",
         tabBarInactiveTintColor: "#CDCDE0",
         tabBarShowLabel: true,
-         tabBarLabelStyle: {
-            fontSize: 16,
-            fontFamily: 'WorkSans-Medium',
-         },
-          tabBarStyle: {
-          height: 55,
+        tabBarLabelStyle: {
+          fontSize: 0,
+          fontFamily: 'WorkSans-Medium',
         },
+        tabBarStyle: getTabBarStyle(route, isTextInputFocused),
         ...TransitionPresets.SlideFromRightIOS,
         animationEnabled: true,
         gestureEnabled: true,
@@ -61,13 +77,8 @@ const TabNavigation = () => {
       <Tab.Screen name="Order" component={OrdersNavigation} />
       <Tab.Screen name="Gigs" component={GigsNavigation} />
       <Tab.Screen name="Task" component={TaskNavigation} />
-      <Tab.Screen name="Transaction" component={TransactionNavigation} 
-       
-      />
-      
-      
+      <Tab.Screen name="Transaction" component={TransactionNavigation} />
     </Tab.Navigator>
-    
   );
 };
 

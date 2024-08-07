@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import { createDrawerNavigator, DrawerItemList } from "@react-navigation/drawer";
-import { MaterialCommunityIcons, FontAwesome6, Ionicons, FontAwesome5 } from "@expo/vector-icons";
+import { MaterialCommunityIcons, FontAwesome5, Ionicons, FontAwesome } from "@expo/vector-icons";
 import HomeScreen from "../tabs/home/HomeScreen";
 import AccountSettings from "../tabs/profile/AccountSettings";
 import PasswordSettings from "../tabs/profile/Password";
@@ -11,12 +11,12 @@ import PersonalSettings from "../tabs/profile/PersonalSettings";
 import { LinearGradient } from "expo-linear-gradient";
 import LoginScreen from "../(auth)/LoginScreen";
 import { useNavigation } from '@react-navigation/native';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigation = () => {
   const navigation = useNavigation();
-
   const handleLogout = () => {
     Alert.alert(
       "Logout",
@@ -29,9 +29,7 @@ const DrawerNavigation = () => {
         {
           text: "Log Out",
           onPress: () => {
-            
-
-            navigation.navigate("Login"); 
+            navigation.navigate("Login");
           }
         }
       ]
@@ -82,7 +80,7 @@ const DrawerNavigation = () => {
       }}
     >
       <Drawer.Screen
-        name="HomeS"
+        name="Home"
         component={HomeScreen}
         options={{
           drawerLabel: 'Home',
@@ -102,7 +100,6 @@ const DrawerNavigation = () => {
         name="PersonalSettings"
         component={PersonalSettings}
         options={{
-          
           drawerLabel: 'Personal Settings',
           title: 'Personal Settings',
           headerShown: false, 
@@ -150,15 +147,15 @@ const DrawerNavigation = () => {
         }}
       />
       <Drawer.Screen
-        name="KYF"
+        name="KycVerified"
         component={KycVerified}
         options={{
-          drawerLabel: 'KYF Verify',
-          title: 'KYF Verify',
+          drawerLabel: 'KYC Verify',
+          title: 'KYC Verify',
           headerShadowVisible: false,
           headerShown: false,
           drawerIcon: () => (
-            <FontAwesome6
+            <FontAwesome
               name="check-circle"
               size={22}
               color="black"
