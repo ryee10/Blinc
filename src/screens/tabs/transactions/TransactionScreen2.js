@@ -19,7 +19,7 @@ const screenWidth = Dimensions.get("window").width;
 
 export default function Transac() {
   const { setTextInputFocused } = useTabBarVisibility();
-  const snapPoints = useMemo(() => ["60%", "100%"], []);
+  const snapPoints = useMemo(() => ["65%", "65%"], []);
   const bottomSheetRef = useRef(null);
   const [isSheetVisible, setSheetVisible] = useState(false);
   const [selectedTransaction, setSelectedTransaction] = useState(null);

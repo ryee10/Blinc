@@ -7,8 +7,7 @@ import LoginScreen from '../(auth)/LoginScreen';
 import RegisterScreen from '../(auth)/RegisterScreen';
 import VerifyScreen from '../(auth)/VerifyScreen';
 import TabNavigation from './TabNavigation';
-import TabNavigation2 from './TabNavigation2';
-import TopUpReceipt from '../clientTabs/home/TopUpReceipt';
+
 
 
 
@@ -30,7 +29,6 @@ const AuthNavigation = () => {
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="Verify" component={VerifyScreen} />
       <Stack.Screen name="TabN" component={TabNavigation} />
-      <Stack.Screen name="Client" component={TabNavigation2}/>
       
 
    </Stack.Navigator>

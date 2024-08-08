@@ -35,7 +35,7 @@ const LoginScreen = () => {
     if (email == 'client@gmail.com' && password === 'test') {
       await AsyncStorage.setItem('userToken', 'a1');
       Alert.alert('Login Successful');
-      navigation.navigate('Client');
+      navigation.navigate('TabN');
     } else {
       Alert.alert('Invalid email or password');
     }

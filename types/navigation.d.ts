@@ -9,7 +9,7 @@ type AuthNavigationType ={
     Splash: undefined;
     Verify: undefined;
     TabN: undefined;
-    Client: undefined;
+    // Client: undefined;
 }
 
 /* type TabNavigationType ={

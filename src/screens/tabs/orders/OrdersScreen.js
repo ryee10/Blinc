@@ -66,14 +66,6 @@ const OrderScreen = () => {
     setSheetVisible(false);
   }, []);
 
-  const handleEditPress = () => {
-    Alert.alert("Edit", "Edit button pressed");
-  };
-
-  const handleDeletePress = () => {
-    Alert.alert("Delete", "Delete button pressed");
-  };
-
   const renderContent = () => {
     const filteredOrders = ordersData.filter(
       (order) => order.status === activeTab
@@ -88,19 +80,19 @@ const OrderScreen = () => {
               onPress={() => handleOrderPress(order)}
             >
               <Animated.View
-                style={styles.transactionItem}
+                style={styles.orderItem}
                 entering={FadeInDown.duration(100).delay(100).springify()}
               >
                 <View style={styles.circleIcon}>
                   <Ionicons name="reader-outline" size={24} color="#4769FE" />
                 </View>
-                <View style={styles.transactionDetails}>
-                  <Text style={styles.transactionTitle}>{order.title}</Text>
-                  <Text style={styles.transactionDate}>{order.date}</Text>
-                  <Text style={styles.transactionDate}>{order.client}</Text>
+                <View style={styles.orderDetails}>
+                  <Text style={styles.orderTitle}>{order.title}</Text>
+                  <Text style={styles.orderDate}>{order.date}</Text>
+                  <Text style={styles.orderDate}>{order.client}</Text>
                 </View>
-                <Text style={styles.transactionAmounts}>Price:</Text>
-                <Text style={styles.transactionAmount}>{order.price}</Text>
+                <Text style={styles.orderAmount}>Price:</Text>
+                <Text style={styles.orderAmounts}>{order.price}</Text>
               </Animated.View>
             </TouchableOpacity>
           ))}
@@ -234,35 +226,36 @@ const styles = StyleSheet.create({
     color: "#515151",
     fontFamily: "WorkSans-Medium",
   },
-  transactionItem: {
+  orderItem: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
     marginHorizontal: 20,
+    marginBottom: 1,
     padding: 14,
     backgroundColor: "#fff",
   },
-  transactionDetails: {
+  orderDetails: {
     flex: 1,
     marginLeft: "3%",
   },
-  transactionTitle: {
+  orderTitle: {
     fontFamily: "WorkSans-Medium",
     fontSize: 20,
   },
-  transactionDate: {
+  orderDate: {
     fontFamily: "WorkSans-Medium",
     color: "#949494",
     fontSize: 14,
   },
-  transactionAmount: {
+  orderAmount: {
     fontSize: 20,
     fontFamily: "WorkSans-Medium",
     marginRight: "5%",
     color: "#252525",
   },
-  transactionAmounts: {
+  orderAmounts: {
     fontSize: 16,
     fontFamily: "WorkSans-Medium",
     marginRight: "5%",
