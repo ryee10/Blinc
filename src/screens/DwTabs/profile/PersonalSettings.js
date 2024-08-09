@@ -31,7 +31,6 @@ const PersonalSettings = () => {
   const [phoneNo, setPhoneNo] = useState("");
   const [birthdate, setBirthdate] = useState(new Date());
   const [show, setShow] = useState(false);
-  const [gender, setGender] = useState("");
   const [bio, setBio] = useState("");
 
   const onChange = (event, selectedDate) => {
@@ -39,6 +38,12 @@ const PersonalSettings = () => {
     setShow(Platform.OS === "ios");
     setBirthdate(currentDate);
   };
+
+  const gender = [
+    { label: 'Male', value: 'male' },
+    { label: 'Female', value: 'female' },
+    // Add more countries here
+  ];
 
   return (
     <View style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : "height"}>
@@ -142,14 +147,11 @@ const PersonalSettings = () => {
                 </View>
                 <View style={styles.inputContainer1}>
                   <RNPickerSelect
-                    onValueChange={(value) => setGender(value)}
-                    items={[
-                      { label: "Male", value: "Male" },
-                      { label: "Female", value: "Female" },
-                    ]}
-                    style={pickerSelectStyles}
-                    value={gender}
-                  />
+                      onValueChange={(value) => setCountry(value)}
+                      items={gender}
+                      style={pickerSelectStyles}
+                      value={gender}
+                      placeholder={{ label: 'Select gender', value: null }}/>
                 </View>
 
                 <View style={styles.labelContainer}>
@@ -282,12 +284,14 @@ const styles = StyleSheet.create({
 
 const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
-    margin: 35,
+    marginStart: 35,
+    marginEnd: 35,
     width: "80%",
     backgroundColor: "#f1f1f1",
   },
   inputAndroid: {
-    margin: 35,
+    marginStart: 35,
+    marginEnd: 35,
     width: "80%",
     backgroundColor: "#f1f1f1",
   },

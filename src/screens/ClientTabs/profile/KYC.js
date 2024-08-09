@@ -87,6 +87,7 @@ const KycVerified = () => {
         { label: 'Canada', value: 'CA' },
         { label: 'United Kingdom', value: 'GB' },
         { label: 'Australia', value: 'AU' },
+        { label: 'Philippines', value: 'PH' },
         // Add more countries here
       ];
 

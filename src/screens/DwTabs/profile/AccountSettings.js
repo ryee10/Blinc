@@ -1,41 +1,61 @@
-import React, {useState} from 'react';
-import { View, Text, StyleSheet, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Dimensions, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Ionicons, MaterialCommunityIcons, FontAwesome5, FontAwesome, Entypo, Foundation } from '@expo/vector-icons';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import RNPickerSelect from 'react-native-picker-select';
+import { FontAwesome5, FontAwesome, Entypo, Foundation, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTabBarVisibility } from "../../navigation/TabBarVisibilityContext"; 
 
 const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
 
 const AccountSettings = () => {
     const navigation = useNavigation();
     const { setTextInputFocused } = useTabBarVisibility();
 
-    const [facebook, setFacebook] = useState(''); 
+    const [facebook, setFacebook] = useState('');
     const [twitter, setTwitter] = useState('');
     const [linkedin, setLinkedin] = useState('');
     const [website, setWebsite] = useState('');
+    const [skills, setSkills] = useState([]);
+    const [newSkill, setNewSkill] = useState('');
 
     const handleSave = () => {
         console.log('Facebook:', facebook);
         console.log('Twitter:', twitter);
         console.log('LinkedIn:', linkedin);
         console.log('Website:', website);
-    }
+        console.log('Skills:', skills);
+    };
 
-    return(
+    const handleAddSkill = () => {
+        if (newSkill.trim() !== '' && !skills.includes(newSkill.trim())) {
+            setSkills([...skills, newSkill.trim()]);
+            setNewSkill('');
+        }
+    };
+
+    const handleRemoveSkill = (skillToRemove) => {
+        setSkills(skills.filter(skill => skill !== skillToRemove));
+    };
+
+    const renderSkill = ({ item }) => (
+        <View style={styles.tag}>
+            <Text style={styles.tagText}>{item}</Text>
+            <TouchableOpacity onPress={() => handleRemoveSkill(item)}>
+                <Text style={styles.removeTag}>×</Text>
+            </TouchableOpacity>
+        </View>
+    );
+
+    return (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={styles.container}>
-            <View style={styles.outerContainer}>
-                <View style={styles.innerContainer}>
-                    <View style={styles.titleContainer}>
-                        <FontAwesome5 name="user-circle" size={22} color="#647CFF" /> 
-                        <Text style={styles.title}>Account Settings</Text>
+            <View style={styles.container}>
+                <View style={styles.outerContainer}>
+                    <View style={styles.innerContainer}>
+                        <View style={styles.titleContainer}>
+                            <FontAwesome5 name="user-circle" size={22} color="#647CFF" /> 
+                            <Text style={styles.title}>Account Settings</Text>
                         </View>
                         <View style={styles.line}></View>
-                        
+
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>Skills</Text>
                         </View>
@@ -45,87 +65,90 @@ const AccountSettings = () => {
                                 placeholder='Skills'
                                 onFocus={() => setTextInputFocused(true)}
                                 onBlur={() => setTextInputFocused(false)}
+                                value={newSkill}
+                                onChangeText={setNewSkill}
+                                onSubmitEditing={handleAddSkill}
                             />
                         </View>
+                        <FlatList
+                            data={skills}
+                            renderItem={renderSkill}
+                            keyExtractor={(item) => item}
+                            horizontal
+                            style={styles.skillsContainer}
+                        />
 
                         <View style={styles.labelContainer}>
                             <Text style={styles.label}>Social Media</Text>
                         </View>
 
                         <View style={styles.container2}>
-                        
-                        <View style={styles.inputContainer4}>
-                            <View style={styles.logoContainer}>
-                                <FontAwesome name="facebook" size={24} color="black" />
-                            </View>
-                            <TextInput 
-                                onFocus={() => setTextInputFocused(true)}
-                                onBlur={() => setTextInputFocused(false)}
-                                style={styles.inputContainer2}
-                                placeholder="Facebook Link"
-                                value={facebook}
-                                onChangeText={setFacebook}>
-                                
-                                    
-                            </TextInput>
+                            <View style={styles.inputContainer4}>
+                                <View style={styles.logoContainer}>
+                                    <FontAwesome name="facebook" size={24} color="black" />
+                                </View>
+                                <TextInput 
+                                    onFocus={() => setTextInputFocused(true)}
+                                    onBlur={() => setTextInputFocused(false)}
+                                    style={styles.inputContainer2}
+                                    placeholder="Facebook Link"
+                                    value={facebook}
+                                    onChangeText={setFacebook}
+                                />
                             </View>
 
                             <View style={styles.inputContainer4}>
-                            <View style={styles.logoContainer}>
-                                <FontAwesome name="twitter" size={24} color="black" />
-                            </View>
-                            <TextInput 
-                                onFocus={() => setTextInputFocused(true)}
-                                onBlur={() => setTextInputFocused(false)}
-                                style={styles.inputContainer2}
-                                placeholder="Twitter Link"
-                                value={twitter}
-                                onChangeText={setTwitter}>
-                            </TextInput>
-                            </View>
-
-                            <View style={styles.inputContainer4}>
-                            <View style={styles.logoContainer}>
-                                <Entypo name="linkedin" size={24} color="black" />
-                            </View>
-                            <TextInput 
-                                onFocus={() => setTextInputFocused(true)}
-                                onBlur={() => setTextInputFocused(false)}
-                                style={styles.inputContainer2}
-                                placeholder="Linkedin Link"
-                                value={linkedin}
-                                onChangeText={setLinkedin}>
-                            </TextInput>
+                                <View style={styles.logoContainer}>
+                                    <FontAwesome name="twitter" size={24} color="black" />
+                                </View>
+                                <TextInput 
+                                    onFocus={() => setTextInputFocused(true)}
+                                    onBlur={() => setTextInputFocused(false)}
+                                    style={styles.inputContainer2}
+                                    placeholder="Twitter Link"
+                                    value={twitter}
+                                    onChangeText={setTwitter}
+                                />
                             </View>
 
                             <View style={styles.inputContainer4}>
-                            <View style={styles.logoContainer}>
-                                <Foundation name="web" size={24} color="black" />
-                            </View>
-                            <TextInput 
-                                onFocus={() => setTextInputFocused(true)}
-                                onBlur={() => setTextInputFocused(false)}
-                                style={styles.inputContainer2}
-                                placeholder="Website Link"
-                                value={website}
-                                onChangeText={setWebsite}>
-                            </TextInput>
-                            </View>
-
+                                <View style={styles.logoContainer}>
+                                    <Entypo name="linkedin" size={24} color="black" />
+                                </View>
+                                <TextInput 
+                                    onFocus={() => setTextInputFocused(true)}
+                                    onBlur={() => setTextInputFocused(false)}
+                                    style={styles.inputContainer2}
+                                    placeholder="LinkedIn Link"
+                                    value={linkedin}
+                                    onChangeText={setLinkedin}
+                                />
                             </View>
 
+                            <View style={styles.inputContainer4}>
+                                <View style={styles.logoContainer}>
+                                    <Foundation name="web" size={24} color="black" />
+                                </View>
+                                <TextInput 
+                                    onFocus={() => setTextInputFocused(true)}
+                                    onBlur={() => setTextInputFocused(false)}
+                                    style={styles.inputContainer2}
+                                    placeholder="Website Link"
+                                    value={website}
+                                    onChangeText={setWebsite}
+                                />
+                            </View>
+                        </View>
+                    </View>
+
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.updateButton} onPress={handleSave}>
+                            <MaterialCommunityIcons name="update" size={30} color="#647CFF" /> 
+                            <Text style={styles.updateText}>Update Information</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-
-                <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.updateButton} onPress={handleSave}>
-                <MaterialCommunityIcons name="update" size={30} color="#647CFF" /> 
-                <Text style={styles.updateText}>Update Information</Text>
-            </TouchableOpacity>
             </View>
-
-            </View>
-            
-        </View>
         </ScrollView>
     );
 };
@@ -135,15 +158,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#f0f4f7',
     },
-    arrowContainer: {
-        marginStart: 20,
-        marginTop: 50,
-        marginBottom: 20
-    },
     titleContainer: {
-        width: 'auto',
-        height: 'auto',
-        // backgroundColor: 'green',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
@@ -153,7 +168,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginStart: 5,
         fontWeight: 'bold',
-        color: '#647CFF'
+        color: '#647CFF',
     },
     line: {
         width: '100%',
@@ -162,15 +177,11 @@ const styles = StyleSheet.create({
     },
     outerContainer: {
         width: screenWidth,
-        height: 'auto',
         alignItems: 'center',
         paddingBottom: 20,
-        // justifyContent: 'center',
-        // backgroundColor: 'green'
     },
     innerContainer: {
         width: '95%',
-        height: 550,
         margin: 10,
         borderRadius: 10,
         backgroundColor: '#FFF',
@@ -188,16 +199,15 @@ const styles = StyleSheet.create({
     container2: {
         width: 'auto',
         height: 'auto',
+        marginBottom: 30,
         justifyContent: 'center',
         alignItems: 'center',
-        // backgroundColor: 'green'
     },
     inputContainer1: {
         width: '100%',
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        // backgroundColor: 'green'
     },
     inputContainer2: {
         width: '80%',
@@ -206,20 +216,12 @@ const styles = StyleSheet.create({
         borderWidth: 0.2,
         paddingHorizontal: 10,
     },
-    inputContainer3: {
-        width: '70%',
-        height: 50,
-        borderRadius: 5,
-        justifyContent: 'center',
-        backgroundColor: '#F1F1F1',
-    },
     inputContainer4: {
-        width:'80%',
+        width: '80%',
         flexDirection: 'row',
         marginTop: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        // backgroundColor: 'green'
     },
     logoContainer: {
         width: 50,
@@ -228,14 +230,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
-        backgroundColor: '#F1F1F1'
+        backgroundColor: '#F1F1F1',
     },
     buttonContainer: {
         width: '90%',
         height: 'auto',
         marginTop: 10,
         alignItems: 'flex-end',
-        // backgroundColor: 'green'
     },
     updateButton: {
         width: 200,
@@ -244,36 +245,40 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
-        backgroundColor: '#CBD3FF'
+        backgroundColor: '#CBD3FF',
     },
     updateText: {
         fontSize: 15,
         marginStart: 5,
-        color: '#647CFF'
-
+        color: '#647CFF',
     },
-    dateLabel: {
+    skillsContainer: {
+        flexWrap: 'wrap',
+        height: 'auto',
+        marginTop: 10,
+        marginStart: 35,
+        marginEnd: 35,
+    },
+    tag: {
+        backgroundColor: '#E1E1E1',
+        borderRadius: 20,
+        paddingHorizontal: 15,
+        paddingVertical: 5,
+        marginRight: 10,
+        marginBottom: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    tagText: {
         fontSize: 14,
-        margin: 12,
-        color: '#CCC'
-    }
-
+        color: '#333',
+    },
+    removeTag: {
+        fontSize: 16,
+        color: 'blue',
+        marginLeft: 10,
+    },
 });
 
-const pickerSelectStyles = StyleSheet.create({
-    inputIOS: {
-        margin: 35,
-        width: '80%',
-        height: 'auto',
-        backgroundColor: '#f1f1f1'
-     
-    },
-    inputAndroid: {
-        margin: 35,
-        width: '80%',
-        height: 'auto',
-        backgroundColor: '#f1f1f1'
-    },
-  });
 
 export default AccountSettings;
