@@ -2,9 +2,9 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { TransitionPresets, createStackNavigator } from '@react-navigation/stack'
 import TransactionsScreen
- from '../../tabs/transactions/TransactionScreen2'
+ from '../../ClientTabs/transactions/TransactionScreen2'
 
- const Stack = createStackNavigator( );
+const Stack = createStackNavigator( );
  
 const TransactionNavigation = () => {
   return (

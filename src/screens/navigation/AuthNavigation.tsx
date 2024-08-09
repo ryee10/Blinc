@@ -6,7 +6,9 @@ import WelcomeScreen from '../(auth)/WelcomeScreen';
 import LoginScreen from '../(auth)/LoginScreen';
 import RegisterScreen from '../(auth)/RegisterScreen';
 import VerifyScreen from '../(auth)/VerifyScreen';
-import TabNavigation from './TabNavigation';
+import DwNavigation from './DwNavigation';
+import UserOption from '../(auth)/userOption';
+import ClientNav from './ClientNavigation';
 
 
 
@@ -28,7 +30,9 @@ const AuthNavigation = () => {
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="Verify" component={VerifyScreen} />
-      <Stack.Screen name="TabN" component={TabNavigation} />
+      <Stack.Screen name="UserOpt" component={UserOption} />
+      <Stack.Screen name="Client" component={ClientNav} />
+      <Stack.Screen name="DigitalWorker" component={DwNavigation} />
       
 
    </Stack.Navigator>

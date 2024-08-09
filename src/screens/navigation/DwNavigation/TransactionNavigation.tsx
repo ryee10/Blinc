@@ -1,10 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import TaskScreen from '../../tabs/task/TaskScreen'
 import { TransitionPresets, createStackNavigator } from '@react-navigation/stack'
+import TransactionsScreen
+ from '../../DwTabs/transactions/TransactionScreen2'
 
-const Stack = createStackNavigator( );
-const TaskNavigation = () => {
+ const Stack = createStackNavigator( );
+ 
+const TransactionNavigation = () => {
   return (
     <Stack.Navigator
     screenOptions={{
@@ -12,22 +14,22 @@ const TaskNavigation = () => {
       ...TransitionPresets.SlideFromRightIOS,
       animationEnabled: true,
       gestureEnabled: true,
-      gestureDirection: "horizontal",
+      gestureDirection: "horizontal",                
      }}
      >
-      <Stack.Screen name="TaskS" component={TaskScreen}
+      <Stack.Screen name="TransS" component={TransactionsScreen}
         options={{
           headerLeft: () => null,
           headerTitle: () => (
             <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
-              Task
+              Transactions
             </Text>
           ),
           headerTitleAlign: 'center'
-        }}
+        }} 
       />
      </Stack.Navigator>
   )
 }
 
-export default TaskNavigation
+export default TransactionNavigation

@@ -37,7 +37,7 @@ const VerifyScreen = () => {
           <View className="pb-6">
             <Button
               title="Verify Email"
-              action={() => navigation.navigate("TabN")}
+              action={() => navigation.navigate("UserOpt")}
             />
           </View>
         </Animated.View>

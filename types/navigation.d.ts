@@ -8,8 +8,8 @@ type AuthNavigationType ={
     Register: undefined;
     Splash: undefined;
     Verify: undefined;
-    TabN: undefined;
     // Client: undefined;
+    DigitalWorker: undefined
 }
 
 /* type TabNavigationType ={

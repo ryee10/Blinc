@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { createStackNavigator, TransitionPresets } from "@react-navigation/stack"
 import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigation from './AuthNavigation';
-import TabNavigation from './TabNavigation'
+import DwNavigation from './DwNavigation'
 import { useUserStrore } from '@/store/useUserStore';
 
 const Stack = createStackNavigator();
@@ -23,7 +23,7 @@ const RootNavigation = () => {
       >
         { 
           session && session.user ? (
-            <Stack.Screen name="tabNavigation" component={TabNavigation} />
+            <Stack.Screen name="DigitalWorker" component={DwNavigation} /> 
           ) : (
             <Stack.Screen name="AuthNavigation" component={AuthNavigation}/>
           )

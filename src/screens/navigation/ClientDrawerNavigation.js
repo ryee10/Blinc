@@ -2,12 +2,12 @@ import React from "react";
 import { View, Text, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import { createDrawerNavigator, DrawerItemList } from "@react-navigation/drawer";
 import { MaterialCommunityIcons, FontAwesome5, Ionicons, FontAwesome } from "@expo/vector-icons";
-import HomeScreen from "../tabs/home/HomeScreen";
-import AccountSettings from "../tabs/profile/AccountSettings";
-import PasswordSettings from "../tabs/profile/Password";
-import KycVerified from "../tabs/profile/KYC";
-import TeamScreen from "../tabs/team/TeamScreen";
-import PersonalSettings from "../tabs/profile/PersonalSettings";
+import HomeScreen from "../ClientTabs/home/HomeScreen";
+import AccountSettings from "../ClientTabs/profile/AccountSettings";
+import PasswordSettings from "../ClientTabs/profile/Password";
+import KycVerified from "../ClientTabs/profile/KYC";
+import TeamScreen from "../ClientTabs/team/TeamScreen";
+import PersonalSettings from "../ClientTabs/profile/PersonalSettings";
 import { LinearGradient } from "expo-linear-gradient";
 import LoginScreen from "../(auth)/LoginScreen";
 import { useNavigation } from '@react-navigation/native';
@@ -44,14 +44,14 @@ const DrawerNavigation = () => {
             <View style={styles.profileInfo}>
               <View style={styles.leftContainer}>
                 <View style={styles.avatarPlaceholder}>
-                  <Text style={styles.avatarText}>JD</Text>
+                  <Text style={styles.avatarText}>MK</Text>
                 </View>
               </View>
               <View style={styles.rightContainer}>
                 <View style={styles.userInfo}>
-                  <Text style={styles.userName}>Juan Dela Cruz</Text>
+                  <Text style={styles.userName}>Marvie King</Text>
                   <View style={styles.userRoleContainer}>
-                    <Text style={styles.userRole}>Digital Worker</Text>
+                    <Text style={styles.userRole}>Client</Text>
                   </View>
                 </View>
               </View>
@@ -163,23 +163,6 @@ const DrawerNavigation = () => {
           ),
         }}
       />
-      <Drawer.Screen
-        name="Team"
-        component={TeamScreen}
-        options={{
-          drawerLabel: 'Team',
-          title: 'Team',
-          headerShadowVisible: false,
-          headerShown: false,
-          drawerIcon: () => (
-            <Ionicons
-              name="people-outline"
-              size={22}
-              color="black"
-            />
-          ),
-        }}
-      />
     </Drawer.Navigator>
   );
 };
@@ -207,7 +190,6 @@ const styles = StyleSheet.create({
   },
   rightContainer: {
     width: '70%',
-    marginTop: 5
   },
   avatarPlaceholder: {
     width: 60,
@@ -229,11 +211,10 @@ const styles = StyleSheet.create({
     color: '#F0F4F7',
     fontSize: 18,
     fontFamily: 'WorkSans-Semibold',
-    marginBottom: 5,
   },
   userRoleContainer: {
-    width: 130,
-    height: 20,
+    width: 70,
+    height: 25,
     backgroundColor: '#fff',
     alignItems: 'center',
     borderRadius: 8,

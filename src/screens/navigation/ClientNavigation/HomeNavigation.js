@@ -3,14 +3,14 @@ import React from 'react';
 import { TransitionPresets, createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import DrawerNavigation from '../DrawerNavigation';
-import TopUp from '../../tabs/home/TopUp';
-import TopUpReceipt from '../../tabs/home/TopUpReceipt';
-import Transfer from '../../tabs/home/Transfer';
-import AccountSettings from '../../tabs/profile/AccountSettings';
+import DrawerNavigation from '../ClientDrawerNavigation';
+import TopUp from '../../ClientTabs/home/TopUp';
+import TopUpReceipt from '../../ClientTabs/home/TopUpReceipt';
+import Transfer from '../../ClientTabs/home/Transfer';
+import AccountSettings from '../../ClientTabs/profile/AccountSettings';
 import { DrawerActions } from '@react-navigation/native';
-import Withdraw from '../../tabs/home/withdraw';
-import NotificationScreen from '../../tabs/home/Notification';
+import Withdraw from '../../ClientTabs/home/withdraw';
+import NotificationScreen from '../../ClientTabs/home/Notification';
 
 const Stack = createStackNavigator();
 

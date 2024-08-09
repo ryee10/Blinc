@@ -1,11 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import TaskScreen from '../../ClientTabs/task/TaskScreen'
 import { TransitionPresets, createStackNavigator } from '@react-navigation/stack'
-import OrdersScreen from "../../tabs/orders/OrdersScreen"
 
 const Stack = createStackNavigator( );
-
-const OrdersNavigation = () => {
+const TaskNavigation = () => {
   return (
     <Stack.Navigator
     screenOptions={{
@@ -16,12 +15,12 @@ const OrdersNavigation = () => {
       gestureDirection: "horizontal",
      }}
      >
-      <Stack.Screen name="OrderS" component={OrdersScreen}
+      <Stack.Screen name="Task" component={TaskScreen}
         options={{
           headerLeft: () => null,
           headerTitle: () => (
-            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium',  }}>
-              My Orders
+            <Text style={{ fontSize: 25, fontFamily: 'WorkSans-Medium'  }}>
+              Task
             </Text>
           ),
           headerTitleAlign: 'center'
@@ -31,4 +30,4 @@ const OrdersNavigation = () => {
   )
 }
 
-export default OrdersNavigation
+export default TaskNavigation

@@ -1,8 +1,8 @@
 import React from 'react'
 import { TransitionPresets, createStackNavigator } from '@react-navigation/stack'
 import { View, Text } from 'react-native'
-import GigsScreen from '../../tabs/gigs/GigsScreen';
-import AddGigs from '../../tabs/gigs/AddGigs';
+import GigsScreen from '../../DwTabs/gigs/GigsScreen';
+import AddGigs from '../../DwTabs/gigs/AddGigs';
 
 const Stack = createStackNavigator( );
 
